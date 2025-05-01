@@ -1,0 +1,131 @@
+import funkin.Preferences;
+import funkin.graphics.FunkinSprite;
+import funkin.modding.base.ScriptedFlxRuntimeShader;
+import funkin.modding.events.ScriptEvent;
+import funkin.play.PlayState;
+import funkin.play.character.BaseCharacter;
+import funkin.play.character.CharacterDataParser;
+import funkin.play.character.CharacterType;
+import funkin.play.song.ScriptedSong;
+
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+
+import openfl.filters.ShaderFilter;
+import openfl.filters.BitmapFilter;
+
+class RememberedSong extends ScriptedSong {
+    var state:PlayState;
+    var filters:Array<BitmapFilter> = [new ShaderFilter(ScriptedFlxRuntimeShader.init('BlackAndWhite'))];
+
+    var blackBg:FunkinSprite;
+    var titleCard:FunkinSprite;
+
+    var boisvert:BaseCharacter;
+    var boisvert2:BaseCharacter;
+
+    function new() {
+        super('remembered');
+    }
+
+    override function onSongLoaded(event:SongLoadScriptEvent) {
+        if (PlayState.instance == null) return;
+        state = PlayState.instance;
+        boisvert = CharacterDataParser.fetchCharacter("boisvert");
+        boisvert2 = CharacterDataParser.fetchCharacter("boisvert2");
+
+        blackBg = FunkinSprite.create(0, 0).makeSolidColor(FlxG.width, FlxG.height, 0xFF000000);
+        blackBg.camera = state.camHUD;
+        blackBg.alpha = 0;
+        state.add(blackBg);
+
+        titleCard = FunkinSprite.create(-500, 300, "titlecards/remembered");
+        titleCard.camera = state.camHUD;
+        state.add(titleCard);
+
+        for (note in state.playerStrumline.strumlineNotes.members) {
+            FlxTween.cancelTweensOf(note);
+            note.y += Preferences.downscroll ? 200 : -200;
+        }
+    }
+
+    override function onSongEvent(event:SongEventScriptEvent) {
+        if (event.eventData.eventKind == "ZoomCamera") {
+            var zoom = 0.5 - event.eventData.value?.zoom;
+            state.defaultHUDCameraZoom -= zoom;
+            if (zoom == 0) {
+                var targetZoom = FlxCamera.defaultZoom * 1.0;
+                FlxTween.tween(state, {defaultHUDCameraZoom: targetZoom}, state.conductorInUse.getStepTimeInMs(event.eventData.value?.duration) / 1000, {
+                    ease: FlxEase.smootherStepIn
+                });
+            }
+        }
+    }
+
+    override function onStepHit(event:SongTimeScriptEvent) {
+        if (state == null) return;
+        switch (event.step) {
+            case 192: // Show Title Card
+                FlxTween.tween(blackBg, {alpha: 0.6}, 0.5, {
+                    ease: FlxEase.linear,
+                    onComplete: tween -> FlxTween.tween(blackBg, {alpha: 0}, 0.5, {
+                        ease: FlxEase.linear,
+                        startDelay: 5
+                    })
+                });
+                var tweenY = Preferences.downscroll ? 800 : -800;
+                FlxTween.tween(titleCard, {x: 455}, 1.2, {
+                    ease: FlxEase.circOut,
+                    onComplete: tween -> FlxTween.tween(titleCard, {y: tweenY}, 1.2, {
+                        ease: FlxEase.linear,
+                        startDelay: 3.6
+                    })
+                });
+            case 228: // Move Notes
+                var index:Int = 0;
+                var targetYPositions = Preferences.downscroll ? [560, 580, 550, 560] : [30, 40, 10, 30];
+                for (note in state.playerStrumline.strumlineNotes.members) {
+                    note.alpha = 1;
+                    FlxTween.tween(note, {y: targetYPositions[index]}, 0.7 + 0.1 * index, {
+                        ease: FlxEase.quadInOut
+                    });
+                    index++;
+                }
+            case 252, 572, 908: state.camGame.visible = false;
+            case 256, 576: state.camGame.visible = true;
+            case 499: // Change Character
+                if (boisvert2 != null) {
+                    state.currentStage.remove(state.currentStage.getBoyfriend());
+                    state.currentStage.addCharacter(boisvert2, CharacterType.BF);
+                    boisvert2.playAnimation("walk");
+                }
+            case 640:
+                state.camHUD.alpha = 0;
+                FlxTween.tween(state.camHUD, {alpha: 1}, 3, {
+                    ease: FlxEase.linear,
+                    startDelay: 15
+                });
+                state.healthBar.visible = false;
+                state.healthBarBG.visible = false;
+                state.scoreText.visible = false;
+
+                if (boisvert != null) {
+                    state.currentStage.remove(state.currentStage.getBoyfriend());
+                    state.currentStage.addCharacter(boisvert, CharacterType.BF);
+                    boisvert.playAnimation("idle");
+                }
+                state.currentStage.getBoyfriend().alpha = 0;
+                FlxTween.tween(state.currentStage.getBoyfriend(), {alpha: 1}, 5.25, {
+                    ease: FlxEase.linear
+                });
+
+                state.tweenCameraZoom(0.3, 30, true, FlxEase.circOut);
+
+                state.camHUD.filters = filters;
+                state.camGame.filters = filters;
+            case 908: state.camHUD.visible = false;
+        }
+    }
+}

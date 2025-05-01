@@ -1,0 +1,13 @@
+{
+  "title": "DEAD AIR",
+  "description": "DEAD AIR port for V-Slice",
+  "contributors": [
+    {
+      "name": "ImVeryBad",
+      "role": "Porter"
+    }
+  ],
+  "api_version": "0.6.3",
+  "mod_version": "1.0.0",
+  "license": "MIT"
+}

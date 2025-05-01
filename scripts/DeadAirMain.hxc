@@ -1,0 +1,37 @@
+import funkin.data.event.SongEventRegistry;
+import funkin.data.song.SongEventDataRaw;
+import funkin.modding.events.ScriptEvent;
+import funkin.modding.events.SongEventScriptEvent;
+import funkin.modding.module.Module;
+import funkin.play.PlayState;
+import funkin.play.Countdown;
+
+import flixel.util.FlxTimer;
+
+class DeadAirMain extends Module {
+    var excludedSongs = ["remembered"];
+    var state:PlayState;
+
+    function new() {
+        super("DeadAirMain");
+    }
+
+    override function onSongLoaded(event:SongLoadScriptEvent) {
+        if (PlayState.instance == null) return;
+
+        if (excludedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) {
+            state = PlayState.instance;
+            var songEvent:SongEventDataRaw = new SongEventDataRaw(state.songPosition, "FocusCamera", {char: 0});
+            var scriptEvent:SongEventScriptEvent = new SongEventScriptEvent(songEvent);
+            if (!scriptEvent.eventCanceled) SongEventRegistry.handleEvent(songEvent);
+        }
+    }
+
+    override function onCountdownStart(event:CountdownScriptEvent) {
+        if (excludedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) {
+            new FlxTimer().start(0.01, timer -> {
+                Countdown.skipCountdown();
+            });
+        }
+    }
+}

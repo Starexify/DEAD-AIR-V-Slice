@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "name": "dead air",
+  "titleAsset": "storymenu/titles/myweek",
+  "visible": false,
+  "background": "#000000",
+  "songs": ["remembered"],
+  "props": []
+}

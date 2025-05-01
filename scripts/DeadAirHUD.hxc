@@ -1,0 +1,39 @@
+import funkin.modding.events.ScriptEvent;
+import funkin.modding.module.ScriptedModule;
+import funkin.play.PlayState;
+
+import flixel.FlxG;
+
+class DeadAirHUD extends ScriptedModule {
+    var opponentHealthColor;
+    var playerHealthColor;
+
+    function new() {
+        opponentHealthColor = 0xFFFF0000;
+        playerHealthColor = 0xFF373737;
+        super('DeadAirHUD');
+    }
+
+    override function onSongLoaded(event:SongLoadScriptEvent) {
+        if (PlayState.instance == null) return;
+        var state = PlayState.instance;
+        state.playerStrumline.x = FlxG.width / 2 - state.playerStrumline.width / 2;
+        state.opponentStrumline.visible = false;
+        if (state.playerStrumline.background != null) state.playerStrumline.background.visible = false;
+        state.comboPopUps.visible = false;
+
+        state.scoreText.alignment = 'center';
+        state.scoreText.y += 10;
+        state.scoreText.size = 20;
+
+        applyHealthBarColor(state);
+    }
+
+    override function onUpdate(event:UpdateScriptEvent) {
+        if (PlayState.instance != null) PlayState.instance.scoreText.x = FlxG.width / 2 - PlayState.instance.scoreText.width / 2;
+    }
+
+    function applyHealthBarColor(state:PlayState) {
+        if (state.healthBar != null) state.healthBar.createFilledBar(opponentHealthColor, playerHealthColor);
+    }
+}

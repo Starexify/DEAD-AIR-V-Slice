@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0",
+  "name": "Boisvert 2",
+  "assetPath": "characters/boisvert2",
+  "flipX": true,
+  "cameraOffsets": [-100, 100],
+  "offsets": [-120, 0],
+  "healthIcon": {
+    "id": "lomando"
+  },
+  "singTime": 6.1,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "idle",
+      "offsets": [0, 0],
+      "frameRate": 18
+    },
+    {
+      "name": "backwalk",
+      "prefix": "backwalk",
+      "offsets": [0, 0],
+      "frameRate": 18
+    },
+    {
+      "name": "walk",
+      "prefix": "walk",
+      "offsets": [0, 0],
+      "frameRate": 18
+    }
+  ]
+}
