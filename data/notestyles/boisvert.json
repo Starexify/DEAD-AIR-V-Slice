@@ -17,7 +17,7 @@
     "noteStrumline": {
       "assetPath": "shared:boisvertnotes",
       "scale": 0.7,
-      "offsets": [25, -20],
+      "offsets": [25, 20],
       "data": {
         "leftStatic": { "prefix": "arrowLEFT" },
         "leftPress": { "prefix": "left press" },
@@ -39,7 +39,7 @@
     },
     "holdNote": {
       "assetPath": "NOTE_boisvert_hold_assets",
-      "offsets": [0, 45],
+      "offsets": [0, 10],
       "scale": 0.4,
       "data": {}
     },
