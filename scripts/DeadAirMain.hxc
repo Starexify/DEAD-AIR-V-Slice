@@ -30,7 +30,7 @@ class DeadAirMain extends Module {
     override function onCountdownStart(event:CountdownScriptEvent) {
         if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) {
             new FlxTimer().start(0.01, timer -> {
-                Countdown.skipCountdown();
+                //Countdown.skipCountdown();
             });
         }
     }

@@ -10,6 +10,168 @@
       "v": {
         "char": 0
       }
+    },
+    {
+      "t": 0,
+      "e": "SetCameraBop",
+      "v": {
+        "intensity":  0,
+        "rate": 4
+      }
+    },
+    {
+      "t": 16615.3846153846,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 1.05,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 31384.6153846154,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 1.10,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 33230.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 1.12,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 34830.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 1.14,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 38030.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 1.15,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 54430.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 1.05,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 55305.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 1,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 56305.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 0.98,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 57180.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 0.96,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 58055.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 0.94,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 62180.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.1,
+        "scroll": 0.9,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 85930.7692307692,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.2,
+        "scroll": 1.1,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 92859.3406593407,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 0.2,
+        "scroll": 1.25,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
+    },
+    {
+      "t": 93059.3406593407,
+      "e": "ScrollSpeed",
+      "v": {
+        "duration": 5,
+        "scroll": 1.4,
+        "strumline": "both",
+        "ease": "linear",
+        "absolute": false
+      }
     }
   ],
   "notes": {
@@ -3698,63 +3860,63 @@
         "t": 97379.3406593407,
         "d": 0,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       },
       {
         "t": 97459.3406593407,
         "d": 3,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       },
       {
         "t": 97559.3406593407,
         "d": 2,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       },
       {
         "t": 97737.0192307692,
         "d": 0,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       },
       {
         "t": 97841.4835164835,
         "d": 0,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       },
       {
         "t": 97919.1620879121,
         "d": 2,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       },
       {
         "t": 98114.6978021978,
         "d": 3,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       },
       {
         "t": 98235.2335164835,
         "d": 0,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       },
       {
         "t": 98237.9120879121,
         "d": 1,
         "l": 0,
-        "k": "normal",
+        "k": "no-anim",
         "p": [        ]
       }
     ]

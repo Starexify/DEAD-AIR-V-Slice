@@ -1,3 +1,4 @@
+import funkin.graphics.FunkinSprite;
 import funkin.modding.events.ScriptEvent;
 import funkin.play.PlayState;
 import funkin.play.song.ScriptedSong;
@@ -5,10 +6,17 @@ import funkin.play.character.BaseCharacter;
 import funkin.play.character.CharacterDataParser;
 import funkin.play.character.CharacterType;
 
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+
 class ShelterSong extends ScriptedSong {
     var state:PlayState;
 
     var jimGun:BaseCharacter;
+    var bloodScreen:FunkinSprite;
+
+    var songTitle:FunkinSprite;
+    var songBy:FunkinSprite;
 
     function new() {
         super("shelter");
@@ -18,6 +26,26 @@ class ShelterSong extends ScriptedSong {
         if (PlayState.instance == null) return;
         state = PlayState.instance;
         jimGun = CharacterDataParser.fetchCharacter("jim");
+
+        for (note in state.playerStrumline.strumlineNotes.members) {
+            FlxTween.cancelTweensOf(note);
+            note.alpha = 1;
+        }
+
+        songTitle = FunkinSprite.create(460, 300, "titlecards/shelter/title");
+        songTitle.camera = state.camCutscene;
+        songTitle.visible = false;
+        state.add(songTitle);
+
+        songBy = FunkinSprite.create(460, 310, "titlecards/shelter/by");
+        songBy.camera = state.camCutscene;
+        songBy.alpha = 0;
+        state.add(songBy);
+
+        bloodScreen = FunkinSprite.create(-1200, -900).makeSolidColor(3840, 2160, 0xFFFF0000);
+        bloodScreen.alpha = 0;
+        bloodScreen.camera = state.camCutscene;
+        state.add(bloodScreen);
     }
 
     override function onStepHit(event:SongTimeScriptEvent) {
@@ -25,7 +53,26 @@ class ShelterSong extends ScriptedSong {
         switch (event.step) {
             case 0: state.camGame.visible = false;
             case 78: state.camGame.visible = true;
-
+            case 527:
+                FlxTween.tween(state.camGame, {alpha: 0}, 2);
+            case 558: state.camGame.alpha = 1;
+            case 545:
+                if (jimGun != null) {
+                    state.currentStage.remove(state.currentStage.getBoyfriend());
+                    state.currentStage.addCharacter(jimGun, CharacterType.BF);
+                }
+            case 859: state.currentStage.getBoyfriend().playAnimation("Shooting", false, true);
+            case 872:
+                state.camGame.visible = false;
+                state.camHUD.visible = false;
+                songTitle.visible = true;
+                bloodScreen.alpha = 1;
+                FlxTween.tween(bloodScreen, {alpha: 0}, 3);
+            case 888:
+                FlxTween.tween(songBy, {alpha: 1}, 0.7, {ease: FlxEase.linear});
+            case 902:
+                songTitle.visible = false;
+                songBy.visible = false;
         }
     }
 }

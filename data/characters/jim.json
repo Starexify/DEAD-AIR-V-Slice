@@ -4,7 +4,7 @@
   "assetPath": "characters/jimgun",
   "flipX": true,
   "cameraOffsets": [-100, 100],
-  "offsets": [-120, 0],
+  "offsets": [-98, 99],
   "healthIcon": {
     "id": "lomando"
   },
