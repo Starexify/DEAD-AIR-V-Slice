@@ -78,8 +78,8 @@ class RememberedSong extends ScriptedSong {
                 var tweenY = Preferences.downscroll ? 800 : -800;
                 FlxTween.tween(titleCard, {x: 455}, 1.2, {
                     ease: FlxEase.circOut,
-                    onComplete: tween -> FlxTween.tween(titleCard, {y: tweenY}, 1.2, {
-                        ease: FlxEase.linear,
+                    onComplete: tween -> FlxTween.tween(titleCard, {y: tweenY}, 0.6, {
+                        ease: FlxEase.circOut,
                         startDelay: 3.6
                     })
                 });
