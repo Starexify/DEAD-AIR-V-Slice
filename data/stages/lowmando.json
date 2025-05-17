@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "name": "John",
+  "cameraZoom": 0.6,
+  "props": [
+  ],
+  "characters": {
+    "bf": { "zIndex": 300, "position": [0, 0], "cameraOffsets": [0, 0] },
+    "gf": { "zIndex": 100, "position": [0, 0], "cameraOffsets": [0, 0] },
+    "dad": { "zIndex": 200, "position": [0, 0], "cameraOffsets": [0, 0] }
+  }
+}

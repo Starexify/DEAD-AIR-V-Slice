@@ -4,6 +4,6 @@
   "titleAsset": "storymenu/titles/myweek",
   "visible": false,
   "background": "#000000",
-  "songs": ["big-eater", "shelter", "remembered"],
+  "songs": ["fancy-island", "big-eater", "shelter", "remembered"],
   "props": []
 }

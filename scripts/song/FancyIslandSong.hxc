@@ -1,0 +1,17 @@
+import funkin.modding.events.ScriptEvent;
+import funkin.play.PlayState;
+import funkin.play.song.ScriptedSong;
+
+class FancyIslandSong extends ScriptedSong {
+    var state:PlayState;
+
+    function new() {
+        super("fancy-island");
+    }
+
+    override function onSongLoaded(event:SongLoadScriptEvent) {
+        if (PlayState.instance == null) return;
+        state = PlayState.instance;
+
+    }
+}
