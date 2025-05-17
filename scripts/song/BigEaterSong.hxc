@@ -1,0 +1,138 @@
+import funkin.graphics.FunkinSprite;
+import funkin.graphics.shaders.RuntimeRainShader;
+import funkin.play.PlayState;
+import funkin.play.song.ScriptedSong;
+import funkin.play.stage.StageProp;
+import funkin.modding.base.ScriptedFlxRuntimeShader;
+import funkin.modding.events.ScriptEvent;
+
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+
+import openfl.filters.ShaderFilter;
+
+import hxvlc.flixel.FlxVideoSprite;
+
+class BigEaterSong extends ScriptedSong {
+    var state:PlayState;
+
+    var introVid:FlxVideoSprite;
+    var runVid:FlxVideoSprite;
+
+    var flash:FunkinSprite;
+    var blackout:FunkinSprite;
+    var johnBg:StageProp;
+
+    var rainShader:RuntimeRainShader = new RuntimeRainShader();
+    var evilShader:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("Haha");
+
+    function new() {
+        super("big-eater");
+    }
+
+    override function onSongLoaded(event:SongLoadScriptEvent) {
+        if (PlayState.instance == null) return;
+        state = PlayState.instance;
+        state.camHUD.alpha = 0;
+        state.camGame.alpha = 0;
+        johnBg = state.currentStage.getNamedProp("johnbg");
+        johnBg.alpha = 0;
+
+        introVid = new FlxVideoSprite(0, 0);
+        introVid.antialiasing = true;
+        introVid.load(Paths.videos("john_intro"));
+        introVid.camera = state.camCutscene;
+        introVid.bitmap.onFormatSetup.add(() -> {
+            if (introVid.bitmap != null && introVid.bitmap.bitmapData != null) {
+                var scale:Float = Math.min(FlxG.width / introVid.bitmap.bitmapData.width, FlxG.height / introVid.bitmap.bitmapData.height);
+
+                introVid.setGraphicSize(introVid.bitmap.bitmapData.width * scale, introVid.bitmap.bitmapData.height * scale);
+                introVid.updateHitbox();
+                introVid.screenCenter();
+            }
+        });
+        introVid.bitmap.onEndReached.add(introVid.destroy);
+        state.add(introVid);
+
+        runVid = new FlxVideoSprite(0, 0);
+        runVid.antialiasing = true;
+        runVid.load(Paths.videos("john_run"));
+        runVid.camera = state.camGame;
+        runVid.bitmap.onFormatSetup.add(() -> {
+            if (runVid.bitmap != null && runVid.bitmap.bitmapData != null) {
+                runVid.setGraphicSize(runVid.bitmap.bitmapData.width * 4.5, runVid.bitmap.bitmapData.height * 4.5);
+                runVid.updateHitbox();
+                runVid.x = -1450;
+                runVid.y = -1090;
+            }
+        });
+        runVid.bitmap.onEndReached.add(() -> { state.camGame.alpha = 0; runVid.destroy(); });
+        state.add(runVid);
+
+        flash = FunkinSprite.create(-2220, -1180).makeSolidColor(3840, 2160, 0xFFFFFFFF);
+        flash.alpha = 0;
+        flash.zIndex = 50;
+        flash.camera = state.camGame;
+        state.currentStage.add(flash);
+        state.currentStage.refresh();
+
+        blackout = FunkinSprite.create(-1280, -720).makeSolidColor(3840, 2160, 0xFF000000);
+        blackout.alpha = 0;
+        blackout.camera = state.camHUD;
+        blackout.zIndex = 1100;
+        state.add(blackout);
+
+        rainShader.scale = 6;
+        rainShader.intensity = 0.1;
+        evilShader.setFloat("pix", 0.00001);
+    }
+
+    override function onSongStart(event:ScriptEvent) {
+        introVid.play();
+    }
+
+    override function onStepHit(event:SongTimeScriptEvent) {
+        if (state == null) return;
+        switch (event.step) {
+            case 50:
+                FlxTween.tween(state.camHUD, {alpha: 1}, 1.12);
+            case 61:
+                FlxTween.tween(state.camGame, {alpha: 1}, 1.12);
+            case 128:
+                flash.alpha = 0.8;
+                FlxTween.tween(flash, {alpha: 0}, 0.5);
+                state.camGame.filters = [new ShaderFilter(rainShader)];
+                johnBg.alpha = 1;
+            case 322:
+                runVid.play();
+            case 384:
+                state.camGame.alpha = 1;
+                state.camGame.filters = [new ShaderFilter(rainShader), new ShaderFilter(evilShader)];
+                state.camHUD.filters = [new ShaderFilter(evilShader)];
+                blackout.alpha = 1;
+                FlxTween.tween(blackout, {alpha: 0}, 1.2);
+            case 640:
+                flash.alpha = 0.8;
+                FlxTween.tween(flash, {alpha: 0}, 1);
+                state.camHUD.alpha = 0;
+                state.currentStage.alpha = 0;
+                johnBg.alpha = 0;
+                state.camGame.filters = [new ShaderFilter(rainShader)];
+        }
+    }
+
+    override function onPause(event:PauseScriptEvent) {
+        if (introVid != null) introVid.pause();
+        if (runVid != null) runVid.pause();
+    }
+
+    override function onResume(event:ScriptEvent) {
+        if (introVid != null) introVid.resume();
+        if (runVid != null) runVid.resume();
+    }
+
+    override function onUpdate(event:UpdateScriptEvent) {
+        rainShader.updateViewInfo(FlxG.width, FlxG.height, FlxG.camera);
+        rainShader.update(event.elapsed * 2);
+    }
+}

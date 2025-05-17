@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "name": "John",
+  "assetPath": "characters/john2",
+  "flipX": true,
+  "cameraOffsets": [-10, 130],
+  "offsets": [0, 0],
+  "scale": 0.7,
+  "healthIcon": {
+    "id": "lomando"
+  },
+  "singTime": 6.1,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "john2 Idle",
+      "offsets": [0, 0],
+      "frameRate": 24,
+      "looped": true
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "john2 Right",
+      "offsets": [0, 0],
+      "frameRate": 24
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "john2 Down",
+      "offsets": [0, 0],
+      "frameRate": 24
+    },
+    {
+      "name": "singUP",
+      "prefix": "john2 Up",
+      "offsets": [0, 0],
+      "frameRate": 24
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "john2 Left",
+      "offsets": [0, 0],
+      "frameRate": 24
+    }
+  ]
+}

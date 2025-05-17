@@ -2,6 +2,6 @@ import funkin.modding.base.ScriptedFlxRuntimeShader;
 
 class BlackAndWhite extends ScriptedFlxRuntimeShader {
     function new()  {
-        super(Assets.getText(Paths.frag('BlackAndWhite')));
+        super(Assets.getText(Paths.frag("BlackAndWhite")));
     }
 }

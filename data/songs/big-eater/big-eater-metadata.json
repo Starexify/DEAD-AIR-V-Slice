@@ -1,0 +1,51 @@
+{
+  "version": "2.2.4",
+  "songName": "big eater",
+  "artist": "vladosikos17 ft. nance",
+  "looped": false,
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [ "normal" ],
+    "characters": {
+      "player": "john",
+      "girlfriend": "none",
+      "opponent": "none",
+      "instrumental": ""
+    },
+    "stage": "john",
+    "noteStyle": "mine",
+    "ratings": { "normal": 14 },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 107,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 35887.8504672897,
+      "b": 64,
+      "bpm": 128,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "generatedBy": "Friday Night Funkin' - v0.6.4"
+}
