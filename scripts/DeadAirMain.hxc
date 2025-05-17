@@ -2,13 +2,14 @@ import funkin.data.event.SongEventRegistry;
 import funkin.data.song.SongEventDataRaw;
 import funkin.modding.events.ScriptEvent;
 import funkin.modding.events.SongEventScriptEvent;
-import funkin.modding.module.Module;
+import funkin.modding.module.ScriptedModule;
+import funkin.play.PauseSubState;
 import funkin.play.PlayState;
 import funkin.play.Countdown;
 
 import flixel.util.FlxTimer;
 
-class DeadAirMain extends Module {
+class DeadAirMain extends ScriptedModule {
     var includedSongs = ["shelter", "remembered"];
     var state:PlayState;
 
@@ -32,6 +33,12 @@ class DeadAirMain extends Module {
             new FlxTimer().start(0.01, timer -> {
                 Countdown.skipCountdown();
             });
+        }
+    }
+
+    override function onSubStateOpenEnd(event:SubStateScriptEvent) {
+        if (PlayState.instance != null && PlayState.instance.currentChart.songName == "shelter" && Std.isOfType(event.targetState, PauseSubState)) {
+            event.targetState.metadata.forEach(text -> text.font = Paths.font("shelter.ttf"));
         }
     }
 }
