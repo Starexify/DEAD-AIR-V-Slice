@@ -35,6 +35,7 @@ class RememberedSong extends ScriptedSong {
     override function onSongLoaded(event:SongLoadScriptEvent) {
         if (PlayState.instance == null) return;
         state = PlayState.instance;
+        state.healthBar.createFilledBar(0xFFFF0000, 0xFF373737);
         boisvert = CharacterDataParser.fetchCharacter("boisvert");
         boisvert2 = CharacterDataParser.fetchCharacter("boisvert2");
 

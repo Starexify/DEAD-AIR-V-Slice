@@ -5,13 +5,7 @@ import funkin.play.PlayState;
 import flixel.FlxG;
 
 class DeadAirHUD extends ScriptedModule {
-    var opponentHealthColor:Int;
-    var playerHealthColor:Int;
-
     function new() {
-        // Remembered
-        opponentHealthColor = 0xFFFF0000;
-        playerHealthColor = 0xFF373737;
         super("DeadAirHUD");
     }
 
@@ -26,15 +20,9 @@ class DeadAirHUD extends ScriptedModule {
         state.scoreText.alignment = "center";
         state.scoreText.y += 10;
         state.scoreText.size = 20;
-
-        //applyHealthBarColor(state);
     }
 
     override function onUpdate(event:UpdateScriptEvent) {
         if (PlayState.instance != null) PlayState.instance.scoreText.x = FlxG.width / 2 - PlayState.instance.scoreText.width / 2;
-    }
-
-    function applyHealthBarColor(state:PlayState) {
-        if (state.healthBar != null) state.healthBar.createFilledBar(opponentHealthColor, playerHealthColor);
     }
 }
