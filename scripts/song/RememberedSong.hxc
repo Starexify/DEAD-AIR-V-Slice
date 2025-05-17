@@ -26,6 +26,8 @@ class RememberedSong extends ScriptedSong {
     var boisvert:BaseCharacter;
     var boisvert2:BaseCharacter;
 
+    var zoomNotes:Bool = true;
+
     function new() {
         super("remembered");
     }
@@ -49,10 +51,11 @@ class RememberedSong extends ScriptedSong {
             FlxTween.cancelTweensOf(note);
             note.y += Preferences.downscroll ? 200 : -200;
         }
+        zoomNotes = true;
     }
 
     override function onSongEvent(event:SongEventScriptEvent) {
-        if (event.eventData.eventKind == "ZoomCamera") {
+        if (event.eventData.eventKind == "ZoomCamera" && zoomNotes) {
             var zoom = 0.5 - event.eventData.value?.zoom;
             state.defaultHUDCameraZoom -= zoom;
             if (zoom == 0) {
@@ -95,6 +98,7 @@ class RememberedSong extends ScriptedSong {
                 }
             case 252, 572: state.camGame.visible = false;
             case 256, 576: state.camGame.visible = true;
+            case 382: zoomNotes = false;
             case 499: // Change Character
                 if (boisvert2 != null) {
                     state.currentStage.remove(state.currentStage.getBoyfriend());

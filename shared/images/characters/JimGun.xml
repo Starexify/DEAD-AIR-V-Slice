@@ -2,121 +2,121 @@
 <!--
 Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
 -->
-<TextureAtlas imagePath="JimGun.png" width="5297" height="5480">
-	<SubTexture name="JimGun Idle0000" x="2668" y="1671" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0001" x="2668" y="1671" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0002" x="838" y="2460" width="837" height="281" frameX="-243" frameY="-479" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0003" x="838" y="2460" width="837" height="281" frameX="-243" frameY="-479" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0004" x="0" y="2747" width="833" height="282" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0005" x="0" y="2747" width="833" height="282" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0006" x="2384" y="841" width="284" height="839" rotated="true" frameX="-241" frameY="-476" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0007" x="2384" y="841" width="284" height="839" rotated="true" frameX="-241" frameY="-476" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0008" x="2384" y="0" width="285" height="841" rotated="true" frameX="-239" frameY="-475" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0009" x="2384" y="0" width="285" height="841" rotated="true" frameX="-239" frameY="-475" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0010" x="0" y="2460" width="838" height="287" frameX="-242" frameY="-473" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0011" x="0" y="2460" width="838" height="287" frameX="-242" frameY="-473" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0012" x="2669" y="0" width="285" height="836" rotated="true" frameX="-244" frameY="-475" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0013" x="2669" y="0" width="285" height="836" rotated="true" frameX="-244" frameY="-475" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0014" x="2669" y="836" width="284" height="835" rotated="true" frameX="-245" frameY="-476" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0015" x="2669" y="836" width="284" height="835" rotated="true" frameX="-245" frameY="-476" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Idle0016" x="2668" y="1671" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0000" x="0" y="0" width="903" height="330" frameX="-177" frameY="-430" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0001" x="0" y="0" width="903" height="330" frameX="-177" frameY="-430" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0002" x="0" y="625" width="877" height="291" frameX="-188" frameY="-469" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0003" x="0" y="625" width="877" height="291" frameX="-188" frameY="-469" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0004" x="0" y="330" width="885" height="295" frameX="-195" frameY="-465" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0005" x="0" y="330" width="885" height="295" frameX="-195" frameY="-465" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0006" x="1199" y="0" width="292" height="874" rotated="true" frameX="-195" frameY="-468" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0007" x="903" y="0" width="296" height="877" rotated="true" frameX="-201" frameY="-464" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0008" x="0" y="916" width="876" height="294" frameX="-201" frameY="-466" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Left0009" x="0" y="1210" width="870" height="292" frameX="-198" frameY="-468" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0000" x="4663" y="2931" width="157" height="630" rotated="true" frameX="-450" frameY="-603" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0001" x="4663" y="2931" width="157" height="630" rotated="true" frameX="-450" frameY="-603" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0002" x="4650" y="4272" width="164" height="623" rotated="true" frameX="-457" frameY="-596" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0003" x="4650" y="4272" width="164" height="623" rotated="true" frameX="-457" frameY="-596" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0004" x="4649" y="3640" width="179" height="632" rotated="true" frameX="-448" frameY="-581" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0005" x="3163" y="4785" width="616" height="214" frameX="-464" frameY="-546" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0006" x="3163" y="4785" width="616" height="214" frameX="-464" frameY="-546" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0007" x="3835" y="4401" width="232" height="648" rotated="true" frameX="-432" frameY="-528" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0008" x="1732" y="858" width="240" height="672" rotated="true" frameX="-408" frameY="-520" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0009" x="1732" y="858" width="240" height="672" rotated="true" frameX="-408" frameY="-520" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Down0010" x="3163" y="4546" width="671" height="239" frameX="-409" frameY="-521" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0000" x="0" y="1948" width="851" height="512" frameX="-229" frameY="-248" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0001" x="0" y="1948" width="851" height="512" frameX="-229" frameY="-248" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0002" x="876" y="916" width="856" height="496" frameX="-224" frameY="-264" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0003" x="876" y="916" width="856" height="496" frameX="-224" frameY="-264" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0004" x="1491" y="0" width="484" height="858" rotated="true" frameX="-222" frameY="-276" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0005" x="0" y="1502" width="854" height="446" frameX="-226" frameY="-314" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0006" x="0" y="1502" width="854" height="446" frameX="-226" frameY="-314" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0007" x="854" y="1502" width="852" height="435" frameX="-228" frameY="-325" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0008" x="1975" y="0" width="409" height="848" rotated="true" frameX="-232" frameY="-351" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0009" x="1975" y="0" width="409" height="848" rotated="true" frameX="-232" frameY="-351" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0010" x="851" y="1948" width="849" height="400" frameX="-231" frameY="-360" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Up0011" x="1975" y="848" width="400" height="847" rotated="true" frameX="-233" frameY="-360" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0000" x="0" y="3029" width="823" height="593" frameX="-257" frameY="-167" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0001" x="0" y="3029" width="823" height="593" frameX="-257" frameY="-167" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0002" x="2954" y="0" width="565" height="829" rotated="true" frameX="-251" frameY="-195" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0003" x="2954" y="0" width="565" height="829" rotated="true" frameX="-251" frameY="-195" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0004" x="1706" y="1695" width="841" height="562" frameX="-239" frameY="-198" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0005" x="1700" y="2257" width="838" height="461" frameX="-217" frameY="-299" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0006" x="1700" y="2257" width="838" height="461" frameX="-217" frameY="-299" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0007" x="2538" y="2504" width="825" height="428" frameX="-210" frameY="-332" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0008" x="2950" y="1671" width="332" height="774" rotated="true" frameX="-195" frameY="-428" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0009" x="2950" y="1671" width="332" height="774" rotated="true" frameX="-195" frameY="-428" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0010" x="4348" y="2931" width="315" height="709" rotated="true" frameX="-252" frameY="-445" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0011" x="3163" y="4246" width="672" height="300" frameX="-277" frameY="-460" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0012" x="2196" y="4284" width="302" height="690" rotated="true" frameX="-261" frameY="-458" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0013" x="4348" y="4346" width="302" height="699" rotated="true" frameX="-256" frameY="-458" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0014" x="4348" y="4346" width="302" height="699" rotated="true" frameX="-256" frameY="-458" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0015" x="4348" y="3640" width="301" height="706" rotated="true" frameX="-253" frameY="-459" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun Right0016" x="2668" y="1671" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0000" x="2498" y="4958" width="529" height="287" frameX="-551" frameY="-473" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0001" x="539" y="5052" width="532" height="303" frameX="-538" frameY="-457" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0002" x="1915" y="4974" width="523" height="329" frameX="-526" frameY="-431" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0003" x="1335" y="4983" width="520" height="363" frameX="-517" frameY="-397" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0004" x="3027" y="5051" width="527" height="399" frameX="-510" frameY="-361" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0005" x="0" y="5052" width="539" height="428" frameX="-510" frameY="-332" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0006" x="4814" y="4498" width="448" height="553" rotated="true" frameX="-512" frameY="-312" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0007" x="4828" y="1693" width="463" height="562" rotated="true" frameX="-511" frameY="-297" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0008" x="4828" y="566" width="467" height="564" rotated="true" frameX="-511" frameY="-293" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0009" x="4828" y="2255" width="465" height="561" rotated="true" frameX="-511" frameY="-295" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0010" x="4828" y="2816" width="464" height="561" rotated="true" frameX="-509" frameY="-296" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0011" x="4828" y="3938" width="464" height="560" rotated="true" frameX="-507" frameY="-296" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0012" x="4828" y="3377" width="464" height="561" rotated="true" frameX="-505" frameY="-296" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0013" x="4828" y="1130" width="467" height="563" rotated="true" frameX="-502" frameY="-293" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0014" x="4828" y="0" width="469" height="566" rotated="true" frameX="-499" frameY="-291" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0015" x="1335" y="4493" width="580" height="490" frameX="-482" frameY="-270" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0016" x="704" y="4493" width="631" height="555" frameX="-434" frameY="-205" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0017" x="2498" y="4284" width="665" height="674" rotated="true" frameX="-403" frameY="-95" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0018" x="1675" y="2718" width="760" height="695" rotated="true" frameX="-385" frameY="-0" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0019" x="838" y="2741" width="760" height="701" rotated="true" frameX="-379" frameY="-0" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0020" x="0" y="4493" width="704" height="559" frameX="-376" frameY="-201" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0021" x="3363" y="2215" width="421" height="715" rotated="true" frameX="-365" frameY="-339" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0022" x="4347" y="2205" width="428" height="726" rotated="true" frameX="-353" frameY="-332" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0023" x="1598" y="3413" width="734" height="438" frameX="-344" frameY="-322" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0024" x="3519" y="739" width="439" height="738" rotated="true" frameX="-338" frameY="-321" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0025" x="2435" y="2932" width="740" height="442" frameX="-336" frameY="-318" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0026" x="2953" y="836" width="444" height="741" rotated="true" frameX="-336" frameY="-316" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0027" x="3519" y="0" width="443" height="739" rotated="true" frameX="-338" frameY="-317" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0028" x="3175" y="2932" width="738" height="441" frameX="-340" frameY="-319" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0029" x="3175" y="3373" width="737" height="440" frameX="-341" frameY="-320" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0030" x="2435" y="3374" width="737" height="439" frameX="-340" frameY="-321" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0031" x="3397" y="1477" width="438" height="738" rotated="true" frameX="-339" frameY="-322" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0032" x="0" y="3622" width="738" height="437" frameX="-338" frameY="-323" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0033" x="738" y="3622" width="737" height="435" frameX="-338" frameY="-325" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0034" x="3962" y="0" width="434" height="733" rotated="true" frameX="-344" frameY="-326" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0035" x="4394" y="1463" width="433" height="729" rotated="true" frameX="-349" frameY="-327" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0036" x="3913" y="2205" width="434" height="732" rotated="true" frameX="-339" frameY="-326" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0037" x="4394" y="733" width="433" height="730" rotated="true" frameX="-343" frameY="-327" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0038" x="3913" y="2937" width="435" height="732" rotated="true" frameX="-336" frameY="-325" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0039" x="3958" y="739" width="436" height="733" rotated="true" frameX="-336" frameY="-324" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0040" x="0" y="4059" width="732" height="434" frameX="-336" frameY="-326" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0041" x="3958" y="1472" width="433" height="733" rotated="true" frameX="-335" frameY="-327" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0042" x="2928" y="3813" width="731" height="433" frameX="-338" frameY="-327" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0043" x="732" y="4059" width="732" height="434" frameX="-337" frameY="-326" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0044" x="1464" y="4057" width="732" height="436" frameX="-340" frameY="-324" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0045" x="4396" y="0" width="432" height="731" rotated="true" frameX="-336" frameY="-328" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0046" x="3912" y="3669" width="436" height="732" rotated="true" frameX="-339" frameY="-324" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0047" x="2196" y="3851" width="732" height="433" frameX="-338" frameY="-327" frameWidth="1080" frameHeight="760"/>
-	<SubTexture name="JimGun GunShot0048" x="4067" y="4401" width="279" height="622" rotated="true" frameX="-396" frameY="-481" frameWidth="1080" frameHeight="760"/>
+<TextureAtlas imagePath="JimGun.png" width="5487" height="5431">
+	<SubTexture name="JimGun Idle0000" x="4756" y="3180" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0001" x="4756" y="3180" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0002" x="4750" y="4060" width="281" height="837" rotated="true" frameX="-243" frameY="-479" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0003" x="4750" y="4060" width="281" height="837" rotated="true" frameX="-243" frameY="-479" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0004" x="4944" y="2235" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0005" x="4944" y="2235" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0006" x="3620" y="4589" width="839" height="284" frameX="-241" frameY="-476" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0007" x="3620" y="4589" width="839" height="284" frameX="-241" frameY="-476" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0008" x="1" y="4794" width="841" height="285" frameX="-239" frameY="-475" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0009" x="1" y="4794" width="841" height="285" frameX="-239" frameY="-475" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0010" x="2024" y="4806" width="838" height="287" frameX="-242" frameY="-473" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0011" x="2024" y="4806" width="838" height="287" frameX="-242" frameY="-473" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0012" x="4462" y="4060" width="285" height="836" rotated="true" frameX="-244" frameY="-475" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0013" x="4462" y="4060" width="285" height="836" rotated="true" frameX="-244" frameY="-475" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0014" x="4930" y="1" width="284" height="835" rotated="true" frameX="-245" frameY="-476" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0015" x="4930" y="1" width="284" height="835" rotated="true" frameX="-245" frameY="-476" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Idle0016" x="4756" y="3180" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0000" x="4023" y="1472" width="330" height="903" rotated="true" frameX="-177" frameY="-430" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0001" x="4023" y="1472" width="330" height="903" rotated="true" frameX="-177" frameY="-430" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0002" x="4462" y="3180" width="291" height="877" rotated="true" frameX="-188" frameY="-469" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0003" x="4462" y="3180" width="291" height="877" rotated="true" frameX="-188" frameY="-469" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0004" x="4166" y="1" width="295" height="885" rotated="true" frameX="-195" frameY="-465" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0005" x="4166" y="1" width="295" height="885" rotated="true" frameX="-195" frameY="-465" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0006" x="4167" y="3180" width="292" height="874" rotated="true" frameX="-195" frameY="-468" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0007" x="4356" y="1356" width="296" height="877" rotated="true" frameX="-201" frameY="-464" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0008" x="4655" y="1356" width="294" height="876" rotated="true" frameX="-201" frameY="-466" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Left0009" x="1151" y="4660" width="870" height="292" frameX="-198" frameY="-468" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0000" x="676" y="5260" width="630" height="157" frameX="-450" frameY="-603" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0001" x="676" y="5260" width="630" height="157" frameX="-450" frameY="-603" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0002" x="4731" y="5266" width="623" height="164" frameX="-457" frameY="-596" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0003" x="4731" y="5266" width="623" height="164" frameX="-457" frameY="-596" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0004" x="1177" y="1608" width="179" height="632" rotated="true" frameX="-448" frameY="-581" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0005" x="2689" y="5200" width="616" height="214" frameX="-464" frameY="-546" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0006" x="2689" y="5200" width="616" height="214" frameX="-464" frameY="-546" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0007" x="5254" y="4548" width="232" height="648" rotated="true" frameX="-432" frameY="-528" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0008" x="3567" y="5180" width="672" height="240" frameX="-408" frameY="-520" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0009" x="3567" y="5180" width="672" height="240" frameX="-408" frameY="-520" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Down0010" x="5217" y="1" width="239" height="671" rotated="true" frameX="-409" frameY="-521" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0000" x="1392" y="1596" width="512" height="851" rotated="true" frameX="-229" frameY="-248" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0001" x="1392" y="1596" width="512" height="851" rotated="true" frameX="-229" frameY="-248" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0002" x="678" y="1608" width="496" height="856" rotated="true" frameX="-224" frameY="-264" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0003" x="678" y="1608" width="496" height="856" rotated="true" frameX="-224" frameY="-264" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0004" x="1907" y="1596" width="484" height="858" rotated="true" frameX="-222" frameY="-276" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0005" x="2394" y="1404" width="446" height="854" rotated="true" frameX="-226" frameY="-314" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0006" x="2394" y="1404" width="446" height="854" rotated="true" frameX="-226" frameY="-314" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0007" x="2424" y="1" width="435" height="852" rotated="true" frameX="-228" frameY="-325" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0008" x="1811" y="2457" width="848" height="409" frameX="-232" frameY="-351" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0009" x="1811" y="2457" width="848" height="409" frameX="-232" frameY="-351" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0010" x="2424" y="856" width="849" height="400" frameX="-231" frameY="-360" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Up0011" x="2862" y="1" width="400" height="847" rotated="true" frameX="-233" frameY="-360" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0000" x="1" y="764" width="823" height="593" frameX="-257" frameY="-167" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0001" x="1" y="764" width="823" height="593" frameX="-257" frameY="-167" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0002" x="1392" y="764" width="565" height="829" rotated="true" frameX="-251" frameY="-195" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0003" x="1392" y="764" width="565" height="829" rotated="true" frameX="-251" frameY="-195" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0004" x="827" y="764" width="562" height="841" rotated="true" frameX="-239" frameY="-198" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0005" x="1960" y="563" width="461" height="838" rotated="true" frameX="-217" frameY="-299" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0006" x="1960" y="563" width="461" height="838" rotated="true" frameX="-217" frameY="-299" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0007" x="1" y="2028" width="428" height="825" rotated="true" frameX="-210" frameY="-332" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0008" x="4167" y="2845" width="774" height="332" frameX="-195" frameY="-428" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0009" x="4167" y="2845" width="774" height="332" frameX="-195" frameY="-428" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0010" x="4952" y="1270" width="315" height="709" rotated="true" frameX="-252" frameY="-445" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0011" x="1" y="5082" width="672" height="300" frameX="-277" frameY="-460" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0012" x="845" y="4955" width="690" height="302" frameX="-261" frameY="-458" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0013" x="2865" y="4895" width="699" height="302" frameX="-256" frameY="-458" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0014" x="2865" y="4895" width="699" height="302" frameX="-256" frameY="-458" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0015" x="3620" y="4876" width="706" height="301" frameX="-253" frameY="-459" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun Right0016" x="4756" y="3180" width="282" height="833" rotated="true" frameX="-247" frameY="-478" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0000" x="5034" y="4016" width="287" height="529" rotated="true" frameX="-551" frameY="-473" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0001" x="2110" y="1" width="303" height="532" rotated="true" frameX="-538" frameY="-457" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0002" x="2163" y="5096" width="523" height="329" frameX="-526" frameY="-431" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0003" x="4731" y="4900" width="520" height="363" frameX="-517" frameY="-397" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0004" x="4329" y="4899" width="399" height="527" rotated="true" frameX="-510" frameY="-361" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0005" x="4730" y="839" width="539" height="428" frameX="-510" frameY="-332" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0006" x="3169" y="4339" width="448" height="553" rotated="true" frameX="-512" frameY="-312" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0007" x="4464" y="1" width="463" height="562" rotated="true" frameX="-511" frameY="-297" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0008" x="584" y="4324" width="564" height="467" frameX="-511" frameY="-293" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0009" x="3656" y="4121" width="561" height="465" frameX="-511" frameY="-295" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0010" x="2605" y="4339" width="561" height="464" frameX="-509" frameY="-296" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0011" x="4167" y="2378" width="560" height="464" frameX="-507" frameY="-296" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0012" x="4166" y="889" width="561" height="464" frameX="-505" frameY="-296" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0013" x="2039" y="4315" width="563" height="467" frameX="-502" frameY="-293" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0014" x="1470" y="4188" width="566" height="469" frameX="-499" frameY="-291" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0015" x="1" y="4230" width="580" height="490" frameX="-482" frameY="-270" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0016" x="1177" y="2450" width="631" height="555" frameX="-434" frameY="-205" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0017" x="1" y="1360" width="674" height="665" frameX="-403" frameY="-95" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0018" x="705" y="1" width="695" height="760" frameX="-385" frameY="-0" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0019" x="1" y="1" width="701" height="760" frameX="-379" frameY="-0" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0020" x="1403" y="1" width="704" height="559" frameX="-376" frameY="-201" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0021" x="2938" y="3915" width="715" height="421" frameX="-365" frameY="-339" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0022" x="2209" y="3884" width="726" height="428" frameX="-353" frameY="-332" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0023" x="3288" y="742" width="438" height="734" rotated="true" frameX="-344" frameY="-322" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0024" x="1" y="2914" width="738" height="439" frameX="-338" frameY="-321" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0025" x="2843" y="1259" width="442" height="740" rotated="true" frameX="-336" frameY="-318" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0026" x="432" y="2467" width="741" height="444" frameX="-336" frameY="-316" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0027" x="2662" y="2261" width="443" height="739" rotated="true" frameX="-338" frameY="-317" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0028" x="1811" y="2869" width="738" height="441" frameX="-340" frameY="-319" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0029" x="2552" y="3003" width="737" height="440" frameX="-341" frameY="-320" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0030" x="742" y="3008" width="737" height="439" frameX="-340" frameY="-321" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0031" x="3265" y="1" width="438" height="738" rotated="true" frameX="-339" frameY="-322" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0032" x="3108" y="2002" width="437" height="738" rotated="true" frameX="-338" frameY="-323" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0033" x="1" y="3356" width="737" height="435" frameX="-338" frameY="-325" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0034" x="3706" y="1" width="434" height="733" rotated="true" frameX="-344" frameY="-326" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0035" x="2952" y="3479" width="729" height="433" frameX="-349" frameY="-327" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0036" x="3288" y="1479" width="732" height="434" frameX="-339" frameY="-326" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0037" x="1476" y="3752" width="730" height="433" frameX="-343" frameY="-327" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0038" x="2217" y="3446" width="732" height="435" frameX="-336" frameY="-325" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0039" x="3292" y="2743" width="436" height="733" rotated="true" frameX="-336" frameY="-324" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0040" x="3729" y="737" width="434" height="732" rotated="true" frameX="-336" frameY="-326" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0041" x="3731" y="2651" width="433" height="733" rotated="true" frameX="-335" frameY="-327" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0042" x="3731" y="3387" width="433" height="731" rotated="true" frameX="-338" frameY="-327" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0043" x="3548" y="1916" width="434" height="732" rotated="true" frameX="-337" frameY="-326" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0044" x="1482" y="3313" width="732" height="436" frameX="-340" frameY="-324" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0045" x="736" y="3889" width="731" height="432" frameX="-336" frameY="-328" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0046" x="741" y="3450" width="732" height="436" frameX="-339" frameY="-324" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0047" x="1" y="3794" width="732" height="433" frameX="-338" frameY="-327" frameWidth="1080" frameHeight="760"/>
+	<SubTexture name="JimGun GunShot0048" x="1538" y="5096" width="622" height="279" frameX="-396" frameY="-481" frameWidth="1080" frameHeight="760"/>
 </TextureAtlas>
