@@ -13,12 +13,12 @@ import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 
-import openfl.filters.ShaderFilter;
 import openfl.filters.BitmapFilter;
+import openfl.filters.ShaderFilter;
 
 class RememberedSong extends ScriptedSong {
     var state:PlayState;
-    var filters:Array<BitmapFilter> = [new ShaderFilter(ScriptedFlxRuntimeShader.init('BlackAndWhite'))];
+    var filters:Array<BitmapFilter> = [new ShaderFilter(ScriptedFlxRuntimeShader.init("BlackAndWhite"))];
 
     var blackBg:FunkinSprite;
     var titleCard:FunkinSprite;
@@ -27,7 +27,7 @@ class RememberedSong extends ScriptedSong {
     var boisvert2:BaseCharacter;
 
     function new() {
-        super('remembered');
+        super("remembered");
     }
 
     override function onSongLoaded(event:SongLoadScriptEvent) {

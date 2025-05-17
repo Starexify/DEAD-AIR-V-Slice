@@ -1,0 +1,45 @@
+{
+  "version": "1.0.0",
+  "name": "Jim (Black)",
+  "assetPath": "characters/jimblack",
+  "flipX": true,
+  "cameraOffsets": [-100, 100],
+  "offsets": [-98, 99],
+  "healthIcon": {
+    "id": "lomando"
+  },
+  "singTime": 6.1,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "JimBlack Idle",
+      "offsets": [0, 0],
+      "frameRate": 24,
+      "looped": true
+    },
+    {
+      "name": "singRIGHT",
+      "prefix": "JimBlack Right",
+      "offsets": [0, 0],
+      "frameRate": 24
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "JimBlack Down",
+      "offsets": [0, 0],
+      "frameRate": 24
+    },
+    {
+      "name": "singUP",
+      "prefix": "JimBlack Up",
+      "offsets": [0, 0],
+      "frameRate": 24
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "JimBlack Left",
+      "offsets": [0, 0],
+      "frameRate": 24
+    }
+  ]
+}

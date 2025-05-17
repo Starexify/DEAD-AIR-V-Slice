@@ -4,6 +4,6 @@
   "titleAsset": "storymenu/titles/myweek",
   "visible": false,
   "background": "#000000",
-  "songs": ["remembered"],
+  "songs": ["shelter", "remembered"],
   "props": []
 }

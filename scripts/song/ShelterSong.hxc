@@ -1,0 +1,31 @@
+import funkin.modding.events.ScriptEvent;
+import funkin.play.PlayState;
+import funkin.play.song.ScriptedSong;
+import funkin.play.character.BaseCharacter;
+import funkin.play.character.CharacterDataParser;
+import funkin.play.character.CharacterType;
+
+class ShelterSong extends ScriptedSong {
+    var state:PlayState;
+
+    var jimGun:BaseCharacter;
+
+    function new() {
+        super("shelter");
+    }
+
+    override function onSongLoaded(event:SongLoadScriptEvent) {
+        if (PlayState.instance == null) return;
+        state = PlayState.instance;
+        jimGun = CharacterDataParser.fetchCharacter("jim");
+    }
+
+    override function onStepHit(event:SongTimeScriptEvent) {
+        if (state == null) return;
+        switch (event.step) {
+            case 0: state.camGame.visible = false;
+            case 78: state.camGame.visible = true;
+
+        }
+    }
+}

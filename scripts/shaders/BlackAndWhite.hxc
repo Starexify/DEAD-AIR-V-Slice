@@ -1,6 +1,4 @@
 import funkin.modding.base.ScriptedFlxRuntimeShader;
-import funkin.Assets;
-import funkin.Paths;
 
 class BlackAndWhite extends ScriptedFlxRuntimeShader {
     function new()  {

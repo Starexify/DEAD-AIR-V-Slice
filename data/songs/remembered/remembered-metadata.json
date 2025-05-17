@@ -4,11 +4,12 @@
   "artist": "LockTrap, vladosikos17",
   "looped": false,
   "playData": {
+    "songVariations": [    ],
     "difficulties": [ "normal" ],
     "characters": {
       "player": "boisvert",
-      "girlfriend": "",
-      "opponent": "",
+      "girlfriend": "none",
+      "opponent": "none",
       "instrumental": "",
       "playerVocals": [ "boisvert" ]
     },

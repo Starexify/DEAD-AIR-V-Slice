@@ -4,11 +4,7 @@
   "cameraZoom": 0.5,
   "props": [],
   "characters": {
-    "bf": {
-      "zIndex": 300,
-      "position": [0, 0],
-      "cameraOffsets": [-20, -100]
-    },
+    "bf": { "zIndex": 300, "position": [0, 0], "cameraOffsets": [-20, -100] },
     "gf": { "zIndex": 100, "position": [0, 0], "cameraOffsets": [0, 0] },
     "dad": { "zIndex": 200, "position": [0, 0], "cameraOffsets": [0, 0] }
   }
