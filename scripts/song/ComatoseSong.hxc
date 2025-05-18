@@ -85,10 +85,12 @@ class ComatoseSong extends ScriptedSong {
     function pause(time:Float) {
         state.pauseMusic();
         pauseGame = true;
+        state.isInCutscene = true;
         songPosition = state.conductorInUse.songPosition;
         FlxTimer.wait(time, () -> {
             pauseGame = false;
             state.mayPauseGame = true;
+            state.isInCutscene = false;
             if (FlxG.sound.music != null) FlxG.sound.music.resume();
             if (state.vocals != null) state.vocals.resume();
         });
