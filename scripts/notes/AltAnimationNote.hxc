@@ -25,7 +25,7 @@ class AltAnimationNote extends ScriptedNoteKind {
                 return;
             }
             var availableAnimations:Array<String> = hitter.animation.getNameList();
-            var animToPlay:String = "sing" + directionNames[noteDir] + "-alt";
+            var animToPlay:String = "sing" + dirName + "-alt";
 
             if (availableAnimations.indexOf(animToPlay) != -1) {
                 trace(animToPlay);

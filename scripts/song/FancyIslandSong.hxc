@@ -93,7 +93,7 @@ class FancyIslandSong extends ScriptedSong {
         songTitle.scale.set(0.8, 0.8);
         state.add(songTitle);
 
-        strumBg = FunkinSprite.create(300, 185, "notebg");
+        strumBg = FunkinSprite.create(300, -250, "notebg");
         if (Preferences.downscroll) strumBg.y = 800;
         strumBg.camera = state.camHUD;
         strumBg.scale.set(0.58, 0.58);
@@ -118,7 +118,7 @@ class FancyIslandSong extends ScriptedSong {
             case 32:
                 FlxTween.tween(blackout, {alpha: 0.6}, 0.3, { ease: FlxEase.circOut });
                 if (Preferences.downscroll) FlxTween.tween(strumBg, {y: 450}, 0.9, { ease: FlxEase.quadOut });
-                else FlxTween.tween(strumBg, {y: -10}, 0.9, { ease: FlxEase.quadOut });
+                else FlxTween.tween(strumBg, {y: -80}, 0.9, { ease: FlxEase.quadOut });
             case 48:
                 var index:Int = 0;
                 var targetYPosition = Preferences.downscroll ? 570 : 40;
@@ -200,6 +200,7 @@ class FancyIslandSong extends ScriptedSong {
             case 145:
                 state.camGame.alpha = 1;
                 state.currentStage.getBoyfriend().alpha = 0;
+                state.currentStage.getNamedProp("transitionLomando").visible = true;
                 state.currentStage.getNamedProp("transitionLomando").animation.play("run", true);
             case 147:
                 state.currentStage.getBoyfriend().alpha = 1;
@@ -257,14 +258,14 @@ class FancyIslandSong extends ScriptedSong {
                 FunkinSound.playOnce(Paths.sound("door"));
                 doorClosed.visible = false;
                 doorOpen.visible = true;
-                doorClosed.destroy();
+                state.remove(doorClosed);
                 FlxTween.tween(doorOpen, {alpha: 0}, 3, {
                     onComplete: tween -> {
                         FlxTimer.wait(1, () -> {
                             state.camHUD.alpha = 1;
                             state.camGame.alpha = 1;
                             doorOpen.visible = false;
-                            doorOpen.destroy();
+                            state.remove(doorOpen);
                             state.mayPauseGame = true;
                             state.isInCutscene = false;
                             if (FlxG.sound.music != null) FlxG.sound.music.resume();
@@ -295,5 +296,16 @@ class FancyIslandSong extends ScriptedSong {
         var clickableBottomEdge = clickableTopEdge + clickableRegion.height;
 
         return (mouseX >= clickableLeftEdge && mouseX <= clickableRightEdge && mouseY >= clickableTopEdge && mouseY <= clickableBottomEdge);
+    }
+
+    // Cleanup stuff
+    override function onSongRetry(event:SongRetryEvent) {
+        if (blackout != null) state.remove(blackout);
+        if (glitch != null) state.remove(glitch);
+        state.remove(yeah);
+        state.remove(strumBg);
+        if (songTitle != null) state.remove(songTitle);
+        if (songBy != null) state.remove(songBy);
+        state.refresh();
     }
 }

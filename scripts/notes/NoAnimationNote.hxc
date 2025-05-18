@@ -22,7 +22,7 @@ class NoAnimationNote extends ScriptedNoteKind {
             hitter.ignoreExclusionPref = [];
             hitter.canPlayOtherAnims = false;
 
-            new FlxTimer().start(0.01, timer -> {
+            FlxTimer.wait(0.00001, () -> {
                 hitter.ignoreExclusionPref = oldIgnoreList;
                 hitter.canPlayOtherAnims = true;
             });
