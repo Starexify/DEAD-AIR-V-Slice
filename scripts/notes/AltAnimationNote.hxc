@@ -4,6 +4,8 @@ import funkin.play.character.BaseCharacter;
 import funkin.play.notes.Strumline;
 import funkin.play.notes.notekind.ScriptedNoteKind;
 
+import flixel.util.FlxTimer;
+
 class AltAnimationNote extends ScriptedNoteKind {
     function new() {
         super("alt-anim", "Alt Animation");
@@ -20,13 +22,12 @@ class AltAnimationNote extends ScriptedNoteKind {
             var noteDir = event.note.direction;
             var directionNames:Array<String> = ["LEFT", "DOWN", "UP", "RIGHT"];
             var dirName:String = directionNames[noteDir];
-            if (dirName == null) {
-                trace("Invalid note direction: " + noteDir);
-                return;
-            }
             var animToPlay:String = "sing" + dirName + "-alt";
-            if (hitter.animation.getNameList().indexOf(animToPlay) != -1)
-                hitter.playAnimation(animToPlay, false, true);
+            if (hitter.animation.getNameList().indexOf(animToPlay) != -1) {
+                hitter.canPlayOtherAnims = false;
+                hitter.animation.play(animToPlay, true);
+                FlxTimer.wait(0.0000000001, () -> { hitter.canPlayOtherAnims = true; });
+            }
         }
     }
 }
