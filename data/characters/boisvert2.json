@@ -11,7 +11,7 @@
   "singTime": 6.1,
   "animations": [
     {
-      "name": "idle",
+      "name": "idle-alt",
       "prefix": "idle",
       "offsets": [0, 0],
       "frameRate": 18
@@ -23,7 +23,7 @@
       "frameRate": 18
     },
     {
-      "name": "walk",
+      "name": "idle",
       "prefix": "walk",
       "offsets": [0, 0],
       "frameRate": 18

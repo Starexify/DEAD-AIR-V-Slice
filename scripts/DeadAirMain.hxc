@@ -10,7 +10,7 @@ import funkin.play.Countdown;
 import flixel.util.FlxTimer;
 
 class DeadAirMain extends ScriptedModule {
-    var includedSongs = ["fancy island", "big eater", "shelter", "remembered"];
+    var includedSongs = ["comatose", "fancy island", "big eater", "shelter", "remembered"];
     var state:PlayState;
 
     function new() {

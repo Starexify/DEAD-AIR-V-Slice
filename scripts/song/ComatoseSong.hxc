@@ -1,0 +1,65 @@
+import funkin.graphics.FunkinSprite;
+import funkin.modding.events.ScriptEvent;
+import funkin.play.PlayState;
+import funkin.play.song.ScriptedSong;
+
+import flixel.tweens.FlxTween;
+
+class ComatoseSong extends ScriptedSong {
+    var state:PlayState;
+
+    var songTitle:FunkinSprite;
+    var songBy:FunkinSprite;
+    var songBased:FunkinSprite;
+
+    function new() {
+        super("comatose");
+    }
+
+    override function onSongLoaded(event:SongLoadScriptEvent) {
+        if (PlayState.instance == null) return;
+        state = PlayState.instance;
+        state.camGame.visible = false;
+        state.camHUD.alpha = 0;
+
+        for (note in state.playerStrumline.strumlineNotes.members) {
+            FlxTween.cancelTweensOf(note);
+            note.alpha = 1;
+        }
+
+        FlxTween.tween(state.camHUD, {alpha: 1}, 1);
+
+        songTitle = FunkinSprite.create(0, 0, "titlecards/comatose/title");
+        songTitle.camera = state.camHUD;
+        state.add(songTitle);
+
+        songBy = FunkinSprite.create(0, 0, "titlecards/comatose/by");
+        songBy.camera = state.camHUD;
+        songBy.alpha = 0;
+        state.add(songBy);
+
+        songBased = FunkinSprite.create(0, 0, "titlecards/comatose/based");
+        songBased.camera = state.camHUD;
+        songBased.alpha = 0;
+        state.add(songBased);
+    }
+
+    override function onStepHit(event:SongTimeScriptEvent) {
+        if (state == null) return;
+        switch (event.step) {
+            case 16:
+                FlxTween.tween(songBy, {alpha: 1}, 0.4);
+            case 36:
+                FlxTween.tween(songBased, {alpha: 1}, 0.4);
+            case 48:
+                state.remove(songTitle);
+                state.remove(songBy);
+                state.remove(songBased);
+            case 64:
+                state.camGame.visible = true;
+                state.currentStage.getBoyfriend().idleSuffix = "-alt";
+            case 256, 319, 462, 528, 584, 724, 788: state.camGame.visible = false;
+            case 260, 336, 464, 532, 596, 728, 792: state.camGame.visible = true;
+        }
+    }
+}

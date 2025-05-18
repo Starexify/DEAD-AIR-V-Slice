@@ -165,6 +165,15 @@
         "ease": "linear",
         "absolute": false
       }
+    },
+    {
+      "t": 97459.3406593407,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "Shooting"
+      }
     }
   ],
   "notes": {

@@ -9,7 +9,7 @@ class AltAnimationNote extends ScriptedNoteKind {
         super("alt-anim", "Alt Animation");
     }
 
-    override function onNoteHit(event:HitNoteScriptEvent):Void {
+    override function onNoteHit(event:HitNoteScriptEvent) {
         if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
 
         var hitter:BaseCharacter;
@@ -24,13 +24,9 @@ class AltAnimationNote extends ScriptedNoteKind {
                 trace("Invalid note direction: " + noteDir);
                 return;
             }
-            var availableAnimations:Array<String> = hitter.animation.getNameList();
             var animToPlay:String = "sing" + dirName + "-alt";
-
-            if (availableAnimations.indexOf(animToPlay) != -1) {
-                trace(animToPlay);
+            if (hitter.animation.getNameList().indexOf(animToPlay) != -1)
                 hitter.playAnimation(animToPlay, false, true);
-            }
         }
     }
 }

@@ -1,0 +1,90 @@
+{
+  "version": "2.2.4",
+  "songName": "comatose",
+  "artist": "sandi ft. vladosikos17",
+  "looped": false,
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [ "normal" ],
+    "characters": {
+      "player": "boiledone",
+      "girlfriend": "none",
+      "opponent": "none",
+      "instrumental": ""
+    },
+    "stage": "boiledone",
+    "noteStyle": "comanotes",
+    "ratings": { "normal": 10 },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "generatedBy": "Friday Night Funkin' - v0.6.4",
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 148,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 34054.054054054,
+      "b": 84,
+      "bpm": 134,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 48382.4122630092,
+      "b": 116,
+      "bpm": 148,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 75139.169019766,
+      "b": 182,
+      "bpm": 160,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 81139.169019766,
+      "b": 198,
+      "bpm": 180,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

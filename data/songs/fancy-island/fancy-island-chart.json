@@ -17,42 +17,258 @@
       "e": "ScrollSpeed",
       "v": {
         "duration": 0.7,
-        "scroll": 1.25,
         "strumline": "both",
+        "scroll": 1.25,
         "ease": "linear",
         "absolute": false
+      }
+    },
+    {
+      "t": 10689.5604395604,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 10854.3956043956,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 11019.2307692308,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 15724.2925468314,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 15889.1277116666,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 16053.9628765017,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 31531.3870067756,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "green"
+      }
+    },
+    {
+      "t": 31842.2678357912,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "idle"
+      }
+    },
+    {
+      "t": 34640.1952969311,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "worm"
+      }
+    },
+    {
+      "t": 35572.8377839777,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "idle"
       }
     },
     {
       "t": 36816,
       "e": "SetCameraBop",
       "v": {
-        "intensity": 2.5,
-        "rate": 1
+        "rate": 1,
+        "intensity": 2.5
       }
     },
     {
       "t": 46453,
       "e": "SetCameraBop",
       "v": {
-        "intensity": 0,
-        "rate": 4
+        "rate": 4,
+        "intensity": 0
       }
     },
     {
       "t": 47386,
       "e": "SetCameraBop",
       "v": {
-        "intensity": 2.5,
-        "rate": 1
+        "rate": 1,
+        "intensity": 2.5
+      }
+    },
+    {
+      "t": 48540.1554404145,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 49117.0785173376,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 49694.0015942607,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 50559.3862096453,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singUP"
+      }
+    },
+    {
+      "t": 51424.7708250299,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 52001.693901953,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 52263.7026355775,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singLEFT"
+      }
+    },
+    {
+      "t": 52787.7201028264,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singLEFT"
+      }
+    },
+    {
+      "t": 53049.7288364508,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 53966.7594041364,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singLEFT"
+      }
+    },
+    {
+      "t": 54097.7637709486,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 54359.7725045731,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singRIGHT"
+      }
+    },
+    {
+      "t": 55538.8118058831,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
+      }
+    },
+    {
+      "t": 56062.829273132,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": true,
+        "anim": "singDOWN"
       }
     },
     {
       "t": 56193,
       "e": "SetCameraBop",
       "v": {
-        "intensity": 0,
-        "rate": 4
+        "rate": 4,
+        "intensity": 0
       }
     },
     {
@@ -60,8 +276,8 @@
       "e": "ScrollSpeed",
       "v": {
         "duration": 0.2,
-        "scroll": 1,
         "strumline": "both",
+        "scroll": 1,
         "ease": "linear",
         "absolute": false
       }
@@ -70,40 +286,40 @@
       "t": 57207.6894091751,
       "e": "ZoomCamera",
       "v": {
-        "duration": 0,
         "ease": "smoothStepIn",
-        "zoom": 1.2,
-        "mode": "stage"
+        "duration": 0,
+        "mode": "stage",
+        "zoom": 1.2
       }
     },
     {
       "t": 57279.8047937904,
       "e": "ZoomCamera",
       "v": {
-        "duration": 9,
         "ease": "smoothStepIn",
-        "zoom": 1,
-        "mode": "stage"
+        "duration": 9,
+        "mode": "stage",
+        "zoom": 1
       }
     },
     {
       "t": 77721.4380355487,
       "e": "ZoomCamera",
       "v": {
-        "duration": 9,
         "ease": "linear",
-        "zoom": 0.9,
-        "mode": "direct"
+        "duration": 9,
+        "mode": "direct",
+        "zoom": 0.9
       }
     },
     {
       "t": 79040.11935423,
       "e": "ZoomCamera",
       "v": {
-        "duration": 0,
         "ease": "linear",
-        "zoom": 0.6,
-        "mode": "direct"
+        "duration": 0,
+        "mode": "direct",
+        "zoom": 0.6
       }
     },
     {
@@ -111,8 +327,8 @@
       "e": "ScrollSpeed",
       "v": {
         "duration": 0,
-        "scroll": 0.9,
         "strumline": "both",
+        "scroll": 0.9,
         "ease": "linear",
         "absolute": false
       }
@@ -122,8 +338,8 @@
       "e": "ScrollSpeed",
       "v": {
         "duration": 14,
-        "scroll": 1.3,
         "strumline": "both",
+        "scroll": 1.3,
         "ease": "linear",
         "absolute": false
       }

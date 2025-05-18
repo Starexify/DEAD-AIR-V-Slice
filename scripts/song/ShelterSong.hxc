@@ -25,7 +25,9 @@ class ShelterSong extends ScriptedSong {
     override function onSongLoaded(event:SongLoadScriptEvent) {
         if (PlayState.instance == null) return;
         state = PlayState.instance;
+        state.camGame.visible = false;
         jimGun = CharacterDataParser.fetchCharacter("jim");
+        jimGun.ignoreExclusionPref = [];
 
         for (note in state.playerStrumline.strumlineNotes.members) {
             FlxTween.cancelTweensOf(note);
@@ -51,7 +53,6 @@ class ShelterSong extends ScriptedSong {
     override function onStepHit(event:SongTimeScriptEvent) {
         if (state == null) return;
         switch (event.step) {
-            case 0: state.camGame.visible = false;
             case 78: state.camGame.visible = true;
             case 527:
                 FlxTween.tween(state.camGame, {alpha: 0}, 2);
@@ -61,7 +62,6 @@ class ShelterSong extends ScriptedSong {
                     state.currentStage.remove(state.currentStage.getBoyfriend());
                     state.currentStage.addCharacter(jimGun, CharacterType.BF);
                 }
-            case 859: state.currentStage.getBoyfriend().playAnimation("Shooting", false, true);
             case 872:
                 state.camGame.visible = false;
                 state.camHUD.visible = false;
@@ -71,8 +71,8 @@ class ShelterSong extends ScriptedSong {
             case 888:
                 FlxTween.tween(songBy, {alpha: 1}, 0.7, {ease: FlxEase.linear});
             case 902:
-                songTitle.visible = false;
-                songBy.visible = false;
+                state.remove(songTitle);
+                state.remove(songBy);
         }
     }
 }

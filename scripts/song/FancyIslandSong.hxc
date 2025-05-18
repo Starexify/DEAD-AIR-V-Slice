@@ -49,12 +49,11 @@ class FancyIslandSong extends ScriptedSong {
         lomando = CharacterDataParser.fetchCharacter("lomando");
         lomando2 = CharacterDataParser.fetchCharacter("lomando2");
         lomando3 = CharacterDataParser.fetchCharacter("lomando3");
+        state.currentStage.getBoyfriend().ignoreExclusionPref = lomando.ignoreExclusionPref = lomando2.ignoreExclusionPref = lomando3.ignoreExclusionPref = [];
 
         eliz = [state.currentStage.getNamedProp("elizabeth1"), state.currentStage.getNamedProp("elizabeth2"), state.currentStage.getNamedProp("elizabeth3"), state.currentStage.getNamedProp("elizabeth4")];
         for (prop in eliz) prop.visible = false;
-        state.currentStage.getNamedProp("transitionLomando").visible = false;
-        state.currentStage.getNamedProp("bludisfromohio").visible = false;
-        state.currentStage.getNamedProp("doorlomando").visible = false;
+        state.currentStage.getNamedProp("transitionLomando").visible = state.currentStage.getNamedProp("bludisfromohio").visible = state.currentStage.getNamedProp("doorlomando").visible = false;
 
         state.camHUD.alpha = 0;
         state.camGame.alpha = 0;
@@ -149,14 +148,8 @@ class FancyIslandSong extends ScriptedSong {
                     state.currentStage.addCharacter(lomando3, CharacterType.BF);
                 }
             case 324, 452:
-                state.camGame.alpha = 1;
-                state.currentStage.getBoyfriend().alpha = 1;
-            case 384: state.currentStage.getBoyfriend().playAnimation("green", false, true);
-            case 388: state.currentStage.getBoyfriend().playAnimation("idle", false, true);
-            case 424: state.currentStage.getBoyfriend().playAnimation("worm", false, true);
-            case 436:
-                state.camGame.alpha = 1;
-                state.currentStage.getBoyfriend().playAnimation("idle", false, true);
+                state.currentStage.getBoyfriend().alpha = state.camGame.alpha = 1;
+            case 436: state.camGame.alpha = 1;
             case 450, 1022:
                 if (lomando != null) {
                     state.currentStage.remove(state.currentStage.getBoyfriend());
@@ -171,9 +164,6 @@ class FancyIslandSong extends ScriptedSong {
                     state.currentStage.addCharacter(lomando2, CharacterType.BF);
                     state.currentStage.getBoyfriend().alpha = 0;
                 }
-            case 632: state.currentStage.getBoyfriend().playAnimation("singUP", false, true);
-            case 682: state.currentStage.getBoyfriend().playAnimation("singLEFT", false, true);
-            case 688: state.currentStage.getBoyfriend().playAnimation("singRIGHT", false, true);
             case 732:
                 state.camGame.alpha = 1;
                 yeah.alpha = 0.52;
