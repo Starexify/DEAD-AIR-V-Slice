@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="lomando2.png" width="7697" height="602">
+	<SubTexture name="frickinohioblud0000" x="1" y="1" width="900" height="551" frameX="-0" frameY="-0" frameWidth="900" frameHeight="552"/>
+	<SubTexture name="heartt0000" x="4617" y="1" width="595" height="563" frameX="-0" frameY="-0" frameWidth="595" frameHeight="563"/>
+	<SubTexture name="heartt0001" x="4617" y="1" width="595" height="563" frameX="-0" frameY="-0" frameWidth="595" frameHeight="563"/>
+	<SubTexture name="heartt0002" x="5215" y="1" width="595" height="563" frameX="-0" frameY="-0" frameWidth="595" frameHeight="563"/>
+	<SubTexture name="heartt0003" x="5215" y="1" width="595" height="563" frameX="-0" frameY="-0" frameWidth="595" frameHeight="563"/>
+	<SubTexture name="heartt0004" x="5813" y="1" width="595" height="563" frameX="-0" frameY="-0" frameWidth="595" frameHeight="563"/>
+	<SubTexture name="heartt0005" x="5813" y="1" width="595" height="563" frameX="-0" frameY="-0" frameWidth="595" frameHeight="563"/>
+	<SubTexture name="heartt0006" x="6411" y="1" width="595" height="563" frameX="-0" frameY="-0" frameWidth="595" frameHeight="563"/>
+	<SubTexture name="heartt0007" x="6411" y="1" width="595" height="563" frameX="-0" frameY="-0" frameWidth="595" frameHeight="563"/>
+	<SubTexture name="ohiochudster0000" x="904" y="1" width="925" height="552" frameX="-0" frameY="-0" frameWidth="926" frameHeight="553"/>
+	<SubTexture name="ohiochudster0001" x="904" y="1" width="925" height="552" frameX="-0" frameY="-0" frameWidth="926" frameHeight="553"/>
+	<SubTexture name="ohiochudster0002" x="1832" y="1" width="925" height="552" frameX="-0" frameY="-0" frameWidth="926" frameHeight="553"/>
+	<SubTexture name="ohiochudster0003" x="1832" y="1" width="925" height="552" frameX="-0" frameY="-0" frameWidth="926" frameHeight="553"/>
+	<SubTexture name="ohiochudster0004" x="3688" y="1" width="926" height="553" frameX="-0" frameY="-0" frameWidth="926" frameHeight="553"/>
+	<SubTexture name="ohiochudster0005" x="2760" y="1" width="925" height="552" frameX="-0" frameY="-0" frameWidth="926" frameHeight="553"/>
+	<SubTexture name="ohiochudster0006" x="2760" y="1" width="925" height="552" frameX="-0" frameY="-0" frameWidth="926" frameHeight="553"/>
+	<SubTexture name="superohio0000" x="7009" y="1" width="687" height="600" frameX="-0" frameY="-0" frameWidth="687" frameHeight="600"/>
+</TextureAtlas>

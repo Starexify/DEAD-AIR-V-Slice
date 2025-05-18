@@ -6,7 +6,7 @@
   "assets": {
     "note": {
       "assetPath": "shared:loman",
-      "scale": 0.95,
+      "scale": 0.7,
       "data": {
         "left": { "prefix": "purple" },
         "down": { "prefix": "blue" },
@@ -16,8 +16,8 @@
     },
     "noteStrumline": {
       "assetPath": "shared:loman",
-      "scale": 0.95,
-      "offsets": [25, 20],
+      "scale": 0.7,
+      "offsets": [5, 35],
       "data": {
         "leftStatic": { "prefix": "arrowLEFT" },
         "leftPress": { "prefix": "left press" },
@@ -39,8 +39,8 @@
     },
     "holdNote": {
       "assetPath": "NOTE_loman_hold_assets",
-      "offsets": [0, 10],
-      "scale": 0.8,
+      "offsets": [0, 20],
+      "scale": 0.7,
       "data": {}
     },
     "noteSplash": {

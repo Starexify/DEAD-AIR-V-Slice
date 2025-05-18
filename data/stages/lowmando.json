@@ -1,8 +1,174 @@
 {
   "version": "1.0.0",
-  "name": "John",
+  "name": "Lowmando",
   "cameraZoom": 0.6,
   "props": [
+    {
+      "name": "elizabeth1",
+      "assetPath": "stages/fancy-island/elizabeth1",
+      "position": [-460, 150],
+      "startingAnimation": "move",
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 10,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 30,
+          "prefix": "maskmove1",
+          "name": "move",
+          "looped": true
+        }
+      ]
+    },
+    {
+      "name": "elizabeth2",
+      "assetPath": "stages/fancy-island/elizabeth2",
+      "position": [-460, -200],
+      "startingAnimation": "move",
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 10,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 30,
+          "prefix": "maskmove2",
+          "name": "move",
+          "looped": true
+        }
+      ]
+    },
+    {
+      "name": "elizabeth3",
+      "assetPath": "stages/fancy-island/elizabeth3",
+      "position": [-460, 450],
+      "startingAnimation": "move",
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 10,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 30,
+          "prefix": "maskmove3",
+          "name": "move",
+          "looped": true
+        }
+      ]
+    },
+    {
+      "name": "elizabeth4",
+      "assetPath": "stages/fancy-island/elizabeth4",
+      "position": [-460, 700],
+      "startingAnimation": "move",
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 10,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 30,
+          "prefix": "maskmove4",
+          "name": "move",
+          "looped": true
+        }
+      ]
+    },
+    {
+      "name": "transitionLomando",
+      "assetPath": "stages/fancy-island/transitionLomando",
+      "position": [460, 0],
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 301,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "transition",
+          "name": "run"
+        }
+      ]
+    },
+    {
+      "name": "babyhead",
+      "assetPath": "stages/fancy-island/babyhead",
+      "position": [-240, 30],
+      "startingAnimation": "no",
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 301,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "NObabyhead",
+          "name": "no"
+        },
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "ENTERbabyhead",
+          "name": "enter"
+        },
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "IDLEbabyhead",
+          "name": "idle",
+          "looped": true
+        },
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "FADEbabyhead",
+          "name": "fade"
+        }
+      ]
+    },
+    {
+      "name": "bludisfromohio",
+      "assetPath": "stages/fancy-island/bludisfromohio",
+      "position": [105, -10],
+      "startingAnimation": "move",
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 10,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 10,
+          "prefix": "grimace",
+          "name": "move",
+          "looped": true
+        }
+      ]
+    },
+    {
+      "name": "doorlomando",
+      "assetPath": "stages/fancy-island/doorlomando",
+      "position": [-40, -400],
+      "scale": [0.8, 0.8],
+      "scroll": [1, 1],
+      "zIndex": 20
+    },
+    {
+      "name": "baby",
+      "assetPath": "stages/fancy-island/baby",
+      "position": [440, 59],
+      "scale": [1.2, 1.2],
+      "scroll": [0, 0],
+      "zIndex": 301,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "baby",
+          "name": "baby"
+        }
+      ]
+    }
   ],
   "characters": {
     "bf": { "zIndex": 300, "position": [0, 0], "cameraOffsets": [0, 0] },

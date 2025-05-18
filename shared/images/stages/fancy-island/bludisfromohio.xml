@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="bludisfromohio.png" width="5205" height="4235">
+	<SubTexture name="grimace0000" x="0" y="0" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0001" x="0" y="605" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0002" x="1041" y="0" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0003" x="1041" y="605" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0004" x="0" y="1210" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0005" x="1041" y="1210" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0006" x="0" y="1815" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0007" x="1041" y="1815" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0008" x="2082" y="0" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0009" x="2082" y="605" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0010" x="2082" y="1210" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0011" x="2082" y="1815" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0012" x="0" y="2420" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0013" x="1041" y="2420" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0014" x="2082" y="2420" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0015" x="0" y="3025" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0016" x="1041" y="3025" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0017" x="2082" y="3025" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0018" x="3123" y="0" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0019" x="3123" y="605" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0020" x="3123" y="1210" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0021" x="3123" y="1815" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0022" x="3123" y="2420" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0023" x="3123" y="3025" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0024" x="0" y="3630" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0025" x="1041" y="3630" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0026" x="2082" y="3630" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0027" x="3123" y="3630" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0028" x="4164" y="0" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0029" x="4164" y="605" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0030" x="4164" y="1210" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0031" x="4164" y="1815" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0032" x="4164" y="2420" width="1041" height="605" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+	<SubTexture name="grimace0033" x="4164" y="3025" width="1041" height="618" frameX="-0" frameY="-0" frameWidth="1052" frameHeight="629"/>
+</TextureAtlas>

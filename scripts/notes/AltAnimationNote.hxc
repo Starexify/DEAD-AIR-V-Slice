@@ -1,0 +1,36 @@
+import funkin.modding.events.ScriptEvent;
+import funkin.play.PlayState;
+import funkin.play.character.BaseCharacter;
+import funkin.play.notes.Strumline;
+import funkin.play.notes.notekind.ScriptedNoteKind;
+
+class AltAnimationNote extends ScriptedNoteKind {
+    function new() {
+        super("alt-anim", "Alt Animation");
+    }
+
+    override function onNoteHit(event:HitNoteScriptEvent):Void {
+        if (PlayState.instance == null || PlayState.instance.currentStage == null) return;
+
+        var hitter:BaseCharacter;
+        if (event.note.noteData.getMustHitNote(Strumline.KEY_COUNT)) hitter = PlayState.instance.currentStage.getBoyfriend();
+        else hitter = PlayState.instance.currentStage.getDad();
+
+        if (hitter != null) {
+            var noteDir = event.note.direction;
+            var directionNames:Array<String> = ["LEFT", "DOWN", "UP", "RIGHT"];
+            var dirName:String = directionNames[noteDir];
+            if (dirName == null) {
+                trace("Invalid note direction: " + noteDir);
+                return;
+            }
+            var availableAnimations:Array<String> = hitter.animation.getNameList();
+            var animToPlay:String = "sing" + directionNames[noteDir] + "-alt";
+
+            if (availableAnimations.indexOf(animToPlay) != -1) {
+                trace(animToPlay);
+                hitter.playAnimation(animToPlay, false, true);
+            }
+        }
+    }
+}

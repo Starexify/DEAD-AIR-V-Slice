@@ -1,9 +1,43 @@
+import funkin.Conductor;
+import funkin.Preferences;
+import funkin.audio.FunkinSound;
+import funkin.graphics.FunkinSprite;
+import funkin.input.Cursor;
+import funkin.input.CursorMode;
 import funkin.modding.events.ScriptEvent;
 import funkin.play.PlayState;
+import funkin.play.character.BaseCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.character.CharacterDataParser;
 import funkin.play.song.ScriptedSong;
+
+import flixel.FlxG;
+import flixel.math.FlxRect;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
+import funkin.play.stage.StageProp;
 
 class FancyIslandSong extends ScriptedSong {
     var state:PlayState;
+
+    var lomando:BaseCharacter;
+    var lomando2:BaseCharacter;
+    var lomando3:BaseCharacter;
+
+    var doorClosed:FunkinSprite;
+    var doorOpen:FunkinSprite;
+    var clickableRegion:FlxRect;
+
+    var songTitle:FunkinSprite;
+    var songBy:FunkinSprite;
+
+    var blackout:FunkinSprite;
+    var yeah:FunkinSprite;
+    var glitch:FunkinSprite;
+    var strumBg:FunkinSprite;
+
+    var eliz:Array<StageProp>;
 
     function new() {
         super("fancy-island");
@@ -12,6 +46,254 @@ class FancyIslandSong extends ScriptedSong {
     override function onSongLoaded(event:SongLoadScriptEvent) {
         if (PlayState.instance == null) return;
         state = PlayState.instance;
+        lomando = CharacterDataParser.fetchCharacter("lomando");
+        lomando2 = CharacterDataParser.fetchCharacter("lomando2");
+        lomando3 = CharacterDataParser.fetchCharacter("lomando3");
 
+        eliz = [state.currentStage.getNamedProp("elizabeth1"), state.currentStage.getNamedProp("elizabeth2"), state.currentStage.getNamedProp("elizabeth3"), state.currentStage.getNamedProp("elizabeth4")];
+        for (prop in eliz) prop.visible = false;
+        state.currentStage.getNamedProp("transitionLomando").visible = false;
+        state.currentStage.getNamedProp("bludisfromohio").visible = false;
+        state.currentStage.getNamedProp("doorlomando").visible = false;
+
+        state.camHUD.alpha = 0;
+        state.camGame.alpha = 0;
+        doorClosed = FunkinSprite.create(0, 0, "stages/fancy-island/doorint");
+        doorClosed.camera = state.camCutscene;
+        state.add(doorClosed);
+
+        doorOpen = FunkinSprite.create(0, 0, "stages/fancy-island/doorint2");
+        doorOpen.camera = state.camCutscene;
+        doorOpen.visible = false;
+        state.add(doorOpen);
+
+        var doorWidth = 340;
+        var doorHeight = 429;
+        clickableRegion = new FlxRect((doorClosed.width - doorWidth) / 2, (doorClosed.height - doorHeight) / 2 + 66, doorWidth, doorHeight);
+
+        blackout = FunkinSprite.create(-1280, -720).makeSolidColor(3840, 2160, 0xFF000000);
+        blackout.alpha = 1;
+        blackout.camera = state.camHUD;
+        state.add(blackout);
+
+        yeah = FunkinSprite.create(-1280, -720).makeSolidColor(3840, 2160, 0xFF000000);
+        yeah.alpha = 0;
+        //yeah.blend = 14;
+        yeah.camera = state.camGame;
+        state.add(yeah);
+
+        songBy = FunkinSprite.create(450, 195, "titlecards/fancy-island/by");
+        songBy.alpha = 0;
+        songBy.camera = state.camHUD;
+        songBy.scale.set(0.8, 0.8);
+        state.add(songBy);
+
+        songTitle = FunkinSprite.create(450, 270, "titlecards/fancy-island/title");
+        songTitle.camera = state.camHUD;
+        songTitle.scale.set(0.8, 0.8);
+        state.add(songTitle);
+
+        strumBg = FunkinSprite.create(300, 185, "notebg");
+        if (Preferences.downscroll) strumBg.y = 800;
+        strumBg.camera = state.camHUD;
+        strumBg.scale.set(0.58, 0.58);
+        state.add(strumBg);
+
+        var noteIndex:Int = 0;
+        for (note in state.playerStrumline.strumlineNotes.members) {
+            var targetXPositions = [478, 560, 644, 725];
+            note.x = targetXPositions[noteIndex];
+            FlxTween.cancelTweensOf(note);
+            note.y += Preferences.downscroll ? 250 : -150;
+            noteIndex++;
+        }
+    }
+
+    override function onStepHit(event:SongTimeScriptEvent) {
+        if (state == null) return;
+        switch (event.step) {
+            case 16:
+                FlxTween.tween(songBy, {y: 270}, 0.7, { ease: FlxEase.circOut });
+                FlxTween.tween(songBy, {alpha: 1}, 0.6, { ease: FlxEase.circOut });
+            case 32:
+                FlxTween.tween(blackout, {alpha: 0.6}, 0.3, { ease: FlxEase.circOut });
+                if (Preferences.downscroll) FlxTween.tween(strumBg, {y: 450}, 0.9, { ease: FlxEase.quadOut });
+                else FlxTween.tween(strumBg, {y: -10}, 0.9, { ease: FlxEase.quadOut });
+            case 48:
+                var index:Int = 0;
+                var targetYPosition = Preferences.downscroll ? 570 : 40;
+                for (note in state.playerStrumline.strumlineNotes.members) {
+                    note.alpha = 1;
+                    FlxTween.tween(note, {y: targetYPosition}, 0.7 + 0.1 * index, { ease: FlxEase.quadInOut });
+                    index++;
+                }
+            case 56:
+                FlxTween.tween(blackout, {alpha: 0.2}, 0.3, { ease: FlxEase.circOut });
+                FlxTween.tween(songTitle, {x: -500}, 1.3, { ease: FlxEase.circOut, onComplete: tween -> state.remove(songTitle) });
+                FlxTween.tween(songBy, {x: 1500}, 1.3, { ease: FlxEase.circOut, onComplete: tween -> state.remove(songBy) });
+            case 122, 124, 127, 184, 186, 188, 668, 684, 706, 714, 716: state.currentStage.getBoyfriend().playAnimation("singDOWN", false, true);
+            case 256: state.currentStage.getNamedProp("babyhead").animation.play("enter", true);
+            case 258, 274, 290, 306: state.currentStage.getNamedProp("babyhead").animation.play("idle", true);
+            case 268, 284, 300, 316: state.currentStage.getNamedProp("babyhead").animation.play("fade", true);
+            case 270, 286, 302, 318: state.currentStage.getNamedProp("babyhead").animation.play("no", true);
+            case 272, 304:
+                state.currentStage.getNamedProp("babyhead").x = 1020;
+                state.currentStage.getNamedProp("babyhead").animation.play("enter", true);
+            case 288:
+                state.currentStage.getNamedProp("babyhead").x = -240;
+                state.currentStage.getNamedProp("babyhead").animation.play("enter", true);
+            case 319, 428, 448, 715: state.camGame.alpha = 0;
+            case 322:
+                if (lomando3 != null) {
+                    state.currentStage.remove(state.currentStage.getBoyfriend());
+                    state.currentStage.addCharacter(lomando3, CharacterType.BF);
+                }
+            case 324, 452:
+                state.camGame.alpha = 1;
+                state.currentStage.getBoyfriend().alpha = 1;
+            case 384: state.currentStage.getBoyfriend().playAnimation("green", false, true);
+            case 388: state.currentStage.getBoyfriend().playAnimation("idle", false, true);
+            case 424: state.currentStage.getBoyfriend().playAnimation("worm", false, true);
+            case 436:
+                state.camGame.alpha = 1;
+                state.currentStage.getBoyfriend().playAnimation("idle", false, true);
+            case 450, 1022:
+                if (lomando != null) {
+                    state.currentStage.remove(state.currentStage.getBoyfriend());
+                    state.currentStage.addCharacter(lomando, CharacterType.BF);
+                    state.currentStage.getBoyfriend().alpha = 0;
+                }
+            case 576:
+                FlxTween.tween(state.camGame, {alpha: 0}, 0.2);
+            case 584:
+                if (lomando2 != null) {
+                    state.currentStage.remove(state.currentStage.getBoyfriend());
+                    state.currentStage.addCharacter(lomando2, CharacterType.BF);
+                    state.currentStage.getBoyfriend().alpha = 0;
+                }
+            case 632: state.currentStage.getBoyfriend().playAnimation("singUP", false, true);
+            case 682: state.currentStage.getBoyfriend().playAnimation("singLEFT", false, true);
+            case 688: state.currentStage.getBoyfriend().playAnimation("singRIGHT", false, true);
+            case 732:
+                state.camGame.alpha = 1;
+                yeah.alpha = 0.52;
+                FlxTween.tween(yeah, {alpha: 0}, 0.36, { onComplete: tween -> state.remove(yeah) });
+            case 980:
+                FlxTween.tween(blackout, {alpha: 1}, 0.7);
+            case 996:
+                state.remove(blackout);
+            case 1100, 1116:
+                glitch = FunkinSprite.create(0, 0).makeSolidColor(FlxG.width * 4, FlxG.height * 4, 0xFFFFFFFF);
+                glitch.camera = state.camCutscene;
+                glitch.alpha = 0.5;
+                state.add(glitch);
+            case 1104, 1120:
+                state.remove(glitch);
+        }
+    }
+
+    override function onBeatHit(event:SongTimeScriptEvent) {
+        if (state == null) return;
+        switch (event.beat) {
+            case 48: for (prop in eliz) prop.visible = true;
+            case 80: for (prop in eliz) prop.visible = false;
+            case 145:
+                state.camGame.alpha = 1;
+                state.currentStage.getBoyfriend().alpha = 0;
+                state.currentStage.getNamedProp("transitionLomando").animation.play("run", true);
+            case 147:
+                state.currentStage.getBoyfriend().alpha = 1;
+                state.currentStage.getNamedProp("transitionLomando").visible = false;
+            case 183:
+                state.currentStage.getBoyfriend().alpha = 0;
+                state.currentStage.getNamedProp("bludisfromohio").visible = true;
+                state.currentStage.getNamedProp("bludisfromohio").animation.play("move", true);
+                state.currentStage.getNamedProp("doorlomando").visible = true;
+            case 249:
+                state.currentStage.getNamedProp("bludisfromohio").visible = false;
+                state.currentStage.getNamedProp("doorlomando").visible = false;
+            case 250:
+                state.currentStage.getNamedProp("baby").visible = true;
+                state.currentStage.getNamedProp("baby").animation.play("baby", true);
+            case 256:
+                state.currentStage.getNamedProp("baby").visible = false;
+                state.currentStage.getBoyfriend().alpha = 1;
+            case 288:
+                state.currentStage.getBoyfriend().alpha = 0;
+        }
+    }
+
+    override function onNoteIncoming(event:NoteScriptEvent) {
+        if (state == null) return;
+        var targetXPositions = [478, 570, 656, 730];
+        event.note.x = targetXPositions[event.note.noteData.data % 4];
+        if (event.note.isHoldNote) {
+            event.note.holdNoteSprite.updateClipping();
+            event.note.holdNoteSprite.x = event.note.x + (event.note.width / 2) - (event.note.holdNoteSprite.width / 2);
+            event.note.x += switch (event.note.noteData.data % 4) {
+                case 1: 12;
+                case 2: 12;
+                case 3: 12;
+                default: 0;
+            };
+        }
+    }
+
+    override function onSongStart(event:ScriptEvent) {
+        state.isInCutscene = true;
+        state.pauseMusic();
+        state.mayPauseGame = false;
+        Cursor.show();
+    }
+
+    override function onUpdate(event:UpdateScriptEvent) {
+        if (doorClosed.visible || doorOpen.visible) {
+            Conductor.instance.update(0);
+
+            if (isMouseOverClickableRegion()) Cursor.cursorMode = CursorMode.Pointer;
+            else Cursor.cursorMode = CursorMode.Default;
+
+            if (FlxG.mouse.justPressed && isMouseOverClickableRegion()) {
+                FunkinSound.playOnce(Paths.sound("door"));
+                doorClosed.visible = false;
+                doorOpen.visible = true;
+                doorClosed.destroy();
+                FlxTween.tween(doorOpen, {alpha: 0}, 3, {
+                    onComplete: tween -> {
+                        FlxTimer.wait(1, () -> {
+                            state.camHUD.alpha = 1;
+                            state.camGame.alpha = 1;
+                            doorOpen.visible = false;
+                            doorOpen.destroy();
+                            state.mayPauseGame = true;
+                            state.isInCutscene = false;
+                            if (FlxG.sound.music != null) FlxG.sound.music.resume();
+                            if (state.vocals != null) state.vocals.resume();
+                            Cursor.hide();
+                        });
+                    }
+                });
+            }
+        }
+    }
+
+    function isMouseOverClickableRegion():Bool {
+        // Check if the mouse is within the clickable region of the sprite
+        if (!doorClosed.visible) return false;
+
+        var mouseX = FlxG.mouse.x;
+        var mouseY = FlxG.mouse.y;
+
+        if (doorClosed.camera != null) {
+            mouseX = Std.int(FlxG.mouse.getViewPosition(doorClosed.camera).x);
+            mouseY = Std.int(FlxG.mouse.getViewPosition(doorClosed.camera).y);
+        }
+
+        var clickableLeftEdge = doorClosed.x + clickableRegion.x;
+        var clickableTopEdge = doorClosed.y + clickableRegion.y;
+        var clickableRightEdge = clickableLeftEdge + clickableRegion.width;
+        var clickableBottomEdge = clickableTopEdge + clickableRegion.height;
+
+        return (mouseX >= clickableLeftEdge && mouseX <= clickableRightEdge && mouseY >= clickableTopEdge && mouseY <= clickableBottomEdge);
     }
 }

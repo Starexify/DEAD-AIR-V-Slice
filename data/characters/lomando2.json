@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "name": "Lomando 2",
+  "assetPath": "characters/lomando2",
+  "flipX": true,
+  "cameraOffsets": [50, 100],
+  "offsets": [30, 99],
+  "healthIcon": {
+    "id": "lomando"
+  },
+  "singTime": 6.1,
+  "animations": [
+    {
+      "name": "singRIGHT",
+      "prefix": "heartt",
+      "offsets": [-110, 10],
+      "frameRate": 24
+    },
+    {
+      "name": "singDOWN",
+      "prefix": "ohiochudster",
+      "offsets": [0, 0],
+      "frameRate": 24
+    },
+    {
+      "name": "singUP",
+      "prefix": "superohio",
+      "offsets": [-120, 20],
+      "frameRate": 24
+    },
+    {
+      "name": "singLEFT",
+      "prefix": "frickinohioblud",
+      "offsets": [0, 0],
+      "frameRate": 24
+    }
+  ]
+}

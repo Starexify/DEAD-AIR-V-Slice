@@ -5,13 +5,6 @@
   },
   "events": [
     {
-      "t": 9230.76923076923,
-      "e": "FocusCamera",
-      "v": {
-        "char": 0
-      }
-    },
-    {
       "t": 0,
       "e": "SetCameraBop",
       "v": {

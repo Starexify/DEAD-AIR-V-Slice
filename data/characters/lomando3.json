@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "name": "Lomando 3",
+  "assetPath": "characters/lomando3",
+  "flipX": true,
+  "cameraOffsets": [50, 100],
+  "offsets": [30, 99],
+  "healthIcon": {
+    "id": "lomando"
+  },
+  "singTime": 6.1,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "brap",
+      "offsets": [0, 0],
+      "frameRate": 20,
+      "looped": true
+    },
+    {
+      "name": "lock",
+      "prefix": "lock",
+      "offsets": [0, 0],
+      "frameRate": 20,
+      "looped": true
+    },
+    {
+      "name": "green",
+      "prefix": "green",
+      "offsets": [0, 0],
+      "frameRate": 20,
+      "looped": true
+    },
+    {
+      "name": "worm",
+      "prefix": "wormee",
+      "offsets": [0, 0],
+      "frameRate": 17,
+      "looped": true
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="elizabeth3.png" width="753" height="745">
+	<SubTexture name="maskmove30000" x="506" y="0" width="247" height="257" rotated="true" frameX="-1855" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30001" x="506" y="513" width="240" height="230" frameX="-1863" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30002" x="0" y="0" width="258" height="248" frameX="-1853" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30003" x="506" y="513" width="240" height="230" frameX="-1861" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30004" x="506" y="0" width="247" height="257" rotated="true" frameX="-1851" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30005" x="506" y="513" width="240" height="230" frameX="-1857" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30006" x="0" y="0" width="258" height="248" frameX="-1845" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30007" x="506" y="513" width="240" height="230" frameX="-1851" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30008" x="506" y="257" width="246" height="256" rotated="true" frameX="-1839" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30009" x="506" y="513" width="240" height="230" frameX="-1842" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30010" x="0" y="248" width="258" height="248" frameX="-1828" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30011" x="506" y="513" width="240" height="230" frameX="-1832" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30012" x="506" y="0" width="247" height="257" rotated="true" frameX="-1818" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30013" x="506" y="513" width="240" height="230" frameX="-1819" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30014" x="0" y="0" width="258" height="248" frameX="-1803" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30015" x="506" y="513" width="240" height="230" frameX="-1805" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30016" x="506" y="0" width="247" height="257" rotated="true" frameX="-1788" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30017" x="506" y="513" width="240" height="230" frameX="-1788" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30018" x="0" y="0" width="258" height="248" frameX="-1770" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30019" x="506" y="513" width="240" height="230" frameX="-1769" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30020" x="506" y="0" width="247" height="257" rotated="true" frameX="-1750" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30021" x="506" y="513" width="240" height="230" frameX="-1748" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30022" x="0" y="0" width="258" height="248" frameX="-1728" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30023" x="257" y="515" width="240" height="230" frameX="-1725" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30024" x="506" y="0" width="247" height="257" rotated="true" frameX="-1704" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30025" x="257" y="515" width="240" height="230" frameX="-1700" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30026" x="0" y="0" width="258" height="248" frameX="-1677" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30027" x="257" y="515" width="240" height="230" frameX="-1672" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30028" x="506" y="0" width="247" height="257" rotated="true" frameX="-1650" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30029" x="257" y="515" width="240" height="230" frameX="-1643" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30030" x="0" y="0" width="258" height="248" frameX="-1619" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30031" x="257" y="515" width="240" height="230" frameX="-1612" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30032" x="506" y="0" width="247" height="257" rotated="true" frameX="-1587" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30033" x="257" y="515" width="240" height="230" frameX="-1578" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30034" x="0" y="0" width="258" height="248" frameX="-1551" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30035" x="257" y="515" width="240" height="230" frameX="-1542" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30036" x="506" y="0" width="247" height="257" rotated="true" frameX="-1516" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30037" x="257" y="515" width="240" height="230" frameX="-1505" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30038" x="0" y="0" width="258" height="248" frameX="-1476" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30039" x="257" y="515" width="240" height="230" frameX="-1465" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30040" x="506" y="0" width="247" height="257" rotated="true" frameX="-1436" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30041" x="257" y="515" width="240" height="230" frameX="-1423" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30042" x="0" y="0" width="258" height="248" frameX="-1392" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30043" x="257" y="515" width="240" height="230" frameX="-1379" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30044" x="506" y="0" width="247" height="257" rotated="true" frameX="-1348" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30045" x="257" y="515" width="240" height="230" frameX="-1333" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30046" x="0" y="0" width="258" height="248" frameX="-1300" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30047" x="257" y="515" width="240" height="230" frameX="-1284" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30048" x="506" y="0" width="247" height="257" rotated="true" frameX="-1251" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30049" x="257" y="515" width="240" height="230" frameX="-1234" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30050" x="0" y="0" width="258" height="248" frameX="-1199" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30051" x="257" y="515" width="240" height="230" frameX="-1182" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30052" x="506" y="0" width="247" height="257" rotated="true" frameX="-1147" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30053" x="257" y="515" width="240" height="230" frameX="-1127" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30054" x="0" y="0" width="258" height="248" frameX="-1090" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30055" x="257" y="515" width="240" height="230" frameX="-1071" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30056" x="506" y="0" width="247" height="257" rotated="true" frameX="-1033" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30057" x="257" y="515" width="240" height="230" frameX="-1012" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30058" x="0" y="0" width="258" height="248" frameX="-973" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30059" x="257" y="515" width="240" height="230" frameX="-951" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30060" x="506" y="0" width="247" height="257" rotated="true" frameX="-912" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30061" x="257" y="515" width="240" height="230" frameX="-889" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30062" x="0" y="0" width="258" height="248" frameX="-850" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30063" x="257" y="515" width="240" height="230" frameX="-830" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30064" x="506" y="0" width="247" height="257" rotated="true" frameX="-792" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30065" x="257" y="515" width="240" height="230" frameX="-772" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30066" x="0" y="0" width="258" height="248" frameX="-735" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30067" x="257" y="515" width="240" height="230" frameX="-716" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30068" x="506" y="0" width="247" height="257" rotated="true" frameX="-681" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30069" x="257" y="515" width="240" height="230" frameX="-663" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30070" x="0" y="0" width="258" height="248" frameX="-628" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30071" x="257" y="515" width="240" height="230" frameX="-611" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30072" x="506" y="0" width="247" height="257" rotated="true" frameX="-578" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30073" x="257" y="515" width="240" height="230" frameX="-562" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30074" x="0" y="0" width="258" height="248" frameX="-529" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30075" x="257" y="515" width="240" height="230" frameX="-515" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30076" x="506" y="0" width="247" height="257" rotated="true" frameX="-484" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30077" x="257" y="515" width="240" height="230" frameX="-470" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30078" x="0" y="0" width="258" height="248" frameX="-439" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30079" x="257" y="515" width="240" height="230" frameX="-427" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30080" x="506" y="0" width="247" height="257" rotated="true" frameX="-398" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30081" x="257" y="515" width="240" height="230" frameX="-386" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30082" x="0" y="0" width="258" height="248" frameX="-357" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30083" x="506" y="513" width="240" height="230" frameX="-347" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30084" x="506" y="0" width="247" height="257" rotated="true" frameX="-320" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30085" x="506" y="513" width="240" height="230" frameX="-311" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30086" x="0" y="0" width="258" height="248" frameX="-284" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30087" x="506" y="513" width="240" height="230" frameX="-276" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30088" x="506" y="0" width="247" height="257" rotated="true" frameX="-251" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30089" x="506" y="513" width="240" height="230" frameX="-243" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30090" x="0" y="0" width="258" height="248" frameX="-219" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30091" x="506" y="513" width="240" height="230" frameX="-213" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30092" x="506" y="0" width="247" height="257" rotated="true" frameX="-190" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30093" x="506" y="513" width="240" height="230" frameX="-185" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30094" x="0" y="0" width="258" height="248" frameX="-162" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30095" x="506" y="513" width="240" height="230" frameX="-159" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30096" x="506" y="0" width="247" height="257" rotated="true" frameX="-138" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30097" x="506" y="513" width="240" height="230" frameX="-134" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30098" x="0" y="0" width="258" height="248" frameX="-114" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30099" x="506" y="513" width="240" height="230" frameX="-112" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30100" x="506" y="0" width="247" height="257" rotated="true" frameX="-94" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30101" x="506" y="513" width="240" height="230" frameX="-92" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30102" x="0" y="0" width="258" height="248" frameX="-74" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30103" x="506" y="513" width="240" height="230" frameX="-75" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30104" x="506" y="0" width="247" height="257" rotated="true" frameX="-58" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30105" x="506" y="513" width="240" height="230" frameX="-59" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30106" x="0" y="0" width="258" height="248" frameX="-43" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30107" x="506" y="513" width="240" height="230" frameX="-45" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30108" x="506" y="0" width="247" height="257" rotated="true" frameX="-31" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30109" x="506" y="513" width="240" height="230" frameX="-34" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30110" x="0" y="0" width="258" height="248" frameX="-20" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30111" x="506" y="513" width="240" height="230" frameX="-24" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30112" x="506" y="0" width="247" height="257" rotated="true" frameX="-12" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30113" x="506" y="513" width="240" height="230" frameX="-17" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30114" x="0" y="0" width="258" height="248" frameX="-6" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30115" x="506" y="513" width="240" height="230" frameX="-12" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30116" x="506" y="0" width="247" height="257" rotated="true" frameX="-3" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30117" x="506" y="513" width="240" height="230" frameX="-9" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30118" x="258" y="258" width="248" height="257" rotated="true" frameX="-0" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30119" x="506" y="513" width="240" height="230" frameX="-8" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30120" x="506" y="0" width="247" height="257" rotated="true" frameX="-1" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30121" x="506" y="513" width="240" height="230" frameX="-9" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30122" x="0" y="0" width="258" height="248" frameX="-2" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30123" x="506" y="513" width="240" height="230" frameX="-12" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30124" x="506" y="0" width="247" height="257" rotated="true" frameX="-7" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30125" x="506" y="513" width="240" height="230" frameX="-17" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30126" x="0" y="0" width="258" height="248" frameX="-11" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30127" x="506" y="513" width="240" height="230" frameX="-24" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30128" x="506" y="0" width="247" height="257" rotated="true" frameX="-20" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30129" x="506" y="513" width="240" height="230" frameX="-33" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30130" x="0" y="0" width="258" height="248" frameX="-30" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30131" x="506" y="513" width="240" height="230" frameX="-45" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30132" x="506" y="0" width="247" height="257" rotated="true" frameX="-43" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30133" x="506" y="513" width="240" height="230" frameX="-58" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30134" x="0" y="0" width="258" height="248" frameX="-57" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30135" x="506" y="513" width="240" height="230" frameX="-74" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30136" x="506" y="0" width="247" height="257" rotated="true" frameX="-74" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30137" x="506" y="513" width="240" height="230" frameX="-91" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30138" x="0" y="0" width="258" height="248" frameX="-92" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30139" x="506" y="513" width="240" height="230" frameX="-111" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30140" x="506" y="0" width="247" height="257" rotated="true" frameX="-113" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30141" x="506" y="513" width="240" height="230" frameX="-132" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30142" x="0" y="0" width="258" height="248" frameX="-135" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30143" x="506" y="513" width="240" height="230" frameX="-156" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30144" x="506" y="0" width="247" height="257" rotated="true" frameX="-160" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30145" x="506" y="513" width="240" height="230" frameX="-182" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30146" x="0" y="0" width="258" height="248" frameX="-186" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30147" x="506" y="513" width="240" height="230" frameX="-210" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30148" x="506" y="0" width="247" height="257" rotated="true" frameX="-216" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30149" x="506" y="513" width="240" height="230" frameX="-240" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30150" x="0" y="0" width="258" height="248" frameX="-246" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30151" x="506" y="513" width="240" height="230" frameX="-271" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30152" x="506" y="0" width="247" height="257" rotated="true" frameX="-280" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30153" x="506" y="513" width="240" height="230" frameX="-306" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30154" x="0" y="0" width="258" height="248" frameX="-314" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30155" x="506" y="513" width="240" height="230" frameX="-342" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30156" x="506" y="0" width="247" height="257" rotated="true" frameX="-352" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30157" x="257" y="515" width="240" height="230" frameX="-380" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30158" x="0" y="0" width="258" height="248" frameX="-391" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30159" x="257" y="515" width="240" height="230" frameX="-420" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30160" x="506" y="0" width="247" height="257" rotated="true" frameX="-433" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30161" x="257" y="515" width="240" height="230" frameX="-462" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30162" x="0" y="0" width="258" height="248" frameX="-475" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30163" x="257" y="515" width="240" height="230" frameX="-507" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30164" x="506" y="0" width="247" height="257" rotated="true" frameX="-521" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30165" x="257" y="515" width="240" height="230" frameX="-553" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30166" x="0" y="0" width="258" height="248" frameX="-568" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30167" x="257" y="515" width="240" height="230" frameX="-601" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30168" x="506" y="0" width="247" height="257" rotated="true" frameX="-618" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30169" x="257" y="515" width="240" height="230" frameX="-652" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30170" x="0" y="0" width="258" height="248" frameX="-669" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30171" x="257" y="515" width="240" height="230" frameX="-705" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30172" x="506" y="0" width="247" height="257" rotated="true" frameX="-723" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30173" x="257" y="515" width="240" height="230" frameX="-759" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30174" x="0" y="0" width="258" height="248" frameX="-778" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30175" x="257" y="515" width="240" height="230" frameX="-816" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30176" x="506" y="0" width="247" height="257" rotated="true" frameX="-837" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30177" x="257" y="515" width="240" height="230" frameX="-875" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30178" x="0" y="0" width="258" height="248" frameX="-896" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30179" x="257" y="515" width="240" height="230" frameX="-936" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30180" x="506" y="0" width="247" height="257" rotated="true" frameX="-958" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30181" x="257" y="515" width="240" height="230" frameX="-996" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30182" x="0" y="0" width="258" height="248" frameX="-1017" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30183" x="257" y="515" width="240" height="230" frameX="-1055" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30184" x="506" y="0" width="247" height="257" rotated="true" frameX="-1076" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30185" x="257" y="515" width="240" height="230" frameX="-1112" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30186" x="0" y="0" width="258" height="248" frameX="-1130" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30187" x="257" y="515" width="240" height="230" frameX="-1166" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30188" x="506" y="0" width="247" height="257" rotated="true" frameX="-1185" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30189" x="257" y="515" width="240" height="230" frameX="-1219" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30190" x="0" y="0" width="258" height="248" frameX="-1236" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30191" x="257" y="515" width="240" height="230" frameX="-1270" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30192" x="506" y="0" width="247" height="257" rotated="true" frameX="-1286" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30193" x="257" y="515" width="240" height="230" frameX="-1318" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30194" x="0" y="0" width="258" height="248" frameX="-1332" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30195" x="257" y="515" width="240" height="230" frameX="-1364" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30196" x="506" y="0" width="247" height="257" rotated="true" frameX="-1379" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30197" x="257" y="515" width="240" height="230" frameX="-1409" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30198" x="0" y="0" width="258" height="248" frameX="-1421" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30199" x="257" y="515" width="240" height="230" frameX="-1451" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30200" x="506" y="0" width="247" height="257" rotated="true" frameX="-1463" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30201" x="257" y="515" width="240" height="230" frameX="-1491" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30202" x="0" y="0" width="258" height="248" frameX="-1502" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30203" x="257" y="515" width="240" height="230" frameX="-1529" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30204" x="506" y="0" width="247" height="257" rotated="true" frameX="-1540" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30205" x="257" y="515" width="240" height="230" frameX="-1565" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30206" x="0" y="0" width="258" height="248" frameX="-1574" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30207" x="257" y="515" width="240" height="230" frameX="-1600" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30208" x="506" y="0" width="247" height="257" rotated="true" frameX="-1608" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30209" x="257" y="515" width="240" height="230" frameX="-1631" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30210" x="0" y="0" width="258" height="248" frameX="-1638" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30211" x="257" y="515" width="240" height="230" frameX="-1661" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30212" x="506" y="0" width="247" height="257" rotated="true" frameX="-1667" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30213" x="257" y="515" width="240" height="230" frameX="-1689" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30214" x="0" y="0" width="258" height="248" frameX="-1693" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30215" x="257" y="515" width="240" height="230" frameX="-1715" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30216" x="506" y="0" width="247" height="257" rotated="true" frameX="-1719" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30217" x="506" y="513" width="240" height="230" frameX="-1739" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30218" x="0" y="0" width="258" height="248" frameX="-1741" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30219" x="506" y="513" width="240" height="230" frameX="-1760" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30220" x="506" y="0" width="247" height="257" rotated="true" frameX="-1762" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30221" x="506" y="513" width="240" height="230" frameX="-1780" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30222" x="0" y="248" width="258" height="248" frameX="-1780" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30223" x="506" y="513" width="240" height="230" frameX="-1797" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30224" x="506" y="0" width="247" height="257" rotated="true" frameX="-1797" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30225" x="506" y="513" width="240" height="230" frameX="-1813" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30226" x="0" y="248" width="258" height="248" frameX="-1811" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30227" x="506" y="513" width="240" height="230" frameX="-1826" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30228" x="506" y="0" width="247" height="257" rotated="true" frameX="-1824" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30229" x="506" y="513" width="240" height="230" frameX="-1838" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30230" x="0" y="496" width="257" height="248" frameX="-1834" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30231" x="506" y="513" width="240" height="230" frameX="-1847" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30232" x="506" y="257" width="246" height="256" rotated="true" frameX="-1843" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30233" x="506" y="513" width="240" height="230" frameX="-1854" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30234" x="0" y="248" width="258" height="248" frameX="-1848" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30235" x="506" y="513" width="240" height="230" frameX="-1859" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30236" x="506" y="0" width="247" height="257" rotated="true" frameX="-1853" frameY="-1" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30237" x="506" y="513" width="240" height="230" frameX="-1862" frameY="-9" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30238" x="258" y="0" width="248" height="258" rotated="true" frameX="-1854" frameY="-0" frameWidth="2112" frameHeight="248"/>
+	<SubTexture name="maskmove30239" x="506" y="0" width="247" height="257" rotated="true" frameX="-1855" frameY="-0" frameWidth="2112" frameHeight="248"/>
+</TextureAtlas>

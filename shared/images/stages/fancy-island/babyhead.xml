@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="babyhead.png" width="2891" height="601">
+	<SubTexture name="ENTERbabyhead0000" x="1" y="0" width="1" height="18" frameX="-403" frameY="-312" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="ENTERbabyhead0001" x="2" y="0" width="388" height="545" frameX="-24" frameY="-32" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="ENTERbabyhead0002" x="793" y="0" width="404" height="563" frameX="-16" frameY="-19" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="ENTERbabyhead0003" x="1611" y="0" width="420" height="582" frameX="-8" frameY="-14" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="ENTERbabyhead0004" x="2455" y="0" width="436" height="601" frameX="-0" frameY="-0" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="FADEbabyhead0000" x="2455" y="0" width="436" height="601" frameX="-0" frameY="-0" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="FADEbabyhead0001" x="2031" y="0" width="424" height="584" frameX="-6" frameY="-12" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="FADEbabyhead0002" x="1197" y="0" width="414" height="567" frameX="-11" frameY="-17" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="FADEbabyhead0003" x="390" y="0" width="403" height="551" frameX="-17" frameY="-30" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="FADEbabyhead0004" x="1" y="0" width="1" height="18" frameX="-393" frameY="-308" frameWidth="436" frameHeight="601"/>
+	<SubTexture name="IDLEbabyhead0000" x="2455" y="0" width="436" height="601" frameX="-0" frameY="-0" frameWidth="436" frameHeight="609"/>
+	<SubTexture name="IDLEbabyhead0001" x="2455" y="0" width="436" height="601" frameX="-0" frameY="-8" frameWidth="436" frameHeight="609"/>
+	<SubTexture name="NObabyhead0000" x="0" y="0" width="1" height="1" frameX="-0" frameY="-0" frameWidth="1" frameHeight="1"/>
+</TextureAtlas>
