@@ -15,8 +15,10 @@ class BlackFade extends ScriptedSongEvent {
         var duration:Float = data.getFloat("duration") ?? 0;
 
         trace("Black Fade: " + hide + duration);
-        if (duration == 0)
+        if (duration == 0) {
             PlayState.instance.camGame.visible = !hide;
+            PlayState.instance.camGame.alpha = hide ? 0 : 1;
+        }
         else {
             var durSeconds = Conductor.instance.stepLengthMs * duration / 1000;
             var alpha = hide ? 0 : 1;

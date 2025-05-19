@@ -130,7 +130,6 @@ class FancyIslandSong extends ScriptedSong {
                 FlxTween.tween(blackout, {alpha: 0.2}, 0.3, { ease: FlxEase.circOut });
                 FlxTween.tween(songTitle, {x: -500}, 1.3, { ease: FlxEase.circOut, onComplete: tween -> state.remove(songTitle) });
                 FlxTween.tween(songBy, {x: 1500}, 1.3, { ease: FlxEase.circOut, onComplete: tween -> state.remove(songBy) });
-            case 122, 124, 127, 184, 186, 188, 668, 684, 706, 714, 716: state.currentStage.getBoyfriend().playAnimation("singDOWN", false, true);
             case 256: state.currentStage.getNamedProp("babyhead").animation.play("enter", true);
             case 258, 274, 290, 306: state.currentStage.getNamedProp("babyhead").animation.play("idle", true);
             case 268, 284, 300, 316: state.currentStage.getNamedProp("babyhead").animation.play("fade", true);
@@ -141,23 +140,16 @@ class FancyIslandSong extends ScriptedSong {
             case 288:
                 state.currentStage.getNamedProp("babyhead").x = -240;
                 state.currentStage.getNamedProp("babyhead").animation.play("enter", true);
-            case 319, 428, 448, 715: state.camGame.alpha = 0;
             case 322:
                 if (lomando3 != null) {
                     state.currentStage.remove(state.currentStage.getBoyfriend());
                     state.currentStage.addCharacter(lomando3, CharacterType.BF);
                 }
-            case 324, 452:
-                state.currentStage.getBoyfriend().alpha = state.camGame.alpha = 1;
-            case 436: state.camGame.alpha = 1;
-            case 450, 1022:
+            case 450:
                 if (lomando != null) {
                     state.currentStage.remove(state.currentStage.getBoyfriend());
                     state.currentStage.addCharacter(lomando, CharacterType.BF);
-                    state.currentStage.getBoyfriend().alpha = 0;
                 }
-            case 576:
-                FlxTween.tween(state.camGame, {alpha: 0}, 0.2);
             case 584:
                 if (lomando2 != null) {
                     state.currentStage.remove(state.currentStage.getBoyfriend());
@@ -165,13 +157,18 @@ class FancyIslandSong extends ScriptedSong {
                     state.currentStage.getBoyfriend().alpha = 0;
                 }
             case 732:
-                state.camGame.alpha = 1;
                 yeah.alpha = 0.52;
                 FlxTween.tween(yeah, {alpha: 0}, 0.36, { onComplete: tween -> state.remove(yeah) });
             case 980:
                 FlxTween.tween(blackout, {alpha: 1}, 0.7);
             case 996:
                 state.remove(blackout);
+            case 1022:
+                if (lomando != null) {
+                    state.currentStage.remove(state.currentStage.getBoyfriend());
+                    state.currentStage.addCharacter(lomando, CharacterType.BF);
+                    state.currentStage.getBoyfriend().alpha = 0;
+                }
             case 1100, 1116:
                 glitch = FunkinSprite.create(0, 0).makeSolidColor(FlxG.width * 4, FlxG.height * 4, 0xFFFFFFFF);
                 glitch.camera = state.camCutscene;
@@ -188,7 +185,6 @@ class FancyIslandSong extends ScriptedSong {
             case 48: for (prop in eliz) prop.visible = true;
             case 80: for (prop in eliz) prop.visible = false;
             case 145:
-                state.camGame.alpha = 1;
                 state.currentStage.getBoyfriend().alpha = 0;
                 state.currentStage.getNamedProp("transitionLomando").visible = true;
                 state.currentStage.getNamedProp("transitionLomando").animation.play("run", true);
