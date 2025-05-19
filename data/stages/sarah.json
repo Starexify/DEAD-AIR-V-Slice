@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "name": "Sarah",
+  "cameraZoom": 0.8,
+  "props": [],
+  "characters": {
+    "bf": { "zIndex": 300, "position": [0, 0], "cameraOffsets": [0, 0] },
+    "gf": { "zIndex": 100, "position": [0, 0], "cameraOffsets": [0, 0] },
+    "dad": { "zIndex": 200, "position": [0, 0], "cameraOffsets": [0, 0] }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "version": "2.2.4",
+  "songName": "under the tree",
+  "artist": "Unknown",
+  "looped": false,
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [ "normal" ],
+    "characters": {
+      "player": "sarah",
+      "girlfriend": "none",
+      "opponent": "none",
+      "instrumental": ""
+    },
+    "stage": "sarah",
+    "noteStyle": "chezzkidsnotes",
+    "ratings": { "normal": 13 },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 111,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 12972.972972973,
+      "b": 24,
+      "bpm": 124,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 80985.1787271142,
+      "b": 164.5586,
+      "bpm": 111,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "t": 89363.5571054926,
+      "b": 180.0586,
+      "bpm": 124,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "generatedBy": "Friday Night Funkin' - v0.6.4"
+}
