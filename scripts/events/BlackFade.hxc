@@ -1,0 +1,49 @@
+import funkin.Conductor;
+import funkin.data.event.SongEventSchema;
+import funkin.play.PlayState;
+import funkin.play.event.ScriptedSongEvent;
+
+import flixel.tweens.FlxTween;
+
+class BlackFade extends ScriptedSongEvent {
+    function new() {
+        super("Black Fade");
+    }
+
+    override public function handleEvent(data:SongEventData) {
+        var hide:Bool = data.getBool("hide") ?? true;
+        var duration:Float = data.getFloat("duration") ?? 0;
+
+        trace("Black Fade: " + hide + duration);
+        if (duration == 0)
+            PlayState.instance.camGame.visible = !hide;
+        else {
+            var durSeconds = Conductor.instance.stepLengthMs * duration / 1000;
+            var alpha = hide ? 0 : 1;
+            FlxTween.tween(PlayState.instance.camGame, {alpha: alpha}, durSeconds);
+        }
+    }
+
+    override function getEventSchema():SongEventSchema {
+        return [
+            {
+                name: "hide",
+                title: "Hide",
+                defaultValue: true,
+                type: "bool",
+            },
+            {
+                name: "duration",
+                title: "Duration",
+                defaultValue: 0,
+                step: 0.1,
+                type: "float",
+                units: "s"
+            }
+        ];
+    }
+
+    override public function getTitle():String {
+        return "Black Fade";
+    }
+}

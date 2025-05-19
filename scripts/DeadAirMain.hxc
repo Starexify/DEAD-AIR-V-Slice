@@ -22,9 +22,16 @@ class DeadAirMain extends ScriptedModule {
 
         if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) {
             state = PlayState.instance;
-            var songEvent:SongEventDataRaw = new SongEventDataRaw(state.songPosition, "FocusCamera", {char: 0});
-            var scriptEvent:SongEventScriptEvent = new SongEventScriptEvent(songEvent);
-            if (!scriptEvent.eventCanceled) SongEventRegistry.handleEvent(songEvent);
+            var events = [
+                {type: "FocusCamera", params: {char: 0}},
+                {type: "SetCameraBop", params: {intensity: 0}}
+            ];
+
+            for (event in events) {
+                var songEvent = new SongEventDataRaw(state.songPosition, event.type, event.params);
+                var scriptEvent = new SongEventScriptEvent(songEvent);
+                if (!scriptEvent.eventCanceled) SongEventRegistry.handleEvent(songEvent);
+            }
         }
     }
 

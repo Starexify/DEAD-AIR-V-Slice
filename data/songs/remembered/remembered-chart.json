@@ -15,14 +15,6 @@
       }
     },
     {
-      "t": 0,
-      "e": "SetCameraBop",
-      "v": {
-        "intensity":  0,
-        "rate": 4
-      }
-    },
-    {
       "t": 11062.5,
       "e": "PlayAnimation",
       "v": {

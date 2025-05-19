@@ -1,13 +1,12 @@
+import funkin.Conductor;
 import funkin.graphics.FunkinSprite;
 import funkin.modding.events.ScriptEvent;
 import funkin.play.PlayState;
 import funkin.play.song.ScriptedSong;
 
-import flixel.tweens.FlxTween;
 import flixel.FlxG;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import funkin.input.Cursor;
-import funkin.Conductor;
 
 class ComatoseSong extends ScriptedSong {
     var state:PlayState;
@@ -71,10 +70,7 @@ class ComatoseSong extends ScriptedSong {
             case 64:
                 state.camGame.visible = true;
                 state.currentStage.getBoyfriend().idleSuffix = "-alt";
-            case 256, 319, 528, 584, 724, 788:
-            case 260, 336, 464, 532, 596, 728, 792: state.camGame.visible = true;
             case 462:
-                state.camGame.visible = false;
                 glitch.visible = true;
                 FlxTimer.wait(0.000001, () -> pause(((60 / state.conductorInUse.bpm) * 1000) / 1000));
             case 463: state.remove(glitch);

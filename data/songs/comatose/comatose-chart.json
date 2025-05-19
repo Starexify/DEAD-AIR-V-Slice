@@ -5,14 +5,6 @@
   },
   "events": [
     {
-      "t": 0,
-      "e": "SetCameraBop",
-      "v": {
-        "rate": 4,
-        "intensity": 0
-      }
-    },
-    {
       "t": 19256.7567567568,
       "e": "ScrollSpeed",
       "v": {
@@ -33,6 +25,30 @@
       }
     },
     {
+      "t": 25945.9459459459,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 26351.3513513513,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 32331.0810810811,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
       "t": 33243.2432432432,
       "e": "ScrollSpeed",
       "v": {
@@ -41,6 +57,22 @@
         "strumline": "both",
         "ease": "linear",
         "absolute": false
+      }
+    },
+    {
+      "t": 34054.054054054,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 48158.5316659943,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
       }
     },
     {
@@ -55,6 +87,38 @@
       }
     },
     {
+      "t": 48382.4122630092,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 54868.8987494957,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 55274.3041549011,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 60544.5744251714,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
       "t": 61355.3852359822,
       "e": "ScrollSpeed",
       "v": {
@@ -66,6 +130,30 @@
       }
     },
     {
+      "t": 61760.7906413876,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 74733.7636143606,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 75139.169019766,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
       "t": 75139.169019766,
       "e": "ScrollSpeed",
       "v": {
@@ -74,6 +162,22 @@
         "strumline": "both",
         "ease": "linear",
         "absolute": false
+      }
+    },
+    {
+      "t": 80764.169019766,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 81139.169019766,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
       }
     },
     {
@@ -94,6 +198,177 @@
         "target": "boyfriend",
         "force": false,
         "anim": "singDOWN-alt"
+      }
+    },
+    {
+      "t": 91160.0023530993,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91180.8356864326,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 91201.669019766,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91222.5023530993,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 91243.3356864326,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91264.169019766,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 91285.0023530993,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91305.8356864326,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": false,
+        "anim": "singDOWN-alt"
+      }
+    },
+    {
+      "t": 91333.6134642104,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 91368.3356864326,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91403.0579086549,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 91430.8356864326,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91472.5023530993,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 91493.3356864326,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": false,
+        "anim": "singDOWN-alt"
+      }
+    },
+    {
+      "t": 91576.669019766,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91639.169019766,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 91680.8356864326,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91722.5023530993,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
+      }
+    },
+    {
+      "t": 91764.169019766,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 91805.8356864326,
+      "e": "PlayAnimation",
+      "v": {
+        "target": "boyfriend",
+        "force": false,
+        "anim": "idle"
+      }
+    },
+    {
+      "t": 91805.8356864326,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
       }
     }
   ],
