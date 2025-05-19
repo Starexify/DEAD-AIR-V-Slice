@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "name": "Sarah",
+  "assetPath": "characters/sarah",
+  "flipX": true,
+  "cameraOffsets": [0, 70],
+  "offsets": [10, 55],
+  "healthIcon": {
+    "id": "lomando"
+  },
+  "singTime": 6.1,
+  "animations": [
+    {
+      "name": "idle",
+      "prefix": "sarah",
+      "offsets": [0, 0],
+      "frameRate": 24,
+      "looped": true
+    },
+    {
+      "name": "idle-alt",
+      "prefix": "alt-sarah",
+      "offsets": [50, 40],
+      "frameRate": 24,
+      "looped": true
+    }
+  ]
+}

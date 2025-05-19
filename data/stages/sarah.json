@@ -2,7 +2,55 @@
   "version": "1.0.0",
   "name": "Sarah",
   "cameraZoom": 0.8,
-  "props": [],
+  "props": [
+    {
+      "name": "bglogo",
+      "assetPath": "stages/under-the-tree/bglogo",
+      "position": [370, 86],
+      "startingAnimation": "dance",
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 10,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "bglogo",
+          "name": "dance",
+          "looped": true
+        }
+      ]
+    },
+    {
+      "name": "eyes",
+      "assetPath": "stages/under-the-tree/eyes",
+      "position": [0, -20],
+      "scale": [1, 1],
+      "scroll": [0, 0],
+      "zIndex": 10,
+      "animations": [
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "eyes",
+          "name": "appear"
+        },
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "idleeyes",
+          "name": "idle"
+        },
+        {
+          "offsets": [0, 0],
+          "frameRate": 24,
+          "prefix": "loopeyes",
+          "name": "loop",
+          "looped": true
+        }
+      ]
+    }
+  ],
   "characters": {
     "bf": { "zIndex": 300, "position": [0, 0], "cameraOffsets": [0, 0] },
     "gf": { "zIndex": 100, "position": [0, 0], "cameraOffsets": [0, 0] },

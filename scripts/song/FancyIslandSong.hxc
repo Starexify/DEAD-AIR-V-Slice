@@ -46,6 +46,9 @@ class FancyIslandSong extends ScriptedSong {
     override function onSongLoaded(event:SongLoadScriptEvent) {
         if (PlayState.instance == null) return;
         state = PlayState.instance;
+        state.camHUD.alpha = 0;
+        state.camGame.alpha = 0;
+
         lomando = CharacterDataParser.fetchCharacter("lomando");
         lomando2 = CharacterDataParser.fetchCharacter("lomando2");
         lomando3 = CharacterDataParser.fetchCharacter("lomando3");
@@ -55,8 +58,6 @@ class FancyIslandSong extends ScriptedSong {
         for (prop in eliz) prop.visible = false;
         state.currentStage.getNamedProp("transitionLomando").visible = state.currentStage.getNamedProp("bludisfromohio").visible = state.currentStage.getNamedProp("doorlomando").visible = false;
 
-        state.camHUD.alpha = 0;
-        state.camGame.alpha = 0;
         doorClosed = FunkinSprite.create(0, 0, "stages/fancy-island/doorint");
         doorClosed.camera = state.camCutscene;
         state.add(doorClosed);

@@ -20,9 +20,8 @@ class BlackFade extends ScriptedSongEvent {
             PlayState.instance.camGame.alpha = hide ? 0 : 1;
         }
         else {
-            var durSeconds = Conductor.instance.stepLengthMs * duration / 1000;
             var alpha = hide ? 0 : 1;
-            FlxTween.tween(PlayState.instance.camGame, {alpha: alpha}, durSeconds);
+            FlxTween.tween(PlayState.instance.camGame, {alpha: alpha}, duration);
         }
     }
 

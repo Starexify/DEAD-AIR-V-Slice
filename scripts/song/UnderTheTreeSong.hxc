@@ -1,9 +1,21 @@
+import funkin.graphics.FunkinSprite;
 import funkin.modding.events.ScriptEvent;
 import funkin.play.PlayState;
+import funkin.play.character.BaseCharacter;
+import funkin.play.character.CharacterDataParser;
+import funkin.play.character.CharacterType;
 import funkin.play.song.ScriptedSong;
+
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
 
 class UnderTheTreeSong extends ScriptedSong {
     var state:PlayState;
+
+    var saySorry:BaseCharacter;
+    var songTitle:FunkinSprite;
+
+    var surprise:FunkinSprite;
 
     function new() {
         super("under-the-tree");
@@ -12,6 +24,49 @@ class UnderTheTreeSong extends ScriptedSong {
     override function onSongLoaded(event:SongLoadScriptEvent) {
         if (PlayState.instance == null) return;
         state = PlayState.instance;
+        saySorry = CharacterDataParser.fetchCharacter("saysorry");
+        state.camHUD.alpha = 0;
+        state.camGame.alpha = 0;
+        state.currentStage.getNamedProp("eyes").visible = false;
 
+        surprise = FunkinSprite.create(0, 0, "stages/under-the-tree/secret");
+        surprise.screenCenter();
+        surprise.visible = false;
+        surprise.camera = state.camCutscene;
+        surprise.scale.set(0.5, 0.52);
+        state.add(surprise);
+
+        songTitle = FunkinSprite.create(460, 300, "titlecards/under-the-tree");
+        songTitle.camera = state.camCutscene;
+        songTitle.alpha = 0;
+        state.add(songTitle);
+    }
+
+    override function onBeatHit(event:SongTimeScriptEvent) {
+        if (state == null) return;
+        switch (event.beat) {
+            case 1:
+                surprise.visible = true;
+                FlxTimer.wait(0.1, () -> surprise.alpha = 0.5);
+                FlxTimer.wait(1.4, () -> state.remove(surprise));
+            case 8:
+                FlxTween.tween(songTitle, {alpha: 1}, 2.4);
+            case 16:
+                FlxTween.tween(state.camHUD, {alpha: 1}, 2.4);
+                FlxTween.tween(songTitle, {alpha: 0}, 3, { onComplete: tween -> state.remove(songTitle) });
+            case 156:
+                state.currentStage.getBoyfriend().idleSuffix = "-alt";
+                state.currentStage.getNamedProp("bglogo").visible = false;
+                state.currentStage.getNamedProp("eyes").visible = true;
+                state.currentStage.getNamedProp("eyes").animation.play("appear");
+            case 164:
+                state.currentStage.getNamedProp("eyes").animation.play("idle");
+                if (saySorry != null) {
+                    state.currentStage.remove(state.currentStage.getBoyfriend());
+                    state.currentStage.addCharacter(saySorry, CharacterType.BF);
+                }
+            case 200:
+                state.currentStage.getNamedProp("eyes").animation.play("loop");
+        }
     }
 }
