@@ -97,8 +97,6 @@ class RememberedSong extends ScriptedSong {
                     });
                     index++;
                 }
-            case 252, 572: state.camGame.visible = false;
-            case 256, 576: state.camGame.visible = true;
             case 382: zoomNotes = false;
             case 500: // Change Character
                 if (boisvert2 != null) {
@@ -130,9 +128,7 @@ class RememberedSong extends ScriptedSong {
 
                 state.camHUD.filters = filters;
                 state.camGame.filters = filters;
-            case 908:
-                state.camGame.visible = false;
-                state.camHUD.visible = false;
+            case 908: state.camHUD.visible = false;
         }
     }
 }

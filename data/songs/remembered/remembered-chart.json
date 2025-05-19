@@ -80,12 +80,28 @@
       }
     },
     {
+      "t": 23625,
+      "e": "Black Fade",
+      "v": {
+        "hide": true,
+        "duration": 0
+      }
+    },
+    {
       "t": 24000,
       "e": "ZoomCamera",
       "v": {
         "ease": "smoothStepIn",
         "duration": 3,
         "zoom": 0.5
+      }
+    },
+    {
+      "t": 24000,
+      "e": "Black Fade",
+      "v": {
+        "hide": false,
+        "duration": 0
       }
     },
     {
@@ -611,10 +627,26 @@
     },
     {
       "t": 53625,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
+      }
+    },
+    {
+      "t": 53625,
       "e": "SetCameraBop",
       "v": {
         "rate": 1,
         "intensity": 0
+      }
+    },
+    {
+      "t": 54000,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": false
       }
     },
     {
@@ -640,6 +672,14 @@
         "target": "boyfriend",
         "force": false,
         "anim": "backwalk"
+      }
+    },
+    {
+      "t": 85125,
+      "e": "Black Fade",
+      "v": {
+        "duration": 0,
+        "hide": true
       }
     }
   ],

@@ -53,17 +53,12 @@ class ShelterSong extends ScriptedSong {
     override function onStepHit(event:SongTimeScriptEvent) {
         if (state == null) return;
         switch (event.step) {
-            case 78: state.camGame.visible = true;
-            case 527:
-                FlxTween.tween(state.camGame, {alpha: 0}, 2);
-            case 558: state.camGame.alpha = 1;
             case 545:
                 if (jimGun != null) {
                     state.currentStage.remove(state.currentStage.getBoyfriend());
                     state.currentStage.addCharacter(jimGun, CharacterType.BF);
                 }
             case 872:
-                state.camGame.visible = false;
                 state.camHUD.visible = false;
                 songTitle.visible = true;
                 bloodScreen.alpha = 1;
