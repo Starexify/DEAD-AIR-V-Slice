@@ -1,0 +1,98 @@
+import funkin.audio.FunkinSound;
+import funkin.data.song.SongRegistry;
+import funkin.graphics.FunkinCamera;
+import funkin.modding.events.ScriptEvent;
+import funkin.modding.module.ScriptedModule;
+import funkin.play.PlayStatePlaylist;
+import funkin.save.Save;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.freeplay.SongMenuItem;
+import funkin.ui.transition.LoadingState;
+
+import flixel.FlxG;
+import flixel.util.FlxTimer;
+
+class DeadAirFreeplay extends ScriptedModule {
+    var deadAirSongs = ["under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
+
+    function new() {
+        super("DeadAirFreeplay");
+    }
+
+    override function onUpdate(event:UpdateScriptEvent) {
+        if (Std.isOfType(FlxG.state.subState, FreeplayState)) {
+            var capsule = FlxG.state.subState.grpCapsules.members[FlxG.state.subState.curSelected];
+            if (capsule != null && FlxG.state.subState.curSelected != 0 && deadAirSongs.contains(capsule?.freeplayData?.data.id)) {
+                capsule.onConfirm = () -> {
+                    if (!FlxG.state.subState.busy) capsuleOnConfirmDeadAir(capsule);
+                }
+            }
+        }
+    }
+
+    function capsuleOnConfirmDeadAir(cap:SongMenuItem) {
+        FlxG.state.subState.busy = true;
+        FlxG.state.subState.letterSort.inputEnabled = false;
+
+        PlayStatePlaylist.isStoryMode = false;
+
+        var targetSongId:String = (FlxG.random.bool(20) && !Save.instance.hasBeatenSong("tmpb2hpbw==")) ? "tmpb2hpbw==" : cap.freeplayData.data.id;
+        var targetSongNullable = SongRegistry.instance.fetchEntry(targetSongId);
+        if (targetSongNullable == null) {
+            FlxG.log.warn("WARN: could not find song with id (" + targetSongId + ")");
+            return;
+        }
+        var targetSong = targetSongNullable;
+        var targetLevelId:String = cap.freeplayData.levelId;
+        var targetInstId:String = null;
+        PlayStatePlaylist.campaignId = targetLevelId;
+
+        var targetDifficulty = targetSong.getDifficulty(FlxG.state.subState.currentDifficulty, FlxG.state.subState.currentVariation);
+        if (targetDifficulty == null) {
+            FlxG.log.warn("WARN: could not find difficulty with id (" + currentDifficulty + ")");
+            return;
+        }
+
+        if (targetInstId == null) {
+            var baseInstrumentalId:String = targetSong.getBaseInstrumentalId(FlxG.state.subState.currentDifficulty, FlxG.state.subState.currentVariation);
+            targetInstId = baseInstrumentalId;
+        }
+
+        for (i in 0...FlxG.state.subState.grpCapsules.members.length) {
+            if (i == FlxG.state.subState.curSelected) continue;
+            FlxG.state.subState.grpCapsules.members[i].alpha = 0;
+        }
+
+        FlxG.sound.music.stop();
+        FunkinSound.playOnce(Paths.sound('confirmMenu'));
+
+        FlxG.state.subState.grpCapsules.members[FlxG.state.subState.curSelected].forcePosition();
+        FlxG.state.subState.grpCapsules.members[FlxG.state.subState.curSelected].confirm();
+        FlxG.state.subState.albumRoll.albumId = "takeover";
+
+        new FlxTimer().start(FlxG.state.subState.styleData.getStartDelay(), function(tmr:FlxTimer) {
+            fadeCam = new FunkinCamera("fadeCam");
+            FlxG.cameras.add(fadeCam, false);
+            fadeCam.bgColor = 0x0;
+            fadeCam.visible = true;
+
+            fadeCam.fade(0xFF000000, 1);
+        });
+
+        new FlxTimer().start(3.5, function(tmr:FlxTimer) {
+            FunkinSound.emptyPartialQueue();
+
+            Paths.setCurrentLevel(targetLevelId);
+            LoadingState.loadPlayState({
+                targetSong: targetSong,
+                targetDifficulty: FlxG.state.subState.currentDifficulty,
+                targetVariation: FlxG.state.subState.currentVariation,
+                targetInstrumental: targetInstId,
+                practiceMode: false,
+                minimalMode: false,
+
+                botPlayMode: false,
+            }, true);
+        });
+    }
+}
