@@ -8,6 +8,9 @@ import funkin.play.PlayState;
 import funkin.play.Countdown;
 
 import flixel.util.FlxTimer;
+import flixel.tweens.FlxTween;
+import flixel.tweens.FlxEase;
+import funkin.util.WindowUtil;
 
 class DeadAirMain extends ScriptedModule {
     var includedSongs = ["tmpb2hpbw==", "under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
@@ -21,6 +24,8 @@ class DeadAirMain extends ScriptedModule {
         if (PlayState.instance == null) return;
 
         if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) {
+            WindowUtil.setWindowTitle("FNF': Dead Air");
+
             state = PlayState.instance;
             var events = [
                 {type: "FocusCamera", params: {char: 0}},
@@ -35,6 +40,10 @@ class DeadAirMain extends ScriptedModule {
         }
     }
 
+    override function onStateChangeBegin(event:StateChangeScriptEvent) {
+        WindowUtil.setWindowTitle("Friday Night Funkin'");
+    }
+
     override function onCountdownStart(event:CountdownScriptEvent) {
         if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) {
             new FlxTimer().start(0.01, timer -> {
@@ -44,8 +53,15 @@ class DeadAirMain extends ScriptedModule {
     }
 
     override function onSubStateOpenEnd(event:SubStateScriptEvent) {
-        if (PlayState.instance != null && PlayState.instance.currentChart.songName == "shelter" && Std.isOfType(event.targetState, PauseSubState)) {
-            event.targetState.metadata.forEach(text -> text.font = Paths.font("shelter.ttf"));
+        if (Std.isOfType(event.targetState, PauseSubState)) {
+            var pauseState:PauseSubState = event.targetState;
+            if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) {
+                FlxTween.cancelTweensOf(pauseState.background);
+                FlxTween.tween(pauseState.background, {alpha: 1}, 1.2, {ease: FlxEase.quartOut});
+            }
+            if (PlayState.instance != null && PlayState.instance.currentChart.songName == "shelter") {
+                pauseState.metadata.forEach(text -> text.font = Paths.font("shelter.ttf"));
+            }
         }
     }
 }
