@@ -5,6 +5,10 @@
     {
       "name": "ImVeryBad",
       "role": "Porter"
+    },
+    {
+      "name": "Comedy Lost",
+      "role": "Helped with code"
     }
   ],
   "api_version": "0.6.3",
