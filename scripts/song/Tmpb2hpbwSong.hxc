@@ -1,0 +1,96 @@
+import funkin.Conductor;
+import funkin.graphics.video.FunkinVideoSprite;
+import funkin.modding.events.ScriptEvent;
+import funkin.play.PlayState;
+import funkin.play.song.ScriptedSong;
+
+import flixel.FlxG;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
+
+class Tmpb2hpbwSong extends ScriptedSong {
+    var state:PlayState;
+
+    var warningVid:FunkinVideoSprite;
+    var webdriverTorso:FunkinVideoSprite;
+    var pausedGame:Bool = false;
+    var mayEnter:Bool = false;
+
+    function new() {
+        super("tmpb2hpbw==");
+    }
+
+    override function onSongLoaded(event:SongLoadScriptEvent) {
+        if (PlayState.instance == null) return;
+        state = PlayState.instance;
+        state.camHUD.alpha = 0;
+
+        webdriverTorso = new FunkinVideoSprite();
+        webdriverTorso.camera = state.camCutscene;
+        webdriverTorso.bitmap.onFormatSetup.add(() -> {
+            if (webdriverTorso == null) return;
+            webdriverTorso.setGraphicSize(FlxG.width, FlxG.height);
+            webdriverTorso.updateHitbox();
+            webdriverTorso.x = 0;
+            webdriverTorso.y = 0;
+        });
+        webdriverTorso.bitmap.onEndReached.add(() -> state.remove(webdriverTorso));
+        state.add(webdriverTorso);
+
+        warningVid = new FunkinVideoSprite();
+        warningVid.camera = state.camCutscene;
+        if (warningVid.load(Paths.videos("warn"))) warningVid.play();
+        warningVid.bitmap.onFormatSetup.add(() -> {
+            if (warningVid == null) return;
+            warningVid.setGraphicSize(FlxG.width, FlxG.height);
+            warningVid.updateHitbox();
+            warningVid.x = 0;
+            warningVid.y = 0;
+            pausedGame = true;
+            state.pauseMusic();
+            state.mayPauseGame = false;
+        });
+        warningVid.bitmap.onEndReached.add(() -> {
+            warningVid.pause();
+            mayEnter = true;
+        });
+
+        state.add(warningVid);
+    }
+
+    override function onStepHit(event:SongTimeScriptEvent) {
+        if (state == null) return;
+        switch (event.step) {
+            case 80:
+                webdriverTorso.camera = state.camHUD;
+                FlxTween.tween(state.camHUD, {alpha: 1}, 0.8);
+            case 688:
+                webdriverTorso.camera = state.camCutscene;
+                state.camHUD.alpha = 0;
+        }
+    }
+
+    override function onUpdate(event:UpdateScriptEvent) {
+        if (pausedGame) {
+            Conductor.instance.update(0);
+
+            if (FlxG.keys.justPressed.ENTER && mayEnter) {
+                pausedGame = false;
+                FlxTimer.wait(0.01, () -> state.mayPauseGame = true);
+                warningVid.stop();
+                state.remove(warningVid);
+                if (FlxG.sound.music != null) FlxG.sound.music.resume();
+                if (state.vocals != null) state.vocals.resume();
+                if (webdriverTorso.load(Paths.videos("vid"))) webdriverTorso.play();
+            }
+        }
+    }
+
+    override function onPause(event:PauseScriptEvent) {
+        if (webdriverTorso != null) webdriverTorso.pause();
+    }
+
+    override function onResume(event:ScriptEvent) {
+        if (webdriverTorso != null) webdriverTorso.resume();
+    }
+}

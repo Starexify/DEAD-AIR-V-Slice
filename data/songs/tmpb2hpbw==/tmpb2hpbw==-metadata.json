@@ -1,0 +1,38 @@
+{
+  "version": "2.2.4",
+  "songName": "tmpb2hpbw==",
+  "artist": "Unknown",
+  "looped": false,
+  "playData": {
+    "songVariations": [    ],
+    "difficulties": [ "normal" ],
+    "characters": {
+      "player": "none",
+      "girlfriend": "none",
+      "opponent": "none",
+      "instrumental": ""
+    },
+    "stage": "number2",
+    "noteStyle": "mypenisnotes",
+    "ratings": { "normal": 0 },
+    "previewStart": 0,
+    "previewEnd": 0
+  },
+  "timeFormat": "ms",
+  "timeChanges": [
+    {
+      "t": 0,
+      "b": 0,
+      "bpm": 171,
+      "n": 4,
+      "d": 4,
+      "bt": [
+        4,
+        4,
+        4,
+        4
+      ]
+    }
+  ],
+  "generatedBy": "Friday Night Funkin' - v0.6.4"
+}

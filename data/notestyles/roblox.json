@@ -40,7 +40,7 @@
     "holdNote": {
       "assetPath": "NOTE_roblox_hold_assets",
       "offsets": [0, 10],
-      "scale": 0.4,
+      "scale": 0.7,
       "data": {}
     },
     "noteSplash": {

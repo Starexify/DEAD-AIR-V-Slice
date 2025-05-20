@@ -1,5 +1,6 @@
 import funkin.graphics.FunkinSprite;
 import funkin.graphics.shaders.RuntimeRainShader;
+import funkin.graphics.video.FunkinVideoSprite;
 import funkin.play.PlayState;
 import funkin.play.song.ScriptedSong;
 import funkin.play.stage.StageProp;
@@ -11,13 +12,12 @@ import flixel.tweens.FlxTween;
 
 import openfl.filters.ShaderFilter;
 
-import hxvlc.flixel.FlxVideoSprite;
 
 class BigEaterSong extends ScriptedSong {
     var state:PlayState;
 
-    var introVid:FlxVideoSprite;
-    var runVid:FlxVideoSprite;
+    var introVid:FunkinVideoSprite;
+    var runVid:FunkinVideoSprite;
 
     var flash:FunkinSprite;
     var blackout:FunkinSprite;
@@ -38,7 +38,7 @@ class BigEaterSong extends ScriptedSong {
         johnBg = state.currentStage.getNamedProp("johnbg");
         johnBg.alpha = 0;
 
-        introVid = new FlxVideoSprite(0, 0);
+        introVid = new FunkinVideoSprite(0, 0);
         introVid.antialiasing = true;
         introVid.load(Paths.videos("john_intro"));
         introVid.camera = state.camCutscene;
@@ -54,7 +54,7 @@ class BigEaterSong extends ScriptedSong {
         introVid.bitmap.onEndReached.add(introVid.destroy);
         state.add(introVid);
 
-        runVid = new FlxVideoSprite(0, 0);
+        runVid = new FunkinVideoSprite(0, 0);
         runVid.antialiasing = true;
         runVid.load(Paths.videos("john_run"));
         runVid.camera = state.camGame;
