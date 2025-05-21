@@ -3,9 +3,11 @@ package ui;
 import funkin.Conductor;
 import funkin.Preferences;
 import funkin.audio.FunkinSound;
+import funkin.graphics.FunkinCamera;
 import funkin.graphics.FunkinSprite;
 import funkin.modding.base.ScriptedFlxRuntimeShader;
 import funkin.modding.base.ScriptedMusicBeatState;
+import funkin.modding.base.ScriptedMusicBeatSubState;
 import funkin.ui.AtlasMenuItem;
 import funkin.ui.AtlasMenuList;
 import funkin.ui.MenuTypedList;
@@ -14,6 +16,7 @@ import funkin.ui.options.OptionsState;
 import funkin.util.WindowUtil;
 
 import flixel.FlxG;
+import flixel.FlxSubState;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -23,8 +26,10 @@ import openfl.filters.ShaderFilter;
 
 import Main;
 
-class DeadAirMenu extends ScriptedMusicBeatState {
+class DeadAirMenuState extends ScriptedMusicBeatState {
     var menuItems:MenuTypedList<AtlasMenuItem>;
+
+    var camMenu:FunkinCamera;
 
     var bg:FunkinSprite;
     var logo:FunkinSprite;
@@ -33,16 +38,17 @@ class DeadAirMenu extends ScriptedMusicBeatState {
     var buttonPointer:FunkinSprite;
 
     var rememberedSelectedIndex:Int = 0;
+    var isInMenu:Bool = false;
 
     var blockyFilter:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("Testing");
 
-    function new() {
-        super();
-    }
-
     override function create() {
         blockyFilter.setFloatArray("uBlocksize", [3, 3]);
-        this.camera.filters = [new ShaderFilter(blockyFilter)];
+
+        camMenu = new FunkinCamera("camMenu");
+        camMenu.bgColor = 0x0;
+        FlxG.cameras.add(camMenu, false);
+        camMenu.filters = [new ShaderFilter(blockyFilter)];
 
         WindowUtil.setWindowTitle("FNF': Dead Air");
         showDebugDisplay(false);
@@ -64,6 +70,7 @@ class DeadAirMenu extends ScriptedMusicBeatState {
 
         flash = FunkinSprite.create(0, 0).makeSolidColor(FlxG.width, FlxG.height, 0xFFFFFFFF);
         flash.alpha = 0;
+        flash.camera = camMenu;
         add(flash);
 
         logo = FunkinSprite.create(0, 0, "mainmenu/deadair/logo");
@@ -71,23 +78,31 @@ class DeadAirMenu extends ScriptedMusicBeatState {
         logo.updateHitbox();
         logo.screenCenter();
         logo.alpha = 0;
+        logo.camera = camMenu;
         add(logo);
 
         separator = FunkinSprite.create(26, 303, "mainmenu/deadair/sep");
         separator.alpha = 0;
+        separator.camera = camMenu;
         add(separator);
 
         buttonPointer = FunkinSprite.create(0, 0, "mainmenu/deadair/button_pointer");
         buttonPointer.alpha = 0;
+        buttonPointer.camera = camMenu;
         add(buttonPointer);
 
         menuItems = new MenuTypedList();
+        menuItems.onChange.add(item -> {
+            FunkinSound.stopAllAudio();
+            FunkinSound.playOnce(Paths.sound("dead-air/scrollMenu"));
+        });
         menuItems.enabled = false;
+        menuItems.camera = camMenu;
         add(menuItems);
 
         createMenuItem("play", "mainmenu/deadair/entries", () -> {
             FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
-            trace("Play");
+            openSubState(ScriptedMusicBeatSubState.init("ui.DeadAirPlaySubState"));
         }, true);
         createMenuItem("options", "mainmenu/deadair/entries", () -> {
             FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
@@ -119,8 +134,9 @@ class DeadAirMenu extends ScriptedMusicBeatState {
                 logo.clipRect = null;
                 FlxTween.tween(logo, {alpha: 0}, 1, {
                     onComplete: tween -> {
-                        this.camera.filters = [];
+                        camMenu.filters = [];
                         FlxTimer.wait(2, () -> {
+                            isInMenu = true;
                             flash.alpha = 1;
                             bg.alpha = 1;
                             logo.alpha = 1;
@@ -134,8 +150,8 @@ class DeadAirMenu extends ScriptedMusicBeatState {
                             logo.setGraphicSize(Std.int(logo.width * 0.5));
 
                             showDebugDisplay(true);
-                            FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.1, {
-                                onComplete: tween -> FlxTween.tween(FlxG.camera, {zoom: 1}, 0.8)
+                            FlxTween.tween(camMenu, {zoom: 1.1}, 0.1, {
+                                onComplete: tween -> FlxTween.tween(camMenu, {zoom: 1}, 0.8)
                             });
                             FlxTween.tween(flash, {alpha: 0}, 0.9, { onComplete: tween -> this.remove(flash) });
                         });
@@ -158,6 +174,19 @@ class DeadAirMenu extends ScriptedMusicBeatState {
         Conductor.instance.update();
 
         if (_exiting) menuItems.enabled = false;
+    }
+
+    override function onOpenSubStateComplete(targetState:FlxSubState) {
+        camMenu.visible = false;
+        menuItems.enabled = false;
+
+        super.onOpenSubStateComplete(targetState);
+    }
+
+    override function onCloseSubStateComplete(targetState:FlxSubState) {
+        camMenu.visible = true;
+        if (isInMenu) menuItems.enabled = true;
+        super.onCloseSubStateComplete(targetState);
     }
 
     override function destroy() {

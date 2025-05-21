@@ -1,0 +1,89 @@
+package ui;
+
+import funkin.audio.FunkinSound;
+import funkin.graphics.FunkinCamera;
+import funkin.graphics.FunkinSprite;
+import funkin.modding.base.ScriptedFlxRuntimeShader;
+import funkin.modding.base.ScriptedMusicBeatSubState;
+import funkin.ui.MenuTypedItem;
+import funkin.ui.MenuTypedList;
+
+import flixel.FlxG;
+import flixel.text.FlxText;
+
+import openfl.filters.ShaderFilter;
+
+class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
+    var includedSongs = ["tmpb2hpbw==", "under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
+
+    var menuItems:MenuTypedList<MenuTypedItem>;
+
+    var blockyFilter:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("Testing");
+
+    var camItems:FunkinCamera;
+    var camAlbum:FunkinCamera;
+
+    var listBg:FunkinSprite;
+    var albumFrame:FunkinSprite;
+
+    override function create() {
+        blockyFilter.setFloatArray("uBlocksize", [3, 3]);
+
+        listBg = FunkinSprite.create(75, 74).makeSolidColor(350, 570, 0xFF000000);
+        add(listBg);
+
+        camItems = new FunkinCamera("camItems", listBg.x, listBg.y, listBg.width, listBg.height);
+        camItems.bgColor = 0x0;
+        FlxG.cameras.add(camItems, false);
+        camItems.filters = [new ShaderFilter(blockyFilter)];
+
+        menuItems = new MenuTypedList();
+        menuItems.camera = camItems;
+        menuItems.onChange.add(item -> {
+            FunkinSound.stopAllAudio();
+            FunkinSound.playOnce(Paths.sound("dead-air/scrollMenu"));
+        });
+
+        for (song in includedSongs) {
+            createMenuItem(song, () -> trace(song), false);
+        }
+
+        add(menuItems);
+
+        for (i in 0...menuItems.length) menuItems.members[i].y += 90 * i;
+
+        albumFrame = FunkinSprite.create(725, 105).makeSolidColor(510, 505, 0xFFFFFFFF);
+        add(albumFrame);
+
+        super.create();
+    }
+
+    override function update(elapsed:Float) {
+        if (controls.BACK) {
+            FunkinSound.playOnce(Paths.sound("dead-air/cancelMenu"));
+            close();
+        }
+
+        super.update(elapsed);
+    }
+
+
+    // Helper methods
+    function createMenuItem(name:String, callback:Void -> Void, fireInstantly:Bool) {
+        var item = new MenuTypedItem(0, (camItems.height * 0.5), new FlxText(), name);
+        item.setEmptyBackground();
+        item.fireInstantly = fireInstantly;
+        item.ID = menuItems.length;
+        item.callback = callback;
+        item.label.setFormat("Neuton-Regular", 35);
+        item.label.text = item.name;
+        item.x = camItems.width * 0.5 - item.label.width * 0.5;
+
+        menuItems.addItem(name, item);
+    }
+
+    override function close() {
+        remove(listBg);
+        remove(albumFrame);
+    }
+}

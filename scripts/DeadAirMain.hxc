@@ -15,6 +15,7 @@ import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import funkin.graphics.FunkinSprite;
+import funkin.ui.mainmenu.MainMenuState;
 
 class DeadAirMain extends ScriptedModule {
     var state:PlayState;
@@ -88,9 +89,9 @@ class DeadAirMain extends ScriptedModule {
     }
 
     override function onUpdate(event:UpdateScriptEvent) {
-        if (FlxG.keys.justPressed.TAB) {
+        if (Std.isOfType(FlxG.state, MainMenuState) && FlxG.keys.justPressed.TAB) {
             enterDeadAirMenu = !enterDeadAirMenu;
-            FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenu"));
+            FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
         }
     }
 
