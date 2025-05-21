@@ -13,7 +13,7 @@ class Tmpb2hpbwSong extends ScriptedSong {
 
     var warningVid:FunkinVideoSprite;
     var webdriverTorso:FunkinVideoSprite;
-    var pausedGame:Bool = false;
+    var pausedGame:Bool = true;
     var mayEnter:Bool = false;
 
     function new() {
@@ -24,6 +24,7 @@ class Tmpb2hpbwSong extends ScriptedSong {
         if (PlayState.instance == null) return;
         state = PlayState.instance;
         state.camHUD.alpha = 0;
+        state.camGame.alpha = 0;
 
         webdriverTorso = new FunkinVideoSprite();
         webdriverTorso.camera = state.camCutscene;
@@ -34,7 +35,7 @@ class Tmpb2hpbwSong extends ScriptedSong {
             webdriverTorso.x = 0;
             webdriverTorso.y = 0;
         });
-        webdriverTorso.bitmap.onEndReached.add(() -> state.remove(webdriverTorso));
+        webdriverTorso.bitmap.onEndReached.add(() -> webdriverTorso.destroy());
         state.add(webdriverTorso);
 
         warningVid = new FunkinVideoSprite();
@@ -49,6 +50,7 @@ class Tmpb2hpbwSong extends ScriptedSong {
             pausedGame = true;
             state.pauseMusic();
             state.mayPauseGame = false;
+            state.isInCutscene = true;
         });
         warningVid.bitmap.onEndReached.add(() -> {
             warningVid.pause();
@@ -62,9 +64,11 @@ class Tmpb2hpbwSong extends ScriptedSong {
         if (state == null) return;
         switch (event.step) {
             case 80:
+                state.isInCutscene = false;
                 webdriverTorso.camera = state.camHUD;
                 FlxTween.tween(state.camHUD, {alpha: 1}, 0.8);
             case 688:
+                state.isInCutscene = true;
                 webdriverTorso.camera = state.camCutscene;
                 state.camHUD.alpha = 0;
         }

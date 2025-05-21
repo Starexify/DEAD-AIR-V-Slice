@@ -7,7 +7,7 @@
     "songVariations": [    ],
     "difficulties": [ "normal" ],
     "characters": {
-      "player": "none",
+      "player": "bf",
       "girlfriend": "none",
       "opponent": "none",
       "instrumental": ""
