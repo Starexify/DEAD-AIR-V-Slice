@@ -1,5 +1,6 @@
 import funkin.data.event.SongEventRegistry;
 import funkin.data.song.SongEventDataRaw;
+import funkin.modding.base.ScriptedMusicBeatState;
 import funkin.modding.events.ScriptEvent;
 import funkin.modding.events.SongEventScriptEvent;
 import funkin.modding.module.ScriptedModule;
@@ -9,12 +10,11 @@ import funkin.play.PlayState;
 import funkin.play.ResultState;
 import funkin.util.WindowUtil;
 
+import flixel.FlxG;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 import funkin.graphics.FunkinSprite;
-import flixel.FlxG;
-import funkin.modding.base.ScriptedMusicBeatState;
 
 class DeadAirMain extends ScriptedModule {
     var state:PlayState;
@@ -89,5 +89,18 @@ class DeadAirMain extends ScriptedModule {
             enterDeadAirMenu = !enterDeadAirMenu;
             FlxG.switchState(ScriptedMusicBeatState.init("DeadAirMenu"));
         }
+    }
+
+    // Mute Miss Sounds for dead air songs
+    override function onNoteMiss(event:NoteScriptEvent) {
+        if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) event.playSound = false;
+    }
+
+    override function onNoteGhostMiss(event:GhostMissNoteScriptEvent) {
+        if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) event.playSound = false;
+    }
+
+    override function onNoteHoldDrop(event:HoldNoteScriptEvent) {
+        if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) event.playSound = false;
     }
 }

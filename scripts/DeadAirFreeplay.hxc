@@ -64,7 +64,7 @@ class DeadAirFreeplay extends ScriptedModule {
         }
 
         FlxG.sound.music.stop();
-        FunkinSound.playOnce(Paths.sound('confirmMenu'));
+        FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
 
         FlxG.state.subState.grpCapsules.members[FlxG.state.subState.curSelected].forcePosition();
         FlxG.state.subState.grpCapsules.members[FlxG.state.subState.curSelected].confirm();

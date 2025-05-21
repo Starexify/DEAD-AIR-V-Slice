@@ -83,7 +83,7 @@ class BigEaterSong extends ScriptedSong {
         state.add(blackout);
 
         rainShader.scale = 6;
-        rainShader.intensity = 0.1;
+        rainShader.intensity = 0.08;
         evilShader.setFloat("pix", 0.00001);
     }
 
