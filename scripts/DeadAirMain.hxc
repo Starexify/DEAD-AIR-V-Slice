@@ -34,6 +34,9 @@ class DeadAirMain extends ScriptedModule {
             WindowUtil.setWindowTitle("FNF': Dead Air");
 
             state = PlayState.instance;
+
+            state.discordRPCAlbum = "https://raw.githubusercontent.com/Starexify/DEAD-AIR-V-Slice/refs/heads/0.6.x/images/freeplay/albumRoll/" + state.currentChart.songName + ".png";
+
             var events = [
                 {type: "FocusCamera", params: {char: 0}},
                 {type: "SetCameraBop", params: {intensity: 0}}
