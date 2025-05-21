@@ -93,14 +93,17 @@ class DeadAirMain extends ScriptedModule {
 
     // Mute Miss Sounds for dead air songs
     override function onNoteMiss(event:NoteScriptEvent) {
+        if (PlayState.instance == null) return;
         if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) event.playSound = false;
     }
 
     override function onNoteGhostMiss(event:GhostMissNoteScriptEvent) {
+        if (PlayState.instance == null) return;
         if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) event.playSound = false;
     }
 
     override function onNoteHoldDrop(event:HoldNoteScriptEvent) {
+        if (PlayState.instance == null) return;
         if (includedSongs.indexOf(PlayState.instance.currentChart.songName) != -1) event.playSound = false;
     }
 }

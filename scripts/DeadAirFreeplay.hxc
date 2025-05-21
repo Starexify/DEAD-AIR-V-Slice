@@ -1,6 +1,7 @@
 import funkin.audio.FunkinSound;
 import funkin.data.song.SongRegistry;
 import funkin.graphics.FunkinCamera;
+import funkin.graphics.shaders.HSVShader;
 import funkin.modding.events.ScriptEvent;
 import funkin.modding.module.ScriptedModule;
 import funkin.play.PlayStatePlaylist;
@@ -12,6 +13,8 @@ import funkin.ui.transition.LoadingState;
 import flixel.FlxG;
 import flixel.util.FlxTimer;
 
+import openfl.filters.ShaderFilter;
+
 class DeadAirFreeplay extends ScriptedModule {
     var deadAirSongs = ["tmpb2hpbw==", "under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
 
@@ -21,18 +24,17 @@ class DeadAirFreeplay extends ScriptedModule {
 
     override function onUpdate(event:UpdateScriptEvent) {
         if (Std.isOfType(FlxG.state.subState, FreeplayState)) {
-            var capsule = FlxG.state.subState.grpCapsules.members[FlxG.state.subState.curSelected];
-            if (capsule != null && FlxG.state.subState.curSelected != 0 && deadAirSongs.contains(capsule?.freeplayData?.data.id)) {
-                capsule.onConfirm = () -> {
-                    if (!FlxG.state.subState.busy) capsuleOnConfirmDeadAir(capsule);
-                }
+            var freeplay:FreeplayState = FlxG.state.subState;
+            var capsule:SongMenuItem = freeplay.grpCapsules.members[freeplay.curSelected];
+            if (capsule != null && freeplay.curSelected != 0 && deadAirSongs.contains(capsule?.freeplayData?.data.id)) {
+                capsule.onConfirm = () -> if (!freeplay.busy) capsuleOnConfirmDeadAir(freeplay, capsule);
             }
         }
     }
 
-    function capsuleOnConfirmDeadAir(cap:SongMenuItem) {
-        FlxG.state.subState.busy = true;
-        FlxG.state.subState.letterSort.inputEnabled = false;
+    function capsuleOnConfirmDeadAir(fpState:FreeplayState, cap:SongMenuItem) {
+        fpState.busy = true;
+        fpState.letterSort.inputEnabled = false;
 
         PlayStatePlaylist.isStoryMode = false;
 
@@ -47,31 +49,39 @@ class DeadAirFreeplay extends ScriptedModule {
         var targetInstId:String = null;
         PlayStatePlaylist.campaignId = targetLevelId;
 
-        var targetDifficulty = targetSong.getDifficulty(FlxG.state.subState.currentDifficulty, FlxG.state.subState.currentVariation);
+        var targetDifficulty = targetSong.getDifficulty(fpState.currentDifficulty, fpState.currentVariation);
         if (targetDifficulty == null) {
             FlxG.log.warn("WARN: could not find difficulty with id (" + currentDifficulty + ")");
             return;
         }
 
         if (targetInstId == null) {
-            var baseInstrumentalId:String = targetSong.getBaseInstrumentalId(FlxG.state.subState.currentDifficulty, FlxG.state.subState.currentVariation);
+            var baseInstrumentalId:String = targetSong.getBaseInstrumentalId(fpState.currentDifficulty, fpState.currentVariation);
             targetInstId = baseInstrumentalId;
         }
 
-        for (i in 0...FlxG.state.subState.grpCapsules.members.length) {
-            if (i == FlxG.state.subState.curSelected) continue;
-            FlxG.state.subState.grpCapsules.members[i].alpha = 0;
+        for (i in 0...fpState.grpCapsules.members.length) {
+            if (i == fpState.curSelected) continue;
+            fpState.grpCapsules.members[i].alpha = 0;
         }
 
         FlxG.sound.music.stop();
         FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
+        fpState.grpCapsules.members[fpState.curSelected].forcePosition();
+        fpState.grpCapsules.members[fpState.curSelected].confirm();
 
-        FlxG.state.subState.grpCapsules.members[FlxG.state.subState.curSelected].forcePosition();
-        FlxG.state.subState.grpCapsules.members[FlxG.state.subState.curSelected].confirm();
-        FlxG.state.subState.albumRoll.albumId = "takeover";
+        // Change album saturation
+        var albumCam = new FunkinCamera('albumCam');
+        albumCam.bgColor = 0x0;
+        albumCam.visible = true;
+        FlxG.cameras.add(albumCam, false);
+        var colorShader:HSVShader = new HSVShader();
+        colorShader.saturation = 0;
+        FlxG.state.subState.albumRoll.cameras = [albumCam];
+        albumCam.filters = [new ShaderFilter(colorShader)];
 
-        new FlxTimer().start(FlxG.state.subState.styleData.getStartDelay(), function(tmr:FlxTimer) {
-            fadeCam = new FunkinCamera("fadeCam");
+        new FlxTimer().start(fpState.styleData.getStartDelay(), tmr -> {
+            var fadeCam:FunkinCamera = new FunkinCamera("fadeCam");
             FlxG.cameras.add(fadeCam, false);
             fadeCam.bgColor = 0x0;
             fadeCam.visible = true;
@@ -79,7 +89,7 @@ class DeadAirFreeplay extends ScriptedModule {
             fadeCam.fade(0xFF000000, 1);
         });
 
-        new FlxTimer().start(3.5, function(tmr:FlxTimer) {
+        new FlxTimer().start(3.5, tmr -> {
             FunkinSound.emptyPartialQueue();
 
             Paths.setCurrentLevel(targetLevelId);

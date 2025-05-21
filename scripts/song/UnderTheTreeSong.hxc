@@ -8,6 +8,9 @@ import funkin.play.song.ScriptedSong;
 
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import funkin.modding.base.ScriptedFlxRuntimeShader;
+import openfl.filters.ShaderFilter;
+import funkin.graphics.shaders.ColorSwap;
 
 class UnderTheTreeSong extends ScriptedSong {
     var state:PlayState;
@@ -40,6 +43,9 @@ class UnderTheTreeSong extends ScriptedSong {
         songTitle.camera = state.camCutscene;
         songTitle.alpha = 0;
         state.add(songTitle);
+
+        var hslShader:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("HSLShader");
+        state.camHUD.filters = [new ShaderFilter(hslShader)];
     }
 
     override function onBeatHit(event:SongTimeScriptEvent) {

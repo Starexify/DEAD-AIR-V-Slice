@@ -2,8 +2,11 @@ import funkin.Conductor;
 import funkin.Preferences;
 import funkin.audio.FunkinSound;
 import funkin.graphics.FunkinSprite;
+import funkin.modding.base.ScriptedFlxRuntimeShader;
 import funkin.modding.base.ScriptedMusicBeatState;
+import funkin.ui.AtlasMenuItem;
 import funkin.ui.mainmenu.MainMenuState;
+import funkin.ui.options.OptionsState;
 import funkin.util.WindowUtil;
 
 import flixel.FlxG;
@@ -11,19 +14,30 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
+import openfl.filters.ShaderFilter;
+
 import Main;
+import funkin.ui.MenuTypedList;
+import funkin.ui.AtlasMenuList.AtlasMenuItem;
+
 
 class DeadAirMenu extends ScriptedMusicBeatState {
+    var menuItems:MenuTypedList<AtlasMenuItem>;
+
     var bg:FunkinSprite;
     var logo:FunkinSprite;
     var flash:FunkinSprite;
     var separator:FunkinSprite;
+
+    var blockyFilter:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("Testing");
 
     function new() {
         super();
     }
 
     override function create() {
+        blockyFilter.setFloatArray("uBlocksize", [3, 3]);
+        this.camera.filters = [new ShaderFilter(blockyFilter)];
         if (Preferences.debugDisplay) {
             Main.fpsCounter.visible = false;
             Main.memoryCounter.visible = false;
@@ -62,6 +76,11 @@ class DeadAirMenu extends ScriptedMusicBeatState {
         separator.alpha = 0;
         add(separator);
 
+        menuItems = new MenuTypedList();
+        add(menuItems);
+
+        createMenuItem("options", "mainmenu/deadair/entries", () -> startExitState(() -> new OptionsState()));
+
         var letterWidths:Array<Int> = [37, 37, 37, 74, 37, 37, 37];
 
         var letterPositions:Array<Int> = [0];
@@ -81,6 +100,7 @@ class DeadAirMenu extends ScriptedMusicBeatState {
                 logo.clipRect = null;
                 FlxTween.tween(logo, {alpha: 0}, 1, {
                     onComplete: tween -> {
+                        blockyFilter.setFloatArray("uBlocksize", [2, 2]);
                         FlxTimer.wait(2, () -> {
                             flash.alpha = 1;
                             bg.alpha = 1;
@@ -122,8 +142,22 @@ class DeadAirMenu extends ScriptedMusicBeatState {
         remove(bg);
         remove(logo);
         remove(flash);
-        //FlxG.switchState(ScriptedMusicBeatState.init("DeadAirMenu"));
+        if (Preferences.debugDisplay) {
+            Main.fpsCounter.visible = true;
+            Main.memoryCounter.visible = true;
+        }
         FlxG.switchState(new MainMenuState());
+    }
+
+    // Helper methods
+    function createMenuItem(name:String, atlas:String, callback:Void -> Void, fireInstantly:Bool = false) {
+        var item = new AtlasMenuItem(name, Paths.getSparrowAtlas(atlas), callback);
+        item.ID = 1;
+        item.animation.addByPrefix("credits", "credits");
+        item.animation.play("credits");
+        item.scrollFactor.set();
+
+        menuItems.addItem(name, item);
     }
 
     function startExitState(state) {
