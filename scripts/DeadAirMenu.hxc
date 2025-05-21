@@ -1,0 +1,142 @@
+import funkin.Conductor;
+import funkin.Preferences;
+import funkin.audio.FunkinSound;
+import funkin.graphics.FunkinSprite;
+import funkin.modding.base.ScriptedMusicBeatState;
+import funkin.ui.mainmenu.MainMenuState;
+import funkin.util.WindowUtil;
+
+import flixel.FlxG;
+import flixel.addons.transition.FlxTransitionableState;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
+
+import Main;
+
+class DeadAirMenu extends ScriptedMusicBeatState {
+    var bg:FunkinSprite;
+    var logo:FunkinSprite;
+    var flash:FunkinSprite;
+    var separator:FunkinSprite;
+
+    function new() {
+        super();
+    }
+
+    override function create() {
+        if (Preferences.debugDisplay) {
+            Main.fpsCounter.visible = false;
+            Main.memoryCounter.visible = false;
+        }
+
+        WindowUtil.setWindowTitle("FNF': Dead Air");
+        transOut = FlxTransitionableState.defaultTransOut;
+
+        playMenuMusic();
+
+        persistentUpdate = true;
+        persistentDraw = true;
+
+        bg = FunkinSprite.create(0, 0, "mainmenu/deadair/ohiogaming");
+        bg.frames = Paths.getSparrowAtlas("mainmenu/deadair/ohiogaming");
+        bg.animation.addByPrefix("idle", "ohiogaming21", 8, true);
+        bg.animation.play("idle");
+        bg.scale.y = 0.9;
+        bg.updateHitbox();
+        bg.screenCenter();
+        bg.alpha = 0;
+        add(bg);
+
+        flash = FunkinSprite.create(0, 0).makeSolidColor(FlxG.width, FlxG.height, 0xFFFFFFFF);
+        flash.alpha = 0;
+        add(flash);
+
+        logo = FunkinSprite.create(0, 0, "mainmenu/deadair/logo");
+        logo.setGraphicSize(Std.int(logo.width * 2));
+        logo.updateHitbox();
+        logo.screenCenter();
+        logo.alpha = 0;
+        add(logo);
+
+        separator = FunkinSprite.create(26, 303, "mainmenu/deadair/sep");
+        separator.alpha = 0;
+        add(separator);
+
+        var letterWidths:Array<Int> = [37, 37, 37, 74, 37, 37, 37];
+
+        var letterPositions:Array<Int> = [0];
+        for (i in 0...letterWidths.length - 1)
+            letterPositions.push(letterPositions[i] + letterWidths[i]);
+
+        var currentLetterIndex:Int = 0;
+        new FlxTimer().start(0.8, timer -> {
+            currentLetterIndex++;
+            if (currentLetterIndex <= letterWidths.length) {
+                var totalWidth = 0;
+                for (i in 0...currentLetterIndex) totalWidth += letterWidths[i];
+
+                logo.alpha = 1;
+                logo.clipRect = new flixel.math.FlxRect(0, 0, totalWidth, logo.frameHeight);
+            } else {
+                logo.clipRect = null;
+                FlxTween.tween(logo, {alpha: 0}, 1, {
+                    onComplete: tween -> {
+                        FlxTimer.wait(2, () -> {
+                            flash.alpha = 1;
+                            bg.alpha = 1;
+                            logo.alpha = 1;
+                            separator.alpha = 1;
+
+                            logo.x = -107;
+                            logo.y = 100;
+                            logo.setGraphicSize(Std.int(logo.width * 0.5));
+
+                            if (Preferences.debugDisplay) {
+                                Main.fpsCounter.visible = true;
+                                Main.memoryCounter.visible = true;
+                            }
+                            FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.1, {
+                                onComplete: tween -> FlxTween.tween(FlxG.camera, {zoom: 1}, 0.8)
+                            });
+                            FlxTween.tween(flash, {alpha: 0}, 0.9, { onComplete: tween -> this.remove(flash) });
+                        });
+                    }
+                });
+            }
+        }, letterWidths.length + 1);
+
+        super.create();
+    }
+
+    override function update(elapsed:Float) {
+        if (FlxG.keys.justPressed.TAB) {
+            startExitState(new MainMenuState());
+        }
+
+        Conductor.instance.update();
+
+        super.update(elapsed);
+    }
+
+    override function destroy() {
+        remove(bg);
+        remove(logo);
+        remove(flash);
+        //FlxG.switchState(ScriptedMusicBeatState.init("DeadAirMenu"));
+        FlxG.switchState(new MainMenuState());
+    }
+
+    function startExitState(state) {
+        var duration = 0.4;
+        var preservedState = state;
+        new FlxTimer().start(duration, timer -> FlxG.switchState(preservedState));
+    }
+
+    function playMenuMusic():Void {
+        FunkinSound.playMusic("deadairMenu", {
+            overrideExisting: true,
+            restartTrack: false,
+            persist: true
+        });
+    }
+}
