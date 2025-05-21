@@ -1,3 +1,5 @@
+package ui;
+
 import funkin.Conductor;
 import funkin.Preferences;
 import funkin.audio.FunkinSound;
@@ -5,21 +7,21 @@ import funkin.graphics.FunkinSprite;
 import funkin.modding.base.ScriptedFlxRuntimeShader;
 import funkin.modding.base.ScriptedMusicBeatState;
 import funkin.ui.AtlasMenuItem;
+import funkin.ui.AtlasMenuList;
+import funkin.ui.MenuTypedList;
 import funkin.ui.mainmenu.MainMenuState;
 import funkin.ui.options.OptionsState;
 import funkin.util.WindowUtil;
 
 import flixel.FlxG;
 import flixel.addons.transition.FlxTransitionableState;
+import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
 import openfl.filters.ShaderFilter;
 
 import Main;
-import funkin.ui.MenuTypedList;
-import funkin.ui.AtlasMenuList.AtlasMenuItem;
-
 
 class DeadAirMenu extends ScriptedMusicBeatState {
     var menuItems:MenuTypedList<AtlasMenuItem>;
@@ -28,6 +30,9 @@ class DeadAirMenu extends ScriptedMusicBeatState {
     var logo:FunkinSprite;
     var flash:FunkinSprite;
     var separator:FunkinSprite;
+    var buttonPointer:FunkinSprite;
+
+    var rememberedSelectedIndex:Int = 0;
 
     var blockyFilter:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("Testing");
 
@@ -38,14 +43,10 @@ class DeadAirMenu extends ScriptedMusicBeatState {
     override function create() {
         blockyFilter.setFloatArray("uBlocksize", [3, 3]);
         this.camera.filters = [new ShaderFilter(blockyFilter)];
-        if (Preferences.debugDisplay) {
-            Main.fpsCounter.visible = false;
-            Main.memoryCounter.visible = false;
-        }
 
         WindowUtil.setWindowTitle("FNF': Dead Air");
+        showDebugDisplay(false);
         transOut = FlxTransitionableState.defaultTransOut;
-
         playMenuMusic();
 
         persistentUpdate = true;
@@ -76,16 +77,34 @@ class DeadAirMenu extends ScriptedMusicBeatState {
         separator.alpha = 0;
         add(separator);
 
+        buttonPointer = FunkinSprite.create(0, 0, "mainmenu/deadair/button_pointer");
+        buttonPointer.alpha = 0;
+        add(buttonPointer);
+
         menuItems = new MenuTypedList();
+        menuItems.enabled = false;
         add(menuItems);
 
-        createMenuItem("options", "mainmenu/deadair/entries", () -> startExitState(() -> new OptionsState()));
+        createMenuItem("play", "mainmenu/deadair/entries", () -> {
+            FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
+            trace("Play");
+        }, true);
+        createMenuItem("options", "mainmenu/deadair/entries", () -> {
+            FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
+            trace("Options");
+        }, true);
+        createMenuItem("credits", "mainmenu/deadair/entries", () -> {
+            FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
+            trace("Credits");
+        }, true);
+
+        // Position items
+        for (i in 0...menuItems.length) menuItems.members[i].y += separator.y + 100 * i;
 
         var letterWidths:Array<Int> = [37, 37, 37, 74, 37, 37, 37];
 
         var letterPositions:Array<Int> = [0];
-        for (i in 0...letterWidths.length - 1)
-            letterPositions.push(letterPositions[i] + letterWidths[i]);
+        for (i in 0...letterWidths.length - 1) letterPositions.push(letterPositions[i] + letterWidths[i]);
 
         var currentLetterIndex:Int = 0;
         new FlxTimer().start(0.8, timer -> {
@@ -100,21 +119,21 @@ class DeadAirMenu extends ScriptedMusicBeatState {
                 logo.clipRect = null;
                 FlxTween.tween(logo, {alpha: 0}, 1, {
                     onComplete: tween -> {
-                        blockyFilter.setFloatArray("uBlocksize", [2, 2]);
+                        this.camera.filters = [];
                         FlxTimer.wait(2, () -> {
                             flash.alpha = 1;
                             bg.alpha = 1;
                             logo.alpha = 1;
                             separator.alpha = 1;
+                            buttonPointer.alpha = 1;
+                            for (i in 0...menuItems.length) menuItems.members[i].visible = true;
+                            menuItems.enabled = true;
 
                             logo.x = -107;
                             logo.y = 100;
                             logo.setGraphicSize(Std.int(logo.width * 0.5));
 
-                            if (Preferences.debugDisplay) {
-                                Main.fpsCounter.visible = true;
-                                Main.memoryCounter.visible = true;
-                            }
+                            showDebugDisplay(true);
                             FlxTween.tween(FlxG.camera, {zoom: 1.1}, 0.1, {
                                 onComplete: tween -> FlxTween.tween(FlxG.camera, {zoom: 1}, 0.8)
                             });
@@ -129,48 +148,68 @@ class DeadAirMenu extends ScriptedMusicBeatState {
     }
 
     override function update(elapsed:Float) {
-        if (FlxG.keys.justPressed.TAB) {
-            startExitState(new MainMenuState());
-        }
+        super.update(elapsed);
+
+        if (FlxG.keys.justPressed.TAB) startExitState(new MainMenuState());
+
+        buttonPointer.x = menuItems.selectedItem.x + 202;
+        buttonPointer.y = menuItems.selectedItem.y + menuItems.selectedItem.height * 0.25;
 
         Conductor.instance.update();
 
-        super.update(elapsed);
+        if (_exiting) menuItems.enabled = false;
     }
 
     override function destroy() {
         remove(bg);
         remove(logo);
         remove(flash);
-        if (Preferences.debugDisplay) {
-            Main.fpsCounter.visible = true;
-            Main.memoryCounter.visible = true;
-        }
+        showDebugDisplay(true);
         FlxG.switchState(new MainMenuState());
     }
 
     // Helper methods
-    function createMenuItem(name:String, atlas:String, callback:Void -> Void, fireInstantly:Bool = false) {
-        var item = new AtlasMenuItem(name, Paths.getSparrowAtlas(atlas), callback);
-        item.ID = 1;
-        item.animation.addByPrefix("credits", "credits");
-        item.animation.play("credits");
-        item.scrollFactor.set();
+    function createMenuItem(name:String, atlas:String, callback:Void -> Void, fireInstantly:Bool) {
+        var item = new AtlasMenuItem(50, 47, name, Paths.getSparrowAtlas(atlas));
+        item.fireInstantly = fireInstantly;
+        item.callback = callback;
+        item.ID = menuItems.length;
+        item.animation.addByPrefix(name, name, 0, true);
+        item.changeAnim(name);
+        item.visible = false;
 
         menuItems.addItem(name, item);
     }
 
     function startExitState(state) {
+        menuItems.enabled = false;
+        rememberedSelectedIndex = menuItems.selectedIndex;
+
         var duration = 0.4;
         var preservedState = state;
-        new FlxTimer().start(duration, timer -> FlxG.switchState(preservedState));
+        menuItems.forEach(item -> {
+            if (menuItems.selectedIndex != item.ID) {
+                FlxTween.tween(item, {alpha: 0}, duration, {ease: FlxEase.quadOut});
+            } else {
+                item.visible = false;
+            }
+        });
+
+        FlxG.camera.fade(0xFF000000, duration, false, () -> FlxG.switchState(preservedState));
     }
 
-    function playMenuMusic():Void {
+    function playMenuMusic() {
         FunkinSound.playMusic("deadairMenu", {
             overrideExisting: true,
             restartTrack: false,
             persist: true
         });
+    }
+
+    function showDebugDisplay(show:Bool) {
+        if (Preferences.debugDisplay) {
+            Main.fpsCounter.visible = show;
+            Main.memoryCounter.visible = show;
+        }
     }
 }

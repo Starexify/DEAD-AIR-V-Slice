@@ -90,7 +90,7 @@ class DeadAirMain extends ScriptedModule {
     override function onUpdate(event:UpdateScriptEvent) {
         if (FlxG.keys.justPressed.TAB) {
             enterDeadAirMenu = !enterDeadAirMenu;
-            FlxG.switchState(ScriptedMusicBeatState.init("DeadAirMenu"));
+            FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenu"));
         }
     }
 
