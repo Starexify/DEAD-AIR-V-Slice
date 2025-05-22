@@ -19,19 +19,19 @@ import funkin.ui.mainmenu.MainMenuState;
 
 class DeadAirMain extends ScriptedModule {
     var state:PlayState;
+    var hooks:DeadAirHooks;
 
     var enterDeadAirMenu = false;
 
-    var includedSongs = ["tmpb2hpbw==", "under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
-
     function new() {
         super("DeadAirMain");
+        hooks = new DeadAirHooks();
     }
 
     override function onSongLoaded(event:SongLoadScriptEvent) {
         if (PlayState.instance == null) return;
 
-        if (includedSongs.contains(PlayState.instance.currentChart.songName)) {
+        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
             WindowUtil.setWindowTitle("FNF': Dead Air");
 
             state = PlayState.instance;
@@ -57,7 +57,7 @@ class DeadAirMain extends ScriptedModule {
     }
 
     override function onCountdownStart(event:CountdownScriptEvent) {
-        if (includedSongs.contains(PlayState.instance.currentChart.songName)) {
+        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
             new FlxTimer().start(0.01, timer -> {
                 Countdown.skipCountdown();
             });
@@ -67,7 +67,7 @@ class DeadAirMain extends ScriptedModule {
     override function onSubStateOpenEnd(event:SubStateScriptEvent) {
         if (Std.isOfType(event.targetState, PauseSubState)) {
             var pauseState:PauseSubState = event.targetState;
-            if (includedSongs.contains(PlayState.instance.currentChart.songName)) {
+            if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
                 FlxTween.cancelTweensOf(pauseState.background);
                 FlxTween.tween(pauseState.background, {alpha: 1}, 1.2, {ease: FlxEase.quartOut});
             }
@@ -76,7 +76,7 @@ class DeadAirMain extends ScriptedModule {
             }
         }
 
-        if (Std.isOfType(event.targetState, ResultState) && includedSongs.contains(PlayState.instance.currentChart.songName)) {
+        if (Std.isOfType(event.targetState, ResultState) && hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
             var resultState:ResultState = event.targetState;
             resultState.members[0].color = resultState.cameraBG.bgColor = 0xFF000000;
 /*            var deadAirBg:FunkinSprite = FunkinSprite.create(0, 0, "mainmenu/deadair/ohiogaming");
@@ -98,16 +98,16 @@ class DeadAirMain extends ScriptedModule {
     // Mute Miss Sounds for dead air songs
     override function onNoteMiss(event:NoteScriptEvent) {
         if (PlayState.instance == null) return;
-        if (includedSongs.contains(PlayState.instance.currentChart.songName)) event.playSound = false;
+        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) event.playSound = false;
     }
 
     override function onNoteGhostMiss(event:GhostMissNoteScriptEvent) {
         if (PlayState.instance == null) return;
-        if (includedSongs.contains(PlayState.instance.currentChart.songName)) event.playSound = false;
+        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) event.playSound = false;
     }
 
     override function onNoteHoldDrop(event:HoldNoteScriptEvent) {
         if (PlayState.instance == null) return;
-        if (includedSongs.contains(PlayState.instance.currentChart.songName)) event.playSound = false;
+        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) event.playSound = false;
     }
 }

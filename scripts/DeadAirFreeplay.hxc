@@ -16,17 +16,18 @@ import flixel.util.FlxTimer;
 import openfl.filters.ShaderFilter;
 
 class DeadAirFreeplay extends ScriptedModule {
-    var deadAirSongs = ["tmpb2hpbw==", "under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
+    var hooks:DeadAirHooks;
 
     function new() {
         super("DeadAirFreeplay");
+        hooks = new DeadAirHooks();
     }
 
     override function onUpdate(event:UpdateScriptEvent) {
         if (Std.isOfType(FlxG.state.subState, FreeplayState)) {
             var freeplay:FreeplayState = FlxG.state.subState;
             var capsule:SongMenuItem = freeplay.grpCapsules.members[freeplay.curSelected];
-            if (capsule != null && freeplay.curSelected != 0 && deadAirSongs.contains(capsule?.freeplayData?.data.id)) {
+            if (capsule != null && freeplay.curSelected != 0 && hooks.INCL_SONGS.contains(capsule?.freeplayData?.data.id)) {
                 capsule.onConfirm = () -> if (!freeplay.busy) capsuleOnConfirmDeadAir(freeplay, capsule);
             }
         }

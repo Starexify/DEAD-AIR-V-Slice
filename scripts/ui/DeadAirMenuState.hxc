@@ -33,7 +33,6 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
 
     var bg:FunkinSprite;
     var logo:FunkinSprite;
-    var flash:FunkinSprite;
     var separator:FunkinSprite;
     var buttonPointer:FunkinSprite;
 
@@ -67,11 +66,6 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
         bg.screenCenter();
         bg.alpha = 0;
         add(bg);
-
-        flash = FunkinSprite.create(0, 0).makeSolidColor(FlxG.width, FlxG.height, 0xFFFFFFFF);
-        flash.alpha = 0;
-        flash.camera = camMenu;
-        add(flash);
 
         logo = FunkinSprite.create(0, 0, "mainmenu/deadair/logo");
         logo.setGraphicSize(Std.int(logo.width * 2));
@@ -137,7 +131,6 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
                         camMenu.filters = [];
                         FlxTimer.wait(2, () -> {
                             isInMenu = true;
-                            flash.alpha = 1;
                             bg.alpha = 1;
                             logo.alpha = 1;
                             separator.alpha = 1;
@@ -150,10 +143,10 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
                             logo.setGraphicSize(Std.int(logo.width * 0.5));
 
                             showDebugDisplay(true);
+                            camMenu.flash(0xFFFFFFFF, 0.9);
                             FlxTween.tween(camMenu, {zoom: 1.1}, 0.1, {
                                 onComplete: tween -> FlxTween.tween(camMenu, {zoom: 1}, 0.8)
                             });
-                            FlxTween.tween(flash, {alpha: 0}, 0.9, { onComplete: tween -> this.remove(flash) });
                         });
                     }
                 });
@@ -186,13 +179,13 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     override function onCloseSubStateComplete(targetState:FlxSubState) {
         camMenu.visible = true;
         if (isInMenu) menuItems.enabled = true;
+
         super.onCloseSubStateComplete(targetState);
     }
 
     override function destroy() {
         remove(bg);
         remove(logo);
-        remove(flash);
         showDebugDisplay(true);
         FlxG.switchState(new MainMenuState());
     }

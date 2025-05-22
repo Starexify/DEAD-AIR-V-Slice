@@ -5,14 +5,15 @@ import funkin.play.PlayState;
 import flixel.FlxG;
 
 class DeadAirHUD extends ScriptedModule {
-    var includedSongs = ["tmpb2hpbw==", "under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
+    var hooks:DeadAirHooks;
 
     function new() {
         super("DeadAirHUD");
+        hooks = new DeadAirHooks();
     }
 
     override function onSongLoaded(event:SongLoadScriptEvent) {
-        if (PlayState.instance == null || !includedSongs.contains(PlayState.instance.currentChart.songName)) return;
+        if (PlayState.instance == null || !hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) return;
         var state = PlayState.instance;
         state.playerStrumline.x = FlxG.width / 2 - state.playerStrumline.width / 2;
         state.opponentStrumline.visible = false;
@@ -25,6 +26,6 @@ class DeadAirHUD extends ScriptedModule {
     }
 
     override function onUpdate(event:UpdateScriptEvent) {
-        if (PlayState.instance != null && includedSongs.contains(PlayState.instance.currentChart.songName)) PlayState.instance.scoreText.x = FlxG.width / 2 - PlayState.instance.scoreText.width / 2;
+        if (PlayState.instance != null && hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) PlayState.instance.scoreText.x = FlxG.width / 2 - PlayState.instance.scoreText.width / 2;
     }
 }

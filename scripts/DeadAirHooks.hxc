@@ -1,0 +1,10 @@
+import funkin.modding.module.ScriptedModule;
+
+class DeadAirHooks extends ScriptedModule {
+    public var INCL_SONGS = ["tmpb2hpbw==", "under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
+    public var SONG_IDS = ["tmpb2hpbw==", "under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
+
+    function new() {
+        super("DeadAirHooks");
+    }
+}
