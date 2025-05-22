@@ -79,7 +79,9 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
                 var baseInstrumentalId:String = targetSong.getBaseInstrumentalId(currentDifficulty, currentVariation);
                 targetInstId = baseInstrumentalId;
             }
+
             createMenuItem(songId, targetSong.songName, () -> {
+                menuItems.enabled = false;
                 FlxG.sound.music.stop();
                 colorShader.saturation = 0;
                 if (camItems != null) FlxG.cameras.remove(camItems);

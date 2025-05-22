@@ -25,6 +25,8 @@ class DeadAirHooks extends ScriptedModule {
 
     public var inMainMenu = false;
 
+    public var pauseMusicPath = "deadpause/deadpause";
+
     function new() {
         super("DeadAirHooks");
     }

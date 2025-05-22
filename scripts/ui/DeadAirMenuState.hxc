@@ -97,7 +97,6 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
         // Position items
         for (i in 0...menuItems.length) menuItems.members[i].y += separator.y + 100 * i;
 
-        trace(ModuleHandler.getModule("DeadAirHooks").scriptGet("inMainMenu"));
         if (ModuleHandler.getModule("DeadAirHooks").scriptGet("inMainMenu")) {
             playMenuMusic("deadairMenu2");
             camMenu.filters = [];
