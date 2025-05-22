@@ -3,19 +3,20 @@ import funkin.data.song.SongEventDataRaw;
 import funkin.modding.base.ScriptedMusicBeatState;
 import funkin.modding.events.ScriptEvent;
 import funkin.modding.events.SongEventScriptEvent;
+import funkin.modding.module.ModuleHandler;
 import funkin.modding.module.ScriptedModule;
 import funkin.play.Countdown;
 import funkin.play.PauseSubState;
 import funkin.play.PlayState;
 import funkin.play.ResultState;
-import funkin.util.WindowUtil;
+import funkin.ui.freeplay.FreeplayState;
+import funkin.ui.mainmenu.MainMenuState;
 
 import flixel.FlxG;
-import flixel.util.FlxTimer;
-import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
 import funkin.graphics.FunkinSprite;
-import funkin.ui.mainmenu.MainMenuState;
 
 class DeadAirMain extends ScriptedModule {
     var state:PlayState;
@@ -32,8 +33,6 @@ class DeadAirMain extends ScriptedModule {
         if (PlayState.instance == null) return;
 
         if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
-            WindowUtil.setWindowTitle("FNF': Dead Air");
-
             state = PlayState.instance;
 
             state.discordRPCAlbum = "https://raw.githubusercontent.com/Starexify/DEAD-AIR-V-Slice/refs/heads/0.6.x/images/freeplay/albumRoll/" + state.currentChart.songName + ".png";
@@ -48,12 +47,9 @@ class DeadAirMain extends ScriptedModule {
                 var scriptEvent = new SongEventScriptEvent(songEvent);
                 if (!scriptEvent.eventCanceled) SongEventRegistry.handleEvent(songEvent);
             }
-            //state.moveToResultsScreen(false);
-        }
-    }
 
-    override function onStateChangeBegin(event:StateChangeScriptEvent) {
-        WindowUtil.setWindowTitle("Friday Night Funkin'");
+            state.moveToResultsScreen(false);
+        }
     }
 
     override function onCountdownStart(event:CountdownScriptEvent) {
@@ -79,12 +75,12 @@ class DeadAirMain extends ScriptedModule {
         if (Std.isOfType(event.targetState, ResultState) && hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
             var resultState:ResultState = event.targetState;
             resultState.members[0].color = resultState.cameraBG.bgColor = 0xFF000000;
-/*            var deadAirBg:FunkinSprite = FunkinSprite.create(0, 0, "mainmenu/deadair/ohiogaming");
-            deadAirBg.animation.addByPrefix("idle", "ohiogaming21", 24, true);
-            deadAirBg.animation.play("idle", true);
-            deadAirBg.camera = resultState.cameraBG;
-            deadAirBg.zIndex = 30;
-            resultState.add(deadAirBg);*/
+        }
+    }
+
+    override function onSubStateOpenBegin(event:SubStateScriptEvent) {
+        if (Std.isOfType(event.targetState, FreeplayState) && ModuleHandler.getModule("DeadAirHooks").scriptGet("inMainMenu")) {
+            FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
         }
     }
 

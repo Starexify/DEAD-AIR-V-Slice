@@ -2,7 +2,28 @@ import funkin.modding.module.ScriptedModule;
 
 class DeadAirHooks extends ScriptedModule {
     public var INCL_SONGS = ["tmpb2hpbw==", "under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
+
     public var SONG_IDS = ["tmpb2hpbw==", "under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
+
+    public var CREDITS = [
+        { name: "vladosikos17", url: "https://x.com/vladosikos16" },
+        { name: "Sandi", url: "https://x.com/334_sandi" },
+        { name: "staticfyre", url: "https://x.com/staticfyre" },
+        { name: "Jim", url: "https://x.com/jim_comput81367" },
+        { name: "Gavinn", url: "https://x.com/Gav1inn7" },
+        { name: "OutMance", url: "https://x.com/youarereallyare" },
+        { name: "Data", url: "https://x.com/_data5" },
+        { name: "funkypop", url: "https://x.com/funkypoppp" },
+        { name: "jackoffatron", url: "https://www.youtube.com/watch?v=R9PNKMwVW5M" },
+        { name: "icey", url: "https://x.com/Icey_131" },
+        { name: "infry", url: "https://x.com/Infry20" },
+        { name: "Lucy", url: "https://x.com/TacoGal" },
+        { name: "Lock TrapLT", url: "https://x.com/trap_lock" },
+        { name: "Pappo", url: "https://x.com/pappo447" },
+        { name: "Triki Troy", url: "https://x.com/Triki_Tr0y" }
+    ];
+
+    public var inMainMenu = false;
 
     function new() {
         super("DeadAirHooks");

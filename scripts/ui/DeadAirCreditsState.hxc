@@ -1,0 +1,128 @@
+package ui;
+
+import funkin.audio.FunkinSound;
+import funkin.graphics.FunkinCamera;
+import funkin.graphics.FunkinSprite;
+import funkin.modding.base.ScriptedFlxRuntimeShader;
+import funkin.modding.base.ScriptedMusicBeatSubState;
+import funkin.ui.MenuTypedItem;
+import funkin.ui.MenuTypedList;
+import funkin.util.WindowUtil;
+
+import flixel.FlxG;
+import flixel.FlxObject;
+import flixel.util.FlxTimer;
+import flixel.math.FlxRect;
+import flixel.text.FlxText;
+
+
+class DeadAirCreditsState extends ScriptedMusicBeatSubState {
+    var hooks:DeadAirHooks;
+    var menuItems:MenuTypedList<MenuTypedItem>;
+
+    var blockyFilter:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("Testing");
+
+    var camItems:FunkinCamera;
+    var creditFrame:FunkinSprite;
+
+    var camFollow:FlxObject;
+
+    var creditImg:FunkinSprite;
+
+    override function create() {
+        super.create();
+        hooks = new DeadAirHooks();
+
+        blockyFilter.setFloatArray("uBlocksize", [1, 1]);
+
+        camItems = new FunkinCamera("camItems", 75, 74, 350, 570);
+        camItems.bgColor = 0xFF000000;
+        FlxG.cameras.add(camItems, false);
+        //camItems.filters = [new ShaderFilter(blockyFilter)];
+
+        camFollow = new FlxObject(0, 0, 1, 1);
+        add(camFollow);
+        camFollow.x = camItems.width * 0.5;
+
+        menuItems = new MenuTypedList();
+        menuItems.camera = camItems;
+        menuItems.enabled = false;
+        menuItems.onAcceptPress.add(item -> {
+            FunkinSound.stopAllAudio();
+            FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
+        });
+
+        for (credit in hooks.CREDITS) createMenuItem(credit.name, () -> WindowUtil.openURL(credit.url), true);
+
+        creditFrame = FunkinSprite.create(815, 155).makeSolidColor(310, 452, 0xFFFFFFFF);
+        add(creditFrame);
+
+        creditImg = FunkinSprite.create(0, 0);
+        creditImg.loadTexture("credits/" + menuItems.selectedItem.name);
+        creditImg.setGraphicSize(creditFrame.width - 10, creditFrame.height - 10);
+        creditImg.updateHitbox();
+        creditImg.setPosition(creditFrame.x + 5, creditFrame.y + 5);
+        add(creditImg);
+
+        menuItems.onChange.add(item -> {
+            FunkinSound.stopAllAudio();
+            FunkinSound.playOnce(Paths.sound("dead-air/scrollMenu"));
+            camFollow.y = item.getGraphicMidpoint().y - item.height * 2;
+            for (menuItem in menuItems.members) {
+                if (menuItem != null && menuItem.label != null) {
+                    menuItem.label.scale.set(1.0, 1.0);
+                    menuItem.alpha = 1.0;
+                }
+            }
+
+            item.label.scale.set(1.2, 1.2);
+
+            creditImg.loadTexture("credits/" + item.name);
+            creditImg.setGraphicSize(creditFrame.width - 10, creditFrame.height - 10);
+            creditImg.updateHitbox();
+        });
+
+        add(menuItems);
+
+        FlxTimer.wait(0.01, () -> menuItems.enabled = true);
+        for (i in 0...menuItems.length) {
+            menuItems.members[i].y = 77 * i;
+            menuItems.members[i].alpha = 1.0;
+        }
+        menuItems.members[0].scale.set(1.2, 1.2);
+    }
+
+    override function update(elapsed:Float) {
+        if (controls.BACK) {
+            FunkinSound.playOnce(Paths.sound("dead-air/cancelMenu"));
+            close();
+        }
+
+        camItems.target = camFollow;
+        camItems.deadzone = FlxRect.get(camItems.width * 0.5, camItems.height * 0.5 - 25, 1, 1);
+
+        super.update(elapsed);
+    }
+
+    // Helper methods
+    function createMenuItem(name:String, callback:Void -> Void, fireInstantly:Bool) {
+        var item = new MenuTypedItem(0, 0, new FlxText(), name);
+        item.setEmptyBackground();
+        item.fireInstantly = fireInstantly;
+        item.ID = menuItems.length;
+        item.callback = callback;
+        item.label.setFormat("Neuton-Regular", 29);
+        item.label.text = item.name;
+        item.x = (camItems.width - item.label.width) * 0.5;
+
+        menuItems.addItem(name, item);
+    }
+
+    override function close() {
+        if (camItems != null) FlxG.cameras.remove(camItems);
+        if (creditFrame != null) remove(creditFrame);
+        if (creditImg != null) remove(creditImg);
+
+        super.close();
+    }
+}

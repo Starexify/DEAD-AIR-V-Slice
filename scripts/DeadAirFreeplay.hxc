@@ -27,7 +27,7 @@ class DeadAirFreeplay extends ScriptedModule {
         if (Std.isOfType(FlxG.state.subState, FreeplayState)) {
             var freeplay:FreeplayState = FlxG.state.subState;
             var capsule:SongMenuItem = freeplay.grpCapsules.members[freeplay.curSelected];
-            if (capsule != null && freeplay.curSelected != 0 && hooks.INCL_SONGS.contains(capsule?.freeplayData?.data.id)) {
+            if (capsule != null && freeplay.curSelected != 0 && hooks.SONG_IDS.contains(capsule?.freeplayData?.data.id)) {
                 capsule.onConfirm = () -> if (!freeplay.busy) capsuleOnConfirmDeadAir(freeplay, capsule);
             }
         }
@@ -92,7 +92,6 @@ class DeadAirFreeplay extends ScriptedModule {
 
         new FlxTimer().start(3.5, tmr -> {
             FunkinSound.emptyPartialQueue();
-
             Paths.setCurrentLevel(targetLevelId);
             LoadingState.loadPlayState({
                 targetSong: targetSong,
