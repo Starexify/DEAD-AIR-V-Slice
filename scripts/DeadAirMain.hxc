@@ -1,5 +1,7 @@
+import funkin.audio.FunkinSound;
 import funkin.data.event.SongEventRegistry;
 import funkin.data.song.SongEventDataRaw;
+import funkin.graphics.FunkinCamera;
 import funkin.modding.base.ScriptedMusicBeatState;
 import funkin.modding.events.ScriptEvent;
 import funkin.modding.events.SongEventScriptEvent;
@@ -11,17 +13,12 @@ import funkin.play.PlayState;
 import funkin.play.ResultState;
 import funkin.ui.freeplay.FreeplayState;
 import funkin.ui.mainmenu.MainMenuState;
+import funkin.ui.transition.stickers.StickerSubState;
 
 import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import funkin.graphics.FunkinSprite;
-import funkin.audio.FunkinSound;
-import funkin.ui.transition.stickers.StickerSubState;
-import funkin.graphics.FunkinCamera;
-import funkin.graphics.FunkinCamera;
-import funkin.ui.options.OptionsState;
 
 class DeadAirMain extends ScriptedModule {
     var state:PlayState;

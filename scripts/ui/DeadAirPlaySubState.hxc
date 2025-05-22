@@ -65,20 +65,16 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
         });
 
         for (songId in hooks.SONG_IDS) {
-            var targetSongId:String = (FlxG.random.bool(20) && !Save.instance.hasBeatenSong("tmpb2hpbw==")) ? "tmpb2hpbw==" : songId;
-            var targetSong:Song = SongRegistry.instance.fetchEntry(targetSongId);
+            var targetSong:Song = SongRegistry.instance.fetchEntry(songId);
             var targetInstId:String = null;
             var currentDifficulty = "normal";
             var currentVariation = "default";
             if (targetSong == null) {
-                FlxG.log.warn("WARN: could not find song with id (" + targetSongId + ")");
+                FlxG.log.warn("WARN: could not find song with id (" + songId + ")");
                 return;
             }
 
-            if (targetInstId == null) {
-                var baseInstrumentalId:String = targetSong.getBaseInstrumentalId(currentDifficulty, currentVariation);
-                targetInstId = baseInstrumentalId;
-            }
+            if (targetInstId == null) targetInstId = targetSong.getBaseInstrumentalId(currentDifficulty, currentVariation);
 
             createMenuItem(songId, targetSong.songName, () -> {
                 menuItems.enabled = false;
@@ -91,6 +87,10 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
                     fadeCam.bgColor = 0x0;
                     fadeCam.visible = true;
                     fadeCam.fade(0xFF000000, 1.2, false, () -> {
+                        songId = (FlxG.random.bool(20) && !Save.instance.hasBeatenSong("tmpb2hpbw==")) ? "tmpb2hpbw==" : songId;
+                        targetSong = SongRegistry.instance.fetchEntry(songId);
+                        targetInstId = targetSong.getBaseInstrumentalId(currentDifficulty, currentVariation);
+
                         LoadingState.loadPlayState({
                             targetSong: targetSong,
                             targetDifficulty: currentDifficulty,

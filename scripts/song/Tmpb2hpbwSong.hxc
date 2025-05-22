@@ -7,6 +7,7 @@ import funkin.play.song.ScriptedSong;
 import flixel.FlxG;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import funkin.save.Save;
 
 class Tmpb2hpbwSong extends ScriptedSong {
     var state:PlayState;
@@ -96,5 +97,12 @@ class Tmpb2hpbwSong extends ScriptedSong {
 
     override function onResume(event:ScriptEvent) {
         if (webdriverTorso != null) webdriverTorso.resume();
+    }
+
+    override public function listDifficulties(?variationId:String, ?variationIds:Array<String>, showLocked:Bool = false, showHidden:Bool = false):Array<String> {
+        if (showLocked || Save.instance.hasBeatenSong("tmpb2hpbw==")) {
+            return super.listDifficulties(variationId, variationIds, showLocked, showHidden);
+        }
+        return [];
     }
 }

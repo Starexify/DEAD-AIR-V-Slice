@@ -1,9 +1,10 @@
 import funkin.modding.module.ScriptedModule;
+import funkin.save.Save;
 
 class DeadAirHooks extends ScriptedModule {
-    public var INCL_SONGS = ["tmpb2hpbw==", "under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
+    public var INCL_SONGS = ["under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
 
-    public var SONG_IDS = ["tmpb2hpbw==", "under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
+    public var SONG_IDS = ["under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
 
     public var CREDITS = [
         { name: "vladosikos17", url: "https://x.com/vladosikos16" },
@@ -29,5 +30,9 @@ class DeadAirHooks extends ScriptedModule {
 
     function new() {
         super("DeadAirHooks");
+        if (Save.instance.hasBeatenSong("tmpb2hpbw==")) {
+            INCL_SONGS.push("tmpb2hpbw==");
+            SONG_IDS.push("tmpb2hpbw==");
+        }
     }
 }
