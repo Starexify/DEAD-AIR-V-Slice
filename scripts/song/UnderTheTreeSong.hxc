@@ -29,6 +29,7 @@ class UnderTheTreeSong extends ScriptedSong {
         state = PlayState.instance;
         saySorry = CharacterDataParser.fetchCharacter("saysorry");
         state.camHUD.alpha = 0;
+        state.isInCutscene = true;
         state.camGame.alpha = 0;
         state.currentStage.getNamedProp("eyes").visible = false;
 
@@ -44,8 +45,14 @@ class UnderTheTreeSong extends ScriptedSong {
         songTitle.alpha = 0;
         state.add(songTitle);
 
-        //var hslShader:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("HSLShader");
-        //state.camHUD.filters = [new ShaderFilter(hslShader)];
+/*        var hslShader:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("HSLShader");
+        hslShader.setFloat("brightness", 0);
+        hslShader.setFloat("contrast", 1.0);
+        hslShader.setFloat("gamma", 2.0);
+        hslShader.setFloat("hue", -0.1);
+        hslShader.setFloat("saturation", 0.3);
+        hslShader.setFloat("luminosity", 0.1);
+        state.camHUD.filters = [new ShaderFilter(hslShader)];*/
     }
 
     override function onBeatHit(event:SongTimeScriptEvent) {
@@ -58,6 +65,7 @@ class UnderTheTreeSong extends ScriptedSong {
             case 8:
                 FlxTween.tween(songTitle, {alpha: 1}, 2.4);
             case 16:
+                state.isInCutscene = false;
                 FlxTween.tween(state.camHUD, {alpha: 1}, 2.4);
                 FlxTween.tween(songTitle, {alpha: 0}, 3, { onComplete: tween -> state.remove(songTitle) });
             case 156:
