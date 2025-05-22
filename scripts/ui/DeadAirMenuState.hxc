@@ -180,6 +180,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     override function onOpenSubStateComplete(targetState:FlxSubState) {
         camMenu.visible = false;
         menuItems.enabled = false;
+        isInMenu = true;
 
         super.onOpenSubStateComplete(targetState);
     }
@@ -187,6 +188,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     override function onCloseSubStateComplete(targetState:FlxSubState) {
         camMenu.visible = true;
         if (isInMenu) menuItems.enabled = true;
+        isInMenu = true;
 
         super.onCloseSubStateComplete(targetState);
     }

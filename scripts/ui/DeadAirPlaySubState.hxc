@@ -7,7 +7,6 @@ import funkin.graphics.FunkinSprite;
 import funkin.graphics.shaders.HSVShader;
 import funkin.modding.base.ScriptedFlxRuntimeShader;
 import funkin.modding.base.ScriptedMusicBeatSubState;
-import funkin.play.song.Song;
 import funkin.save.Save;
 import funkin.ui.MenuTypedItem;
 import funkin.ui.MenuTypedList;
@@ -35,110 +34,23 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
 
     var album:FunkinSprite;
 
+    // Constants
+    var ITEM_HEIGHT = 77;
+    var SELECTED_SCALE = 1.2;
+    var NORMAL_SCALE = 1.0;
+    var FADE_DURATION = 1.2;
+    var TIMER_DELAY = 2.0;
+
     override function create() {
         super.create();
 
         hooks = new DeadAirHooks();
+        trace(hooks.SECRET_SONGS);
+        setupCameras();
+        setupMenuItems();
+        setupAlbum();
 
-        blockyFilter.setFloatArray("uBlocksize", [1, 1]);
-
-        camItems = new FunkinCamera("camItems", 75, 74, 350, 570);
-        camItems.bgColor = 0xFF000000;
-        FlxG.cameras.add(camItems, false);
-        //camItems.filters = [new ShaderFilter(blockyFilter)];
-
-        camAlbum = new FunkinCamera("camAlbum", 725, 105, 510, 505);
-        camAlbum.bgColor = 0xFFFFFFFF;
-        FlxG.cameras.add(camAlbum, false);
-        camAlbum.filters = [new ShaderFilter(colorShader)];
-
-        camFollow = new FlxObject(0, 0, 1, 1);
-        add(camFollow);
-        camFollow.x = camItems.width * 0.5;
-
-        menuItems = new MenuTypedList();
-        menuItems.camera = camItems;
-        menuItems.enabled = false;
-        menuItems.onAcceptPress.add(item -> {
-            FunkinSound.stopAllAudio();
-            FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
-        });
-
-        for (songId in hooks.SONG_IDS) {
-            var targetSong:Song = SongRegistry.instance.fetchEntry(songId);
-            var targetInstId:String = null;
-            var currentDifficulty = "normal";
-            var currentVariation = "default";
-            if (targetSong == null) {
-                FlxG.log.warn("WARN: could not find song with id (" + songId + ")");
-                return;
-            }
-
-            if (targetInstId == null) targetInstId = targetSong.getBaseInstrumentalId(currentDifficulty, currentVariation);
-
-            createMenuItem(songId, targetSong.songName, () -> {
-                menuItems.enabled = false;
-                FlxG.sound.music.stop();
-                colorShader.saturation = 0;
-                if (camItems != null) FlxG.cameras.remove(camItems);
-                new FlxTimer().start(2, timer -> {
-                    var fadeCam:FunkinCamera = new FunkinCamera("fadeCam");
-                    FlxG.cameras.add(fadeCam, false);
-                    fadeCam.bgColor = 0x0;
-                    fadeCam.visible = true;
-                    fadeCam.fade(0xFF000000, 1.2, false, () -> {
-                        songId = (FlxG.random.bool(20) && !Save.instance.hasBeatenSong("tmpb2hpbw==")) ? "tmpb2hpbw==" : songId;
-                        targetSong = SongRegistry.instance.fetchEntry(songId);
-                        targetInstId = targetSong.getBaseInstrumentalId(currentDifficulty, currentVariation);
-
-                        LoadingState.loadPlayState({
-                            targetSong: targetSong,
-                            targetDifficulty: currentDifficulty,
-                            targetVariation: currentVariation,
-                            targetInstrumental: targetInstId,
-                            practiceMode: false,
-                            minimalMode: false,
-                            botPlayMode: false,
-                        }, true);
-                    });
-                });
-            }, true);
-        }
-
-        album = FunkinSprite.create(0, 0);
-        album.loadTexture("freeplay/albumRoll/" + menuItems.selectedItem.name);
-        album.setGraphicSize(camAlbum.width - 10, camAlbum.height - 10);
-        album.updateHitbox();
-        album.setPosition(5, 5);
-        album.camera = camAlbum;
-        add(album);
-
-        menuItems.onChange.add(item -> {
-            FunkinSound.stopAllAudio();
-            FunkinSound.playOnce(Paths.sound("dead-air/scrollMenu"));
-            camFollow.y = item.getGraphicMidpoint().y - item.height * 2;
-            for (menuItem in menuItems.members) {
-                if (menuItem != null && menuItem.label != null) {
-                    menuItem.label.scale.set(1.0, 1.0);
-                    menuItem.alpha = 1.0;
-                }
-            }
-
-            item.label.scale.set(1.2, 1.2);
-
-            album.loadTexture("freeplay/albumRoll/" + item.name);
-            album.setGraphicSize(camAlbum.width - 10, camAlbum.height - 10);
-            album.updateHitbox();
-        });
-
-        add(menuItems);
-
-        FlxTimer.wait(0.01, () -> menuItems.enabled = true);
-        for (i in 0...menuItems.length) {
-            menuItems.members[i].y = 77 * i;
-            menuItems.members[i].alpha = 1.0;
-        }
-        menuItems.members[0].scale.set(1.2, 1.2);
+        FlxTimer.wait(0.01, enableMenu);
     }
 
     override function update(elapsed:Float) {
@@ -154,6 +66,59 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
     }
 
     // Helper methods
+    function setupCameras() {
+        blockyFilter.setFloatArray("uBlocksize", [1, 1]);
+
+        camItems = createCamera("camItems", 75, 74, 350, 570, 0xFF000000);
+        //camItems.filters = [new ShaderFilter(blockyFilter)];
+        camAlbum = createCamera("camAlbum", 725, 105, 510, 505, 0xFFFFFFFF);
+        camAlbum.filters = [new ShaderFilter(colorShader)];
+
+        camFollow = new FlxObject(0, 0, 1, 1);
+        add(camFollow);
+        camFollow.x = camItems.width * 0.5;
+    }
+
+    function setupAlbum() {
+        album = FunkinSprite.create(0, 0);
+        updateAlbumTexture(menuItems.selectedItem.name);
+        album.camera = camAlbum;
+        add(album);
+    }
+
+    function updateAlbumTexture(textureName:String) {
+        album.loadTexture("freeplay/albumRoll/" + textureName);
+        album.setGraphicSize(camAlbum.width - 10, camAlbum.height - 10);
+        album.updateHitbox();
+        album.setPosition(5, 5);
+    }
+
+    function createCamera(name:String, x:Int, y:Int, width:Int, height:Int, bgColor:Int):FunkinCamera {
+        var cam = new FunkinCamera(name, x, y, width, height);
+        cam.bgColor = bgColor;
+        FlxG.cameras.add(cam, false);
+        return cam;
+    }
+
+    function setupMenuItems() {
+        menuItems = new MenuTypedList();
+        menuItems.camera = camItems;
+        menuItems.enabled = false;
+        menuItems.onAcceptPress.add(onMenuAccept);
+        menuItems.onChange.add(onMenuChange);
+
+        for (songId in hooks.SONG_IDS) {
+            var targetSong = SongRegistry.instance.fetchEntry(songId);
+            if (targetSong == null) {
+                FlxG.log.warn("WARN: could not find song with id (" + songId + ")");
+                continue;
+            }
+            createMenuItem(songId, targetSong.songName, () -> startSong(songId), true);
+        }
+
+        add(menuItems);
+    }
+
     function createMenuItem(name:String, text:String, callback:Void -> Void, fireInstantly:Bool) {
         var item = new MenuTypedItem(0, 0, new FlxText(), name);
         item.setEmptyBackground();
@@ -165,6 +130,81 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
         item.x = (camItems.width - item.label.width) * 0.5;
 
         menuItems.addItem(name, item);
+    }
+
+    function onMenuAccept(item) {
+        FunkinSound.stopAllAudio();
+        FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
+    }
+
+    function onMenuChange(item) {
+        FunkinSound.stopAllAudio();
+        FunkinSound.playOnce(Paths.sound("dead-air/scrollMenu"));
+
+        camFollow.y = item.getGraphicMidpoint().y - item.height * 2;
+
+        resetMenuItemStyles();
+        item.label.scale.set(SELECTED_SCALE, SELECTED_SCALE);
+        updateAlbumTexture(item.name);
+    }
+
+    function resetMenuItemStyles() {
+        for (menuItem in menuItems.members) {
+            if (menuItem?.label != null) {
+                menuItem.label.scale.set(NORMAL_SCALE, NORMAL_SCALE);
+                menuItem.alpha = 1.0;
+            }
+        }
+    }
+
+    function startSong(songId:String) {
+        menuItems.enabled = false;
+        FlxG.sound.music.stop();
+        colorShader.saturation = 0;
+
+        if (camItems != null) FlxG.cameras.remove(camItems);
+
+        new FlxTimer().start(TIMER_DELAY, timer -> {
+            var fadeCam = createCamera("fadeCam", 0, 0, FlxG.width, FlxG.height, 0x0);
+            fadeCam.fade(0xFF000000, FADE_DURATION, false, () -> {
+                var finalSongId = getSecretSongOrDefault(songId);
+                loadSong(finalSongId);
+            });
+        });
+    }
+
+    function getSecretSongOrDefault(originalSongId:String):String {
+        for (secretSong in SECRET_SONGS) {
+            if (FlxG.random.bool(secretSong.chance) && !Save.instance.hasBeatenSong(secretSong.songId)) return secretSong.songId;
+        }
+        return originalSongId;
+    }
+
+
+    function loadSong(songId:String) {
+        var targetSong = SongRegistry.instance.fetchEntry(songId);
+        var currentDifficulty = "normal";
+        var currentVariation = "default";
+        var targetInstId = targetSong.getBaseInstrumentalId(currentDifficulty, currentVariation);
+
+        LoadingState.loadPlayState({
+            targetSong: targetSong,
+            targetDifficulty: currentDifficulty,
+            targetVariation: currentVariation,
+            targetInstrumental: targetInstId,
+            practiceMode: false,
+            minimalMode: false,
+            botPlayMode: false,
+        }, true);
+    }
+
+    function enableMenu() {
+        menuItems.enabled = true;
+        for (i in 0...menuItems.length) {
+            menuItems.members[i].y = ITEM_HEIGHT * i;
+            menuItems.members[i].alpha = 1.0;
+        }
+        //menuItems.members[0].scale.set(SELECTED_SCALE, SELECTED_SCALE);
     }
 
     override function close() {
