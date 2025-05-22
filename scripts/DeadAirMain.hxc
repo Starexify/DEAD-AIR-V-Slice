@@ -19,6 +19,9 @@ import flixel.util.FlxTimer;
 import funkin.graphics.FunkinSprite;
 import funkin.audio.FunkinSound;
 import funkin.ui.transition.stickers.StickerSubState;
+import funkin.graphics.FunkinCamera;
+import funkin.graphics.FunkinCamera;
+import funkin.ui.options.OptionsState;
 
 class DeadAirMain extends ScriptedModule {
     var state:PlayState;
@@ -88,12 +91,27 @@ class DeadAirMain extends ScriptedModule {
 
     override function onSubStateOpenBegin(event:SubStateScriptEvent) {
         if (ModuleHandler.getModule("DeadAirHooks").scriptGet("inMainMenu")) {
-            if ((Std.isOfType(event.targetState, FreeplayState))) {
+            if (Std.isOfType(event.targetState, FreeplayState)) {
                 FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
             } else if (Std.isOfType(event.targetState, StickerSubState)) {
-                event.targetState.destroy();
-                FlxG.camera.fade(0xFF000000, 0, true, () -> FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState")));
+                var stickerState:StickerSubState = event.targetState;
+                stickerState.targetState = state -> ScriptedMusicBeatState.init("ui.DeadAirMenuState");
+                stickerState.grpStickers.visible = false;
+                stickerState.sounds = [];
+                var fadeCam:FunkinCamera = new FunkinCamera("fadeCam");
+                FlxG.cameras.add(fadeCam, false);
+                fadeCam.bgColor = 0x0;
+                fadeCam.visible = true;
+
+                fadeCam.fade(0xFF000000, 1);
             }
+        }
+    }
+
+    override function onStateChangeEnd(event:StateChangeScriptEvent) {
+        if (Std.isOfType(event.targetState, MainMenuState) && ModuleHandler.getModule("DeadAirHooks").scriptGet("inMainMenu")) {
+            FlxG.sound.music.stop();
+            FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
         }
     }
 

@@ -89,7 +89,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
         menuItems.camera = camMenu;
 
         createMenuItem("play", "mainmenu/deadair/entries", () -> openSubState(ScriptedMusicBeatSubState.init("ui.DeadAirPlaySubState")), true);
-        createMenuItem("options", "mainmenu/deadair/entries", () -> startExitState(new OptionsState(), true), true);
+        createMenuItem("options", "mainmenu/deadair/entries", () -> startExitState(new OptionsState()), true);
         createMenuItem("credits", "mainmenu/deadair/entries", () -> openSubState(ScriptedMusicBeatSubState.init("ui.DeadAirCreditsState")), true);
 
         add(menuItems);
@@ -169,8 +169,10 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
         super.update(elapsed);
 
         Conductor.instance.update();
-        if (controls.BACK && menuItems.enabled) startExitState(new MainMenuState(), false);
-
+        if (controls.BACK && menuItems.enabled) {
+            ModuleHandler.getModule("DeadAirHooks").scriptSet("inMainMenu", false);
+            startExitState(new MainMenuState());
+        }
         buttonPointer.x = menuItems.selectedItem.x + 202;
         buttonPointer.y = menuItems.selectedItem.y + menuItems.selectedItem.height * 0.25;
     }
@@ -190,8 +192,10 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     }
 
     override function destroy() {
-        remove(bg);
-        remove(logo);
+        if (!isInMenu) {
+            FlxG.sound.music.stop();
+            FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
+        }
         showDebugDisplay(true);
         super.destroy();
     }
@@ -209,8 +213,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
         menuItems.addItem(name, item);
     }
 
-    function startExitState(state, playSound) {
-        ModuleHandler.getModule("DeadAirHooks").scriptSet("inMainMenu", false);
+    function startExitState(state) {
         menuItems.enabled = false;
         rememberedSelectedIndex = menuItems.selectedIndex;
         var presState = state;
