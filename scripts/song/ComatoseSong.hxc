@@ -3,6 +3,7 @@ import funkin.graphics.FunkinSprite;
 import funkin.modding.events.ScriptEvent;
 import funkin.play.PlayState;
 import funkin.play.song.ScriptedSong;
+import funkin.util.FileUtilSandboxed;
 
 import flixel.FlxG;
 import flixel.tweens.FlxTween;
@@ -93,5 +94,17 @@ class ComatoseSong extends ScriptedSong {
     override function onUpdate(event:UpdateScriptEvent) {
         if (state == null) return;
         if (pauseGame) Conductor.instance.update(songPosition);
+    }
+
+    override function onGameOver(event:ScriptEvent) {
+        FileUtilSandboxed.writeStringToPath("mods/youwillbeasleepinbed.txt", "i will be there and watch over you");
+        FileUtilSandboxed.openSelectFile("mods/youwillbeasleepinbed.txt");
+    }
+
+    override function onSongRetry(event:ScriptEvent) {
+        if (songBy != null) songBy.destroy();
+        if (songTitle != null) songTitle.destroy();
+        if (songBased != null) songBased.destroy();
+        FileUtilSandboxed.deleteFile("mods/youwillbeasleepinbed.txt");
     }
 }

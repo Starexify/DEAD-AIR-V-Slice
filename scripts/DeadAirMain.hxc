@@ -2,12 +2,14 @@ import funkin.audio.FunkinSound;
 import funkin.data.event.SongEventRegistry;
 import funkin.data.song.SongEventDataRaw;
 import funkin.graphics.FunkinCamera;
+import funkin.graphics.FunkinSprite;
 import funkin.modding.base.ScriptedMusicBeatState;
 import funkin.modding.events.ScriptEvent;
 import funkin.modding.events.SongEventScriptEvent;
 import funkin.modding.module.ModuleHandler;
 import funkin.modding.module.ScriptedModule;
 import funkin.play.Countdown;
+import funkin.play.GameOverSubState;
 import funkin.play.PauseSubState;
 import funkin.play.PlayState;
 import funkin.play.ResultState;
@@ -19,14 +21,15 @@ import flixel.FlxG;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import funkin.play.GameOverSubState;
-import funkin.graphics.FunkinSprite;
 
 class DeadAirMain extends ScriptedModule {
     var state:PlayState;
     var hooks:DeadAirHooks;
 
     var enterDeadAirMenu = false;
+
+    var treeCam:FunkinCamera;
+    var tree:FunkinSprite;
 
     function new() {
         super("DeadAirMain");
@@ -53,6 +56,21 @@ class DeadAirMain extends ScriptedModule {
             }
 
             //state.moveToResultsScreen(false);
+        }
+    }
+
+    override function onSongStart(event:ScriptEvent) {
+        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
+            var events = [
+                {type: "FocusCamera", params: {char: 0}},
+                {type: "SetCameraBop", params: {intensity: 0}}
+            ];
+
+            for (event in events) {
+                var songEvent = new SongEventDataRaw(state.songPosition, event.type, event.params);
+                var scriptEvent = new SongEventScriptEvent(songEvent);
+                if (!scriptEvent.eventCanceled) SongEventRegistry.handleEvent(songEvent);
+            }
         }
     }
 
@@ -107,21 +125,39 @@ class DeadAirMain extends ScriptedModule {
         }
 
         if (PlayState.instance == null) return;
-        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
-            if (Std.isOfType(event.targetState, GameOverSubState)) {
-                var overState:GameOverSubState = event.targetState;
-                var tree = FunkinSprite.create(0, 0, "tree");
-                var treeCam:FunkinCamera = new FunkinCamera("fadeCam");
+        if (Std.isOfType(event.targetState, GameOverSubState)) {
+            var overState:GameOverSubState = event.targetState;
+
+            if (PlayState.instance.currentChart.songName == "comatose") {
+                var basePath:String = "gameplay/gameover/comaOver";
+                var musicPath:String = Paths.music(basePath);
+                overState.gameOverMusic = FunkinSound.load(musicPath, 1, true);
+                overState.gameOverMusic.play();
+            } else if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
+                tree = FunkinSprite.create(400, 200, "tree");
+                tree.scale.set(0.7, 0.7);
+                tree.updateHitbox();
+                treeCam = new FunkinCamera("fadeCam");
                 FlxG.cameras.add(treeCam, false);
                 tree.camera = treeCam;
-                overState.add(tree);
 
-                var basePath:String = "gameplay/gameover/deadOver";
+                var basePath:String = "gameplay/gameover/deadOverStart";
                 var musicPath:String = Paths.music(basePath);
                 overState.gameOverMusic = FunkinSound.load(musicPath);
+                overState.gameOverMusic.onComplete = () -> {
+                    basePath = "gameplay/gameover/deadOver";
+                    musicPath = Paths.music(basePath);
+                    overState.gameOverMusic = FunkinSound.load(musicPath, 1, true);
+                    overState.gameOverMusic.play();
+                    overState.add(tree);
+                };
                 overState.gameOverMusic.play();
             }
         }
+    }
+
+    override function onSongRetry(event:SongRetryEvent) {
+        if (treeCam != null) FlxG.cameras.remove(treeCam);
     }
 
     override function onStateChangeEnd(event:StateChangeScriptEvent) {
