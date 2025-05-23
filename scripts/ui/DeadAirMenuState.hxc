@@ -22,7 +22,11 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
+import openfl.display.Bitmap;
 import openfl.filters.ShaderFilter;
+import openfl.utils._internal.Lib;
+
+import lime.app.Application;
 
 import Main;
 
@@ -37,6 +41,9 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     var separator:FunkinSprite;
     var buttonPointer:FunkinSprite;
 
+    var pepsiMax:Bitmap;
+    var pigSpawnChance = 420;
+
     var rememberedSelectedIndex:Int = 0;
     var isInMenu:Bool = false;
 
@@ -44,6 +51,8 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
 
     override function create() {
         super.create();
+
+        spawnSecret();
 
         hooks = new DeadAirHooks();
         for (albumId in hooks.SONG_IDS) FunkinSprite.cacheTexture(Paths.image("freeplay/albumRoll/" + albumId));
@@ -192,8 +201,8 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
 
     override function onCloseSubStateComplete(targetState:FlxSubState) {
         camMenu.visible = true;
+        if (targetState._asc != null) isInMenu = true;
         if (isInMenu) menuItems.enabled = true;
-        isInMenu = false;
 
         super.onCloseSubStateComplete(targetState);
     }
@@ -201,6 +210,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     override function destroy() {
         if (!isInMenu || menuItems.enabled) {
             FlxG.sound.music.stop();
+            if (pepsiMax != null) Lib.current.stage.removeChild(pepsiMax);
             FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
         }
         showDebugDisplay(true);
@@ -234,6 +244,22 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
             restartTrack: false,
             persist: true
         });
+    }
+
+    function spawnSecret() {
+        if (ModuleHandler.getModule("DeadAirHooks").scriptGet("showPepsiMax") && FlxG.random.int(0, 500) < pigSpawnChance) {
+            pepsiMax = new Bitmap(Assets.getBitmapData(Paths.image("pepsimaxpig")));
+            pepsiMax.alpha = 0.5;
+            pepsiMax.scaleX = pepsiMax.scaleY = 0.5;
+            pepsiMax.x = (Application.current.window.width - pepsiMax.width) / 2;
+            pepsiMax.y = (Application.current.window.height - pepsiMax.height) / 2;
+            Lib.current.stage.addChild(pepsiMax);
+            Application.current.window.onResize.add((width:Int, height:Int) -> {
+                pepsiMax.x = (width - pepsiMax.width) / 2;
+                pepsiMax.y = (height - pepsiMax.height) / 2;
+            });
+            ModuleHandler.getModule("DeadAirHooks").scriptSet("showPepsiMax", false);
+        }
     }
 
     function showDebugDisplay(show:Bool) {

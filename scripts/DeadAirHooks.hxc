@@ -6,8 +6,16 @@ class DeadAirHooks extends ScriptedModule {
 
     public var SONG_IDS = ["under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
 
+    /**
+     * Secret Song Array used for randomly choosing a song when trying to play one of the dead air songs
+     *
+     * @param songId The ID of the song
+     * @param chance The chance (0-100) of the song to appear
+     *
+     *
+     * An example of this: <code> SECRET_SONGS.push({ songId: "tmpb2hpbw==", chance: 20 }); </code>
+     */
     public var SECRET_SONGS:Array<SecretSong> = [];
-    public var SECRET_CHANCE = 20;
 
     public var CREDITS = [
         { name: "vladosikos17", url: "https://x.com/vladosikos16" },
@@ -27,9 +35,9 @@ class DeadAirHooks extends ScriptedModule {
         { name: "Triki Troy", url: "https://x.com/Triki_Tr0y" }
     ];
 
-    public var inMainMenu = false;
-
     public var pauseMusicPath = "deadpause/deadpause";
+    public var inMainMenu = false;
+    public var showPepsiMax = true;
 
     function new() {
         super("DeadAirHooks");
