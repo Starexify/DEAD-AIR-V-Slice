@@ -38,7 +38,7 @@ class RememberedSong extends ScriptedSong {
         state.healthBar.createFilledBar(0xFFFF0000, 0xFF373737);
         boisvert = CharacterDataParser.fetchCharacter("boisvert");
         boisvert2 = CharacterDataParser.fetchCharacter("boisvert2");
-        state.isInCutscene = true;
+        state.disableKeys = true;
 
         blackBg = FunkinSprite.create(0, 0).makeSolidColor(FlxG.width, FlxG.height, 0xFF000000);
         blackBg.camera = state.camHUD;
@@ -95,7 +95,7 @@ class RememberedSong extends ScriptedSong {
                     note.alpha = 1;
                     FlxTween.tween(note, {y: targetYPositions[index]}, 0.7 + 0.1 * index, {
                         ease: FlxEase.quadInOut,
-                        onComplete: tween -> state.isInCutscene = false
+                        onComplete: tween -> state.disableKeys = false
                     });
                     index++;
                 }

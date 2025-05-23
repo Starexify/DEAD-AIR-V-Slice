@@ -11,7 +11,7 @@
         "duration": 0.7,
         "strumline": "both",
         "scroll": 1.25,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -342,7 +342,7 @@
         "duration": 0.2,
         "strumline": "both",
         "scroll": 1,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -401,7 +401,7 @@
         "duration": 0,
         "strumline": "both",
         "scroll": 0.9,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -412,7 +412,7 @@
         "duration": 14,
         "strumline": "both",
         "scroll": 1.3,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     }

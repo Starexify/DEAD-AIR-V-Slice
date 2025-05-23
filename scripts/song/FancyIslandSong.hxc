@@ -47,6 +47,7 @@ class FancyIslandSong extends ScriptedSong {
         if (PlayState.instance == null) return;
         state = PlayState.instance;
         state.camHUD.alpha = 0;
+        state.disableKeys = true;
         state.camGame.alpha = 0;
 
         lomando = CharacterDataParser.fetchCharacter("lomando");
@@ -127,6 +128,7 @@ class FancyIslandSong extends ScriptedSong {
                     FlxTween.tween(note, {y: targetYPosition}, 0.7 + 0.1 * index, { ease: FlxEase.quadInOut });
                     index++;
                 }
+                state.disableKeys = false;
             case 56:
                 FlxTween.tween(blackout, {alpha: 0.2}, 0.3, { ease: FlxEase.circOut });
                 FlxTween.tween(songTitle, {x: -500}, 1.3, { ease: FlxEase.circOut, onComplete: tween -> state.remove(songTitle) });

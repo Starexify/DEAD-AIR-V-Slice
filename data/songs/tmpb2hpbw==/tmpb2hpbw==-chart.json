@@ -11,7 +11,7 @@
         "duration": 0.4,
         "scroll": 1.2,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     }

@@ -19,7 +19,7 @@
         "duration": 0.8,
         "strumline": "both",
         "scroll": 0.7,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -38,7 +38,7 @@
         "duration": 0,
         "strumline": "both",
         "scroll": 1,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -73,7 +73,7 @@
         "duration": 0.1,
         "strumline": "both",
         "scroll": 1.2,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -140,7 +140,7 @@
         "duration": 0.1,
         "strumline": "both",
         "scroll": 0.9,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -159,7 +159,7 @@
         "duration": 0,
         "strumline": "both",
         "scroll": 1,
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },

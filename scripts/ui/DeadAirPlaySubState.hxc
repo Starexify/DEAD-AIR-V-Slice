@@ -158,6 +158,7 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
     }
 
     function startSong(songId:String) {
+        var finalSongId = getSecretSongOrDefault(songId);
         menuItems.enabled = false;
         FlxG.sound.music.stop();
         colorShader.saturation = 0;
@@ -167,19 +168,17 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
         new FlxTimer().start(TIMER_DELAY, timer -> {
             var fadeCam = createCamera("fadeCam", 0, 0, FlxG.width, FlxG.height, 0x0);
             fadeCam.fade(0xFF000000, FADE_DURATION, false, () -> {
-                var finalSongId = getSecretSongOrDefault(songId);
                 loadSong(finalSongId);
             });
         });
     }
 
     function getSecretSongOrDefault(originalSongId:String):String {
-        for (secretSong in SECRET_SONGS) {
+        for (secretSong in hooks.SECRET_SONGS) {
             if (FlxG.random.bool(secretSong.chance) && !Save.instance.hasBeatenSong(secretSong.songId)) return secretSong.songId;
         }
         return originalSongId;
     }
-
 
     function loadSong(songId:String) {
         var targetSong = SongRegistry.instance.fetchEntry(songId);

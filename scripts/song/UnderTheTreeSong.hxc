@@ -9,9 +9,6 @@ import funkin.play.song.ScriptedSong;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
-import funkin.modding.base.ScriptedFlxRuntimeShader;
-import openfl.filters.ShaderFilter;
-
 class UnderTheTreeSong extends ScriptedSong {
     var state:PlayState;
 
@@ -29,7 +26,7 @@ class UnderTheTreeSong extends ScriptedSong {
         state = PlayState.instance;
         saySorry = CharacterDataParser.fetchCharacter("saysorry");
         state.camHUD.alpha = 0;
-        state.isInCutscene = true;
+        state.disableKeys = true;
         state.camGame.alpha = 0;
         state.currentStage.getNamedProp("eyes").visible = false;
 
@@ -65,7 +62,7 @@ class UnderTheTreeSong extends ScriptedSong {
             case 8:
                 FlxTween.tween(songTitle, {alpha: 1}, 2.4);
             case 16:
-                state.isInCutscene = false;
+                state.disableKeys = false;
                 FlxTween.tween(state.camHUD, {alpha: 1}, 2.4);
                 FlxTween.tween(songTitle, {alpha: 0}, 3, { onComplete: tween -> state.remove(songTitle) });
             case 156:

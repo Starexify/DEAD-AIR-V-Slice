@@ -27,6 +27,7 @@ import openfl.filters.ShaderFilter;
 import Main;
 
 class DeadAirMenuState extends ScriptedMusicBeatState {
+    var hooks:DeadAirHooks;
     var menuItems:MenuTypedList<AtlasMenuItem>;
 
     var camMenu:FunkinCamera;
@@ -43,6 +44,10 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
 
     override function create() {
         super.create();
+
+        hooks = new DeadAirHooks();
+        for (albumId in hooks.SONG_IDS) FunkinSprite.cacheTexture(Paths.image("freeplay/albumRoll/" + albumId));
+        for (creditId in hooks.CREDITS) FunkinSprite.cacheTexture(Paths.image("credits/" + creditId.name));
 
         transIn = FlxTransitionableState.defaultTransIn;
         transOut = FlxTransitionableState.defaultTransOut;
@@ -188,7 +193,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     override function onCloseSubStateComplete(targetState:FlxSubState) {
         camMenu.visible = true;
         if (isInMenu) menuItems.enabled = true;
-        isInMenu = false;
+        if (menuItems.enabled) isInMenu = true;
 
         super.onCloseSubStateComplete(targetState);
     }

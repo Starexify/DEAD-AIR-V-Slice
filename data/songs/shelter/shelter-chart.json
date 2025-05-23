@@ -19,7 +19,7 @@
         "duration": 0.1,
         "scroll": 1.05,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -30,7 +30,7 @@
         "duration": 0.1,
         "scroll": 1.10,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -41,7 +41,7 @@
         "duration": 0.1,
         "scroll": 1.12,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -52,7 +52,7 @@
         "duration": 0.1,
         "scroll": 1.14,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -63,7 +63,7 @@
         "duration": 0.1,
         "scroll": 1.15,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -74,7 +74,7 @@
         "duration": 0.1,
         "scroll": 1.05,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -85,7 +85,7 @@
         "duration": 0.1,
         "scroll": 1,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -96,7 +96,7 @@
         "duration": 0.1,
         "scroll": 0.98,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -107,7 +107,7 @@
         "duration": 0.1,
         "scroll": 0.96,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -118,7 +118,7 @@
         "duration": 0.1,
         "scroll": 0.94,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -137,7 +137,7 @@
         "duration": 0.1,
         "scroll": 0.9,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -156,7 +156,7 @@
         "duration": 0.2,
         "scroll": 1.1,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -167,7 +167,7 @@
         "duration": 0.2,
         "scroll": 1.25,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
@@ -178,7 +178,7 @@
         "duration": 5,
         "scroll": 1.4,
         "strumline": "both",
-        "ease": "linear",
+        "ease": "smoothStepIn",
         "absolute": false
       }
     },
