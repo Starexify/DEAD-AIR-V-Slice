@@ -45,7 +45,6 @@ class DeadAirMain extends ScriptedModule {
         state.discordRPCAlbum = "https://raw.githubusercontent.com/Starexify/DEAD-AIR-V-Slice/refs/heads/0.6.x/images/freeplay/albumRoll/" + state.currentChart.songName + ".png";
 
         fireEvents();
-        state.moveToResultsScreen(false);
     }
 
     override function onSongStart(event:ScriptEvent) {
