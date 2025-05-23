@@ -24,12 +24,14 @@ import flixel.util.FlxTimer;
 
 class DeadAirMain extends ScriptedModule {
     var state:PlayState;
+    var overState:GameOverSubState;
     var hooks:DeadAirHooks;
 
     var enterDeadAirMenu = false;
 
     var treeCam:FunkinCamera;
     var tree:FunkinSprite;
+    var musicPlayed:Bool = false;
 
     function new() {
         super("DeadAirMain");
@@ -98,8 +100,7 @@ class DeadAirMain extends ScriptedModule {
 
         if (!isDeadAirSong() || !Std.isOfType(event.targetState, GameOverSubState)) return;
 
-        var overState:GameOverSubState = event.targetState;
-        overState.hasPlayedDeathQuote = true;
+        overState = event.targetState;
 
         if (PlayState.instance.currentChart.songName == "comatose") {
             overState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/comaOver"), 1, true);
@@ -121,10 +122,8 @@ class DeadAirMain extends ScriptedModule {
     }
 
     override function onUpdate(event:UpdateScriptEvent) {
-        if (Std.isOfType(FlxG.state, MainMenuState) && FlxG.keys.justPressed.TAB) {
-            enterDeadAirMenu = !enterDeadAirMenu;
-            FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
-        }
+        handleDeadMenu();
+        handleGOEndMusic();
     }
 
     // Helper Methods
@@ -146,6 +145,9 @@ class DeadAirMain extends ScriptedModule {
     }
 
     function setupDeadAirGameOver(overState:GameOverSubState) {
+        overState.mustNotExit = true;
+        GameOverSubState.blueBallSuffix = "null-";
+        var prevOverState = overState;
         tree = FunkinSprite.create(400, 200, "tree");
         tree.scale.set(0.7, 0.7);
         tree.updateHitbox();
@@ -155,11 +157,33 @@ class DeadAirMain extends ScriptedModule {
 
         overState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/deadOverStart"));
         overState.gameOverMusic.onComplete = () -> {
-            overState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/deadOver"), 1, true);
-            overState.gameOverMusic.play();
-            overState.add(tree);
+            prevOverState.mustNotExit = false;
+            prevOverState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/deadOver"), 1, true);
+            prevOverState.gameOverMusic.play();
+            prevOverState.add(tree);
         };
         overState.gameOverMusic.play();
+    }
+
+    // Handlers
+    function handleGOEndMusic() {
+        if (GameOverSubState.instance == null) return;
+        if (overState != null && overState.isEnding) {
+            if (PlayState.instance.currentChart.songName != "comatose" && !musicPlayed) {
+                tree.destroy();
+                overState.gameOverMusic.stop();
+                overState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/deadOverEnd"));
+                overState.gameOverMusic.play();
+                musicPlayed = true;
+            }
+        }
+    }
+
+    function handleDeadMenu() {
+        if (Std.isOfType(FlxG.state, MainMenuState) && FlxG.keys.justPressed.TAB) {
+            enterDeadAirMenu = !enterDeadAirMenu;
+            FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
+        }
     }
 
     // Mute Miss Sounds for dead air songs

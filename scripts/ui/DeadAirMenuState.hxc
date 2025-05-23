@@ -193,7 +193,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     override function onCloseSubStateComplete(targetState:FlxSubState) {
         camMenu.visible = true;
         if (isInMenu) menuItems.enabled = true;
-        if (menuItems.enabled) isInMenu = true;
+        isInMenu = false;
 
         super.onCloseSubStateComplete(targetState);
     }
