@@ -41,15 +41,6 @@ class UnderTheTreeSong extends ScriptedSong {
         songTitle.camera = state.camCutscene;
         songTitle.alpha = 0;
         state.add(songTitle);
-
-/*        var hslShader:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("HSLShader");
-        hslShader.setFloat("brightness", 0);
-        hslShader.setFloat("contrast", 1.0);
-        hslShader.setFloat("gamma", 2.0);
-        hslShader.setFloat("hue", -0.1);
-        hslShader.setFloat("saturation", 0.3);
-        hslShader.setFloat("luminosity", 0.1);
-        state.camHUD.filters = [new ShaderFilter(hslShader)];*/
     }
 
     override function onBeatHit(event:SongTimeScriptEvent) {

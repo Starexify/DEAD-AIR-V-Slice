@@ -37,77 +37,49 @@ class DeadAirMain extends ScriptedModule {
     }
 
     override function onSongLoaded(event:SongLoadScriptEvent) {
-        if (PlayState.instance == null) return;
+        if (!isDeadAirSong()) return;
+        state = PlayState.instance;
 
-        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
-            state = PlayState.instance;
+        state.discordRPCAlbum = "https://raw.githubusercontent.com/Starexify/DEAD-AIR-V-Slice/refs/heads/0.6.x/images/freeplay/albumRoll/" + state.currentChart.songName + ".png";
 
-            state.discordRPCAlbum = "https://raw.githubusercontent.com/Starexify/DEAD-AIR-V-Slice/refs/heads/0.6.x/images/freeplay/albumRoll/" + state.currentChart.songName + ".png";
-
-            var events = [
-                {type: "FocusCamera", params: {char: 0}},
-                {type: "SetCameraBop", params: {intensity: 0}}
-            ];
-
-            for (event in events) {
-                var songEvent = new SongEventDataRaw(state.songPosition, event.type, event.params);
-                var scriptEvent = new SongEventScriptEvent(songEvent);
-                if (!scriptEvent.eventCanceled) SongEventRegistry.handleEvent(songEvent);
-            }
-
-            //state.moveToResultsScreen(false);
-        }
+        fireEvents();
     }
 
     override function onSongStart(event:ScriptEvent) {
-        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
-            var events = [
-                {type: "FocusCamera", params: {char: 0}},
-                {type: "SetCameraBop", params: {intensity: 0}}
-            ];
-
-            for (event in events) {
-                var songEvent = new SongEventDataRaw(state.songPosition, event.type, event.params);
-                var scriptEvent = new SongEventScriptEvent(songEvent);
-                if (!scriptEvent.eventCanceled) SongEventRegistry.handleEvent(songEvent);
-            }
-        }
+        if (isDeadAirSong()) fireEvents();
     }
 
     override function onCountdownStart(event:CountdownScriptEvent) {
-        if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
-            new FlxTimer().start(0.01, timer -> {
-                Countdown.skipCountdown();
-            });
-        }
+        if (isDeadAirSong()) FlxTimer.wait(0.01, () -> Countdown.skipCountdown());
     }
 
     override function onSubStateOpenEnd(event:SubStateScriptEvent) {
-        if (Std.isOfType(event.targetState, PauseSubState)) {
+        if (Std.isOfType(event.targetState, PauseSubState) && isDeadAirSong()) {
             var pauseState:PauseSubState = event.targetState;
-            if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
-                if (PlayState.instance != null && PlayState.instance.currentChart.songName == "shelter") {
-                    pauseState.metadata.forEach(text -> text.font = Paths.font("shelter.ttf"));
-                }
 
-                pauseState.pauseMusic.stop();
-                pauseState.pauseMusic = FunkinSound.load(Paths.music(hooks.pauseMusicPath), true, true);
-                pauseState.pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseState.pauseMusic.length / 2)));
-                pauseState.pauseMusic.fadeIn(PauseSubState.MUSIC_FADE_IN_TIME, 0, PauseSubState.MUSIC_FINAL_VOLUME);
-
-                FlxTween.cancelTweensOf(pauseState.background);
-                FlxTween.tween(pauseState.background, {alpha: 1}, 1.2, {ease: FlxEase.quartOut});
+            if (PlayState.instance.currentChart.songName == "shelter") {
+                pauseState.metadata.forEach(text -> text.font = Paths.font("shelter.ttf"));
             }
+
+            pauseState.pauseMusic.stop();
+            pauseState.pauseMusic = FunkinSound.load(Paths.music(hooks.pauseMusicPath), true, true);
+            pauseState.pauseMusic.play(false, FlxG.random.int(0, Std.int(pauseState.pauseMusic.length / 2)));
+            pauseState.pauseMusic.fadeIn(PauseSubState.MUSIC_FADE_IN_TIME, 0, PauseSubState.MUSIC_FINAL_VOLUME);
+
+            FlxTween.cancelTweensOf(pauseState.background);
+            FlxTween.tween(pauseState.background, {alpha: 1}, 1.2, {ease: FlxEase.quartOut});
         }
 
-        if (Std.isOfType(event.targetState, ResultState) && hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
+        if (Std.isOfType(event.targetState, ResultState) && isDeadAirSong()) {
             var resultState:ResultState = event.targetState;
             resultState.members[0].color = resultState.cameraBG.bgColor = 0xFF000000;
         }
     }
 
     override function onSubStateOpenBegin(event:SubStateScriptEvent) {
-        if (ModuleHandler.getModule("DeadAirHooks").scriptGet("inMainMenu")) {
+        var inMainMenu = ModuleHandler.getModule("DeadAirHooks").scriptGet("inMainMenu");
+
+        if (inMainMenu) {
             if (Std.isOfType(event.targetState, FreeplayState)) {
                 FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
             } else if (Std.isOfType(event.targetState, StickerSubState)) {
@@ -115,44 +87,25 @@ class DeadAirMain extends ScriptedModule {
                 stickerState.targetState = state -> ScriptedMusicBeatState.init("ui.DeadAirMenuState");
                 stickerState.grpStickers.visible = false;
                 stickerState.sounds = [];
-                var fadeCam:FunkinCamera = new FunkinCamera("fadeCam");
+
+                var fadeCam = new FunkinCamera("fadeCam");
                 FlxG.cameras.add(fadeCam, false);
                 fadeCam.bgColor = 0x0;
                 fadeCam.visible = true;
-
                 fadeCam.fade(0xFF000000, 1);
             }
         }
 
-        if (PlayState.instance == null) return;
-        if (Std.isOfType(event.targetState, GameOverSubState)) {
-            var overState:GameOverSubState = event.targetState;
+        if (!isDeadAirSong() || !Std.isOfType(event.targetState, GameOverSubState)) return;
 
-            if (PlayState.instance.currentChart.songName == "comatose") {
-                var basePath:String = "gameplay/gameover/comaOver";
-                var musicPath:String = Paths.music(basePath);
-                overState.gameOverMusic = FunkinSound.load(musicPath, 1, true);
-                overState.gameOverMusic.play();
-            } else if (hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName)) {
-                tree = FunkinSprite.create(400, 200, "tree");
-                tree.scale.set(0.7, 0.7);
-                tree.updateHitbox();
-                treeCam = new FunkinCamera("fadeCam");
-                FlxG.cameras.add(treeCam, false);
-                tree.camera = treeCam;
+        var overState:GameOverSubState = event.targetState;
+        overState.hasPlayedDeathQuote = true;
 
-                var basePath:String = "gameplay/gameover/deadOverStart";
-                var musicPath:String = Paths.music(basePath);
-                overState.gameOverMusic = FunkinSound.load(musicPath);
-                overState.gameOverMusic.onComplete = () -> {
-                    basePath = "gameplay/gameover/deadOver";
-                    musicPath = Paths.music(basePath);
-                    overState.gameOverMusic = FunkinSound.load(musicPath, 1, true);
-                    overState.gameOverMusic.play();
-                    overState.add(tree);
-                };
-                overState.gameOverMusic.play();
-            }
+        if (PlayState.instance.currentChart.songName == "comatose") {
+            overState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/comaOver"), 1, true);
+            overState.gameOverMusic.play();
+        } else {
+            setupDeadAirGameOver(overState);
         }
     }
 
@@ -172,10 +125,41 @@ class DeadAirMain extends ScriptedModule {
             enterDeadAirMenu = !enterDeadAirMenu;
             FlxG.switchState(ScriptedMusicBeatState.init("ui.DeadAirMenuState"));
         }
+    }
 
-        if (GameOverSubState.instance == null) return;
-        var overState:GameOverSubState = GameOverSubState.instance;
+    // Helper Methods
+    function isDeadAirSong():Bool {
+        return PlayState.instance != null && hooks.INCL_SONGS.contains(PlayState.instance.currentChart.songName);
+    }
 
+    function fireEvents() {
+        var events = [
+            {type: "FocusCamera", params: {char: 0}},
+            {type: "SetCameraBop", params: {intensity: 0}}
+        ];
+
+        for (event in events) {
+            var songEvent = new SongEventDataRaw(PlayState.instance.songPosition, event.type, event.params);
+            var scriptEvent = new SongEventScriptEvent(songEvent);
+            if (!scriptEvent.eventCanceled) SongEventRegistry.handleEvent(songEvent);
+        }
+    }
+
+    function setupDeadAirGameOver(overState:GameOverSubState) {
+        tree = FunkinSprite.create(400, 200, "tree");
+        tree.scale.set(0.7, 0.7);
+        tree.updateHitbox();
+        treeCam = new FunkinCamera("fadeCam");
+        FlxG.cameras.add(treeCam, false);
+        tree.camera = treeCam;
+
+        overState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/deadOverStart"));
+        overState.gameOverMusic.onComplete = () -> {
+            overState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/deadOver"), 1, true);
+            overState.gameOverMusic.play();
+            overState.add(tree);
+        };
+        overState.gameOverMusic.play();
     }
 
     // Mute Miss Sounds for dead air songs
