@@ -45,7 +45,6 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
         super.create();
 
         hooks = new DeadAirHooks();
-        trace(hooks.SECRET_SONGS);
         setupCameras();
         setupMenuItems();
         setupAlbum();

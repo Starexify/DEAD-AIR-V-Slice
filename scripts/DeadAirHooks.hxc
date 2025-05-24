@@ -1,10 +1,13 @@
 import funkin.modding.module.ScriptedModule;
+import funkin.modding.PolymodHandler;
 import funkin.save.Save;
+import funkin.util.FileUtilSandboxed;
+import funkin.util.ReflectUtil;
 
 class DeadAirHooks extends ScriptedModule {
-    public var INCL_SONGS = ["tmpb2hpbw==", "under the tree", "comatose", "fancy island", "big eater", "shelter", "remembered"];
+    public var INCL_SONGS:Array<String> = [];
 
-    public var SONG_IDS = ["under-the-tree", "comatose", "fancy-island", "big-eater", "shelter", "remembered"];
+    public var SONG_IDS:Array<String> = [];
 
     /**
      * Secret Song Array used for randomly choosing a song when trying to play one of the dead air songs
@@ -41,10 +44,22 @@ class DeadAirHooks extends ScriptedModule {
 
     function new() {
         super("DeadAirHooks");
+        iterateMods(INCL_SONGS, "includedSongs");
+        iterateMods(SONG_IDS, "songIds");
         if (Save.instance.hasBeatenSong("tmpb2hpbw==")) {
             SONG_IDS.unshift("tmpb2hpbw==");
         } else {
             SECRET_SONGS.push({ songId: "tmpb2hpbw==", chance: 20 });
+        }
+    }
+
+    function iterateMods(array:Array<String>, key:String) {
+        for (mod in PolymodHandler.getAllModIds()) {
+            var path = "mods/" + mod + "/data/compat/dead-air.json";
+            if (FileUtilSandboxed.fileExists(path)) {
+                var value = ReflectUtil.getProperty(FileUtilSandboxed.readJSONFromPath(path), key);
+                for (song in value) array.push(song);
+            }
         }
     }
 }

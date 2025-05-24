@@ -51,6 +51,7 @@ class BigEaterSong extends ScriptedSong {
             }
         });
         introVid.bitmap.onEndReached.add(introVid.destroy);
+        introVid.play();
         state.add(introVid);
 
         runVid = new FunkinVideoSprite(0, 0);
@@ -86,8 +87,11 @@ class BigEaterSong extends ScriptedSong {
         evilShader.setFloat("pix", 0.00001);
     }
 
-    override function onSongStart(event:ScriptEvent) {
-        introVid.play();
+    override function onSongRetry(event:ScriptEvent) {
+        if (state != null) {
+            state.camGame.filters = [];
+            state.camHUD.filters = [];
+        }
     }
 
     override function onStepHit(event:SongTimeScriptEvent) {

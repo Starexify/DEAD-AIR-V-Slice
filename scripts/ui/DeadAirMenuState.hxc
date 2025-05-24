@@ -247,7 +247,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     }
 
     function spawnSecret() {
-        if (ModuleHandler.getModule("DeadAirHooks").scriptGet("showPepsiMax") && FlxG.random.int(0, 500) < pigSpawnChance) {
+        if (ModuleHandler.getModule("DeadAirHooks").scriptGet("showPepsiMax") && FlxG.random.bool(pigSpawnChance / 100)) {
             pepsiMax = new Bitmap(Assets.getBitmapData(Paths.image("pepsimaxpig")));
             pepsiMax.alpha = 0.5;
             pepsiMax.scaleX = pepsiMax.scaleY = 0.5;
