@@ -69,7 +69,7 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
         blockyFilter.setFloatArray("uBlocksize", [1, 1]);
 
         camItems = createCamera("camItems", 75, 74, 350, 570, 0xFF000000);
-        //camItems.filters = [new ShaderFilter(blockyFilter)];
+        camItems.filters = [new ShaderFilter(blockyFilter)];
         camAlbum = createCamera("camAlbum", 725, 105, 510, 505, 0xFFFFFFFF);
         camAlbum.filters = [new ShaderFilter(colorShader)];
 

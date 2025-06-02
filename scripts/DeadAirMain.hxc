@@ -101,9 +101,7 @@ class DeadAirMain extends ScriptedModule {
         }
 
         if (!isDeadAirSong() || !Std.isOfType(event.targetState, GameOverSubState)) return;
-
         overState = event.targetState;
-
         if (PlayState.instance.currentChart.songName == "comatose") {
             overState.gameOverMusic = FunkinSound.load(Paths.music("gameplay/gameover/comaOver"), 1, true);
             overState.gameOverMusic.play();

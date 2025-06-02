@@ -115,6 +115,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
             playMenuMusic("deadairMenu2");
             camMenu.filters = [];
             isInMenu = true;
+            menuItems.enabled = true;
             for (i in 0...menuItems.length) menuItems.members[i].visible = true;
 
             logo.x = -107;
@@ -202,7 +203,7 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
     override function onCloseSubStateComplete(targetState:FlxSubState) {
         camMenu.visible = true;
         if (targetState._asc != null) isInMenu = true;
-        if (isInMenu) menuItems.enabled = true;
+        if (isInMenu || ModuleHandler.getModule("DeadAirHooks").scriptGet("inMainMenu")) menuItems.enabled = true;
 
         super.onCloseSubStateComplete(targetState);
     }
