@@ -10,13 +10,13 @@ import funkin.play.character.BaseCharacter;
 import funkin.play.character.CharacterType;
 import funkin.play.character.CharacterDataParser;
 import funkin.play.song.ScriptedSong;
+import funkin.play.stage.StageProp;
 
 import flixel.FlxG;
 import flixel.math.FlxRect;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
-import funkin.play.stage.StageProp;
 
 class FancyIslandSong extends ScriptedSong {
     var state:PlayState;

@@ -5,9 +5,9 @@ import funkin.util.FileUtilSandboxed;
 import funkin.util.ReflectUtil;
 
 class DeadAirHooks extends ScriptedModule {
-    public var INCL_SONGS:Array<String> = [];
+    public static var INCL_SONGS:Array<String> = [];
 
-    public var SONG_IDS:Array<String> = [];
+    public static var SONG_IDS:Array<String> = [];
 
     /**
      * Secret Song Array used for randomly choosing a song when trying to play one of the dead air songs
@@ -18,9 +18,9 @@ class DeadAirHooks extends ScriptedModule {
      *
      * An example of this: <code> SECRET_SONGS.push({ songId: "tmpb2hpbw==", chance: 20 }); </code>
      */
-    public var SECRET_SONGS:Array<SecretSong> = [];
+    public static var SECRET_SONGS:Array<SecretSong> = [];
 
-    public var CREDITS = [
+    public static var CREDITS = [
         { name: "vladosikos17", url: "https://x.com/vladosikos16" },
         { name: "Sandi", url: "https://x.com/334_sandi" },
         { name: "staticfyre", url: "https://x.com/staticfyre" },
@@ -38,7 +38,7 @@ class DeadAirHooks extends ScriptedModule {
         { name: "Triki Troy", url: "https://x.com/Triki_Tr0y" }
     ];
 
-    public var pauseMusicPath = "deadpause/deadpause";
+    public static  var pauseMusicPath = "deadpause/deadpause";
     public var inMainMenu = false;
     public var showPepsiMax = true;
 
@@ -53,7 +53,7 @@ class DeadAirHooks extends ScriptedModule {
         }
     }
 
-    function iterateMods(array:Array<String>, key:String) {
+    public static function iterateMods(array:Array<String>, key:String) {
         for (mod in PolymodHandler.getAllModIds()) {
             var path = "mods/" + mod + "/data/compat/dead-air.json";
             if (FileUtilSandboxed.fileExists(path)) {

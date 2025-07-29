@@ -6,12 +6,12 @@ import funkin.audio.FunkinSound;
 import funkin.graphics.FunkinCamera;
 import funkin.graphics.FunkinSprite;
 import funkin.modding.base.ScriptedFlxRuntimeShader;
-import funkin.modding.base.ScriptedMusicBeatState;
-import funkin.modding.base.ScriptedMusicBeatSubState;
 import funkin.modding.module.ModuleHandler;
 import funkin.ui.AtlasMenuItem;
 import funkin.ui.AtlasMenuList;
 import funkin.ui.MenuTypedList;
+import funkin.ui.ScriptedMusicBeatState;
+import funkin.ui.ScriptedMusicBeatSubState;
 import funkin.ui.mainmenu.MainMenuState;
 import funkin.ui.options.OptionsState;
 import funkin.util.WindowUtil;
@@ -31,7 +31,6 @@ import lime.app.Application;
 import Main;
 
 class DeadAirMenuState extends ScriptedMusicBeatState {
-    var hooks:DeadAirHooks;
     var menuItems:MenuTypedList<AtlasMenuItem>;
 
     var camMenu:FunkinCamera;
@@ -54,9 +53,8 @@ class DeadAirMenuState extends ScriptedMusicBeatState {
 
         spawnSecret();
 
-        hooks = new DeadAirHooks();
-        for (albumId in hooks.SONG_IDS) FunkinSprite.cacheTexture(Paths.image("freeplay/albumRoll/" + albumId));
-        for (creditId in hooks.CREDITS) FunkinSprite.cacheTexture(Paths.image("credits/" + creditId.name));
+        for (albumId in DeadAirHooks.SONG_IDS) FunkinSprite.cacheTexture(Paths.image("freeplay/albumRoll/" + albumId));
+        for (creditId in DeadAirHooks.CREDITS) FunkinSprite.cacheTexture(Paths.image("credits/" + creditId.name));
 
         transIn = FlxTransitionableState.defaultTransIn;
         transOut = FlxTransitionableState.defaultTransOut;

@@ -6,10 +6,10 @@ import funkin.graphics.FunkinCamera;
 import funkin.graphics.FunkinSprite;
 import funkin.graphics.shaders.HSVShader;
 import funkin.modding.base.ScriptedFlxRuntimeShader;
-import funkin.modding.base.ScriptedMusicBeatSubState;
 import funkin.save.Save;
 import funkin.ui.MenuTypedItem;
 import funkin.ui.MenuTypedList;
+import funkin.ui.ScriptedMusicBeatSubState;
 import funkin.ui.transition.LoadingState;
 
 import flixel.FlxG;
@@ -21,7 +21,6 @@ import flixel.util.FlxTimer;
 import openfl.filters.ShaderFilter;
 
 class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
-    var hooks:DeadAirHooks;
     var menuItems:MenuTypedList<MenuTypedItem>;
 
     var blockyFilter:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("Testing");
@@ -44,7 +43,6 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
     override function create() {
         super.create();
 
-        hooks = new DeadAirHooks();
         setupCameras();
         setupMenuItems();
         setupAlbum();
@@ -106,7 +104,7 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
         menuItems.onAcceptPress.add(onMenuAccept);
         menuItems.onChange.add(onMenuChange);
 
-        for (songId in hooks.SONG_IDS) {
+        for (songId in DeadAirHooks.SONG_IDS) {
             var targetSong = SongRegistry.instance.fetchEntry(songId);
             if (targetSong == null) {
                 FlxG.log.warn("WARN: could not find song with id (" + songId + ")");
@@ -173,7 +171,7 @@ class DeadAirPlaySubState extends ScriptedMusicBeatSubState {
     }
 
     function getSecretSongOrDefault(originalSongId:String):String {
-        for (secretSong in hooks.SECRET_SONGS) {
+        for (secretSong in DeadAirHooks.SECRET_SONGS) {
             if (FlxG.random.bool(secretSong.chance) && !Save.instance.hasBeatenSong(secretSong.songId)) return secretSong.songId;
         }
         return originalSongId;

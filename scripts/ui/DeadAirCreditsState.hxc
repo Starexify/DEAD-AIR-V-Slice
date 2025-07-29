@@ -4,9 +4,9 @@ import funkin.audio.FunkinSound;
 import funkin.graphics.FunkinCamera;
 import funkin.graphics.FunkinSprite;
 import funkin.modding.base.ScriptedFlxRuntimeShader;
-import funkin.modding.base.ScriptedMusicBeatSubState;
 import funkin.ui.MenuTypedItem;
 import funkin.ui.MenuTypedList;
+import funkin.ui.ScriptedMusicBeatSubState;
 import funkin.util.WindowUtil;
 
 import flixel.FlxG;
@@ -17,7 +17,6 @@ import flixel.text.FlxText;
 
 
 class DeadAirCreditsState extends ScriptedMusicBeatSubState {
-    var hooks:DeadAirHooks;
     var menuItems:MenuTypedList<MenuTypedItem>;
 
     var blockyFilter:ScriptedFlxRuntimeShader = ScriptedFlxRuntimeShader.init("Testing");
@@ -31,7 +30,6 @@ class DeadAirCreditsState extends ScriptedMusicBeatSubState {
 
     override function create() {
         super.create();
-        hooks = new DeadAirHooks();
 
         blockyFilter.setFloatArray("uBlocksize", [1, 1]);
 
@@ -52,7 +50,7 @@ class DeadAirCreditsState extends ScriptedMusicBeatSubState {
             FunkinSound.playOnce(Paths.sound("dead-air/confirmMenu"));
         });
 
-        for (credit in hooks.CREDITS) createMenuItem(credit.name, () -> WindowUtil.openURL(credit.url), true);
+        for (credit in DeadAirHooks.CREDITS) createMenuItem(credit.name, () -> WindowUtil.openURL(credit.url), true);
 
         creditFrame = FunkinSprite.create(815, 155).makeSolidColor(310, 452, 0xFFFFFFFF);
         add(creditFrame);
