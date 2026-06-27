@@ -23,7 +23,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 
 class DeadAirMain extends ScriptedModule {
-    var state:PlayState;
+    var pState:PlayState;
     var overState:GameOverSubState;
 
     var enterDeadAirMenu = false;
@@ -38,9 +38,9 @@ class DeadAirMain extends ScriptedModule {
 
     override function onSongLoaded(event:SongLoadScriptEvent) {
         if (!isDeadAirSong()) return;
-        state = PlayState.instance;
+        pState = PlayState.instance;
 
-        state.discordRPCAlbum = "https://raw.githubusercontent.com/Starexify/DEAD-AIR-V-Slice/refs/heads/0.6.x/images/freeplay/albumRoll/" + state.currentChart.songName + ".png";
+        pState.discordRPCAlbum = "https://raw.githubusercontent.com/Starexify/DEAD-AIR-V-Slice/refs/heads/0.6.x/images/freeplay/albumRoll/" + pState.currentChart.songName + ".png";
 
         fireEvents();
     }

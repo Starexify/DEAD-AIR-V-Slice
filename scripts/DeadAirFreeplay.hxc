@@ -5,9 +5,9 @@ import funkin.graphics.shaders.HSVShader;
 import funkin.modding.events.ScriptEvent;
 import funkin.modding.module.ScriptedModule;
 import funkin.play.PlayStatePlaylist;
+import funkin.play.song.Song;
 import funkin.save.Save;
 import funkin.ui.freeplay.FreeplayState;
-import funkin.ui.freeplay.SongMenuItem;
 import funkin.ui.transition.LoadingState;
 
 import flixel.FlxG;
@@ -20,36 +20,27 @@ class DeadAirFreeplay extends ScriptedModule {
         super("DeadAirFreeplay");
     }
 
-    override function onUpdate(event:UpdateScriptEvent) {
-        if (Std.isOfType(FlxG.state.subState, FreeplayState)) {
-            var freeplay:FreeplayState = FlxG.state.subState;
-            var capsule:SongMenuItem = freeplay.grpCapsules.members[freeplay.curSelected];
-            if (capsule != null && freeplay.curSelected != 0 && DeadAirHooks.SONG_IDS.contains(capsule?.freeplayData?.data.id)) {
-                capsule.onConfirm = () -> if (!freeplay.busy) capsuleOnConfirmDeadAir(freeplay, capsule);
-            }
-        }
-    }
-
-    function capsuleOnConfirmDeadAir(fpState:FreeplayState, cap:SongMenuItem) {
+    override public function onSongSelected(event:CapsuleScriptEvent):Void {
         //fpState.busy = true;
-        fpState.letterSort.inputEnabled = false;
+        if (!DeadAirHooks.SONG_IDS.contains(event.capsule?.freeplayData?.data.id)) return;
+        var fpState:FreeplayState = FlxG.state.subState;
 
         PlayStatePlaylist.isStoryMode = false;
 
-        var targetSongId:String = (FlxG.random.bool(20) && !Save.instance.hasBeatenSong("tmpb2hpbw==")) ? "tmpb2hpbw==" : cap.freeplayData.data.id;
-        var targetSongNullable = SongRegistry.instance.fetchEntry(targetSongId);
+        var targetSongId:String = (FlxG.random.bool(20) && !Save.instance.hasBeatenSong("tmpb2hpbw==")) ? "tmpb2hpbw==" : event.capsule.freeplayData.data.id;
+        var targetSongNullable:Song = SongRegistry.instance.fetchEntry(targetSongId);
         if (targetSongNullable == null) {
             FlxG.log.warn("WARN: could not find song with id (" + targetSongId + ")");
             return;
         }
         var targetSong = targetSongNullable;
-        var targetLevelId:String = cap.freeplayData.levelId;
+        var targetLevelId:String = event.capsule.freeplayData.levelId;
         var targetInstId:String = null;
         PlayStatePlaylist.campaignId = targetLevelId;
 
         var targetDifficulty = targetSong.getDifficulty(fpState.currentDifficulty, fpState.currentVariation);
         if (targetDifficulty == null) {
-            FlxG.log.warn("WARN: could not find difficulty with id (" + currentDifficulty + ")");
+            //FlxG.log.warn("WARN: could not find difficulty with id (" + currentDifficulty + ")");
             return;
         }
 
